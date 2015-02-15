@@ -30,7 +30,7 @@ body {
 	width: 800px;
 	margin-top: 20px;
 }
-.uploadPreview{
+.clicker{
 	border: 5px dashed #FDFDFD;
 	border-radius: 10px;
 	box-shadow: 0 1px 5px rgba(0,0,0,0.85);
@@ -42,7 +42,7 @@ body {
 	height:200px;
 	opacity:1;
 }
-.uploadPreview:hover{
+.clicker:hover{
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
     transition: 0.5s;
@@ -70,15 +70,35 @@ body {
     cursor: default;
     border-radius: 3px;
 }
-
+li a{
+	color: #909090;
+	border-radius: 2px;
+	padding:0px 2px;
+	-webkit-transition: all .6s;
+}
+li a:hover{
+	text-decoration: none;
+	color:#FFF;
+    background-color:#999;
+}
 .btn {
 	border: 1px solid #BBB;
 	font-size:9px;
 	margin-bottom:25px;
 }
-.clearHistory{
-	font-size:9px;
-	color:#555;
+.tips{
+	text-align:left;
+	color:#C2C2C2;
+	margin-top:100px;
+	padding-top:50px;
+	border-top:1px dashed #E8E8E8;
+}
+.footer{
+	text-align:right;
+	color:#C2C2C2;
+	margin-top:100px;
+	padding-top:20px;
+	border-top:0px dashed #E8E8E8;
 }
 </style>
 </head>
@@ -86,16 +106,17 @@ body {
 <div class="container main">
 	<div class="row">
 			
-		<div class="col-md-12" style="margin-top:50px;">
-			<input id="input" type="file" name="avatar" style="display:none;">
+		<div class="col-md-12" style="margin:50px 0px;">
+			<input id="input" type="file" class="uploadTrigger" style="display:none;">
 		</div>
+
 
 	   <div class="col-md-4">
 	    <p>单击或者拖拽图片到此</p>
-		<img src="placeholder.png" class="uploadPreview drop_area">
+		<img src="placeholder.png" class="dragger clicker">
 	   </div>
 	   <div class="col-md-8">
-	    <p>使用Ctrl+C (Command + C)复制引用</p>
+	    <p>使用Ctrl+C (⌘ + C)复制引用</p>
 		<div class="link-itm">
 		 <strong>图片链接</strong>
 		 <div class="input-append">
@@ -105,15 +126,30 @@ body {
 		<div class="link-itm">
 		 <strong>HTML</strong>
 		 <div class="input-append">
-		  <input class="res" id="res_html" value="" spellcheck="false"/>
+		  <input class="res" id="res_html" value="" spellcheck="false" readonly="true"/>
 		 </div>
 		</div>
 		<div class="link-itm">
 		 <strong>Markdown</strong>
 		 <div class="input-append">
-		  <input class="res" id="res_md" value="" spellcheck="false"/>
+		  <input class="res" id="res_md" value="" spellcheck="false" readonly="true"/>
 		 </div>
 		</div>
+	   </div>
+
+	   <div class="col-md-12 tips">
+			<ul>
+				<li>喜欢这个插件？ 
+				<a href="https://chrome.google.com/webstore/detail/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E5%9B%BE%E5%BA%8A/fdfdnfpdplfbbnemmmoklbfjbhecpnhf/reviews" target="_blank">欢迎去Chrome插件商店给一发五星好评！</a></li>
+				<li>使用中碰到问题，<a href="http://www.v2ex.com/t/171098" target="_blank">这里提交反馈</a></li>
+				<li>这个插件是源码开发的，可以去GitHub
+					<a href="https://github.com/Suxiaogang/WeiboPicBed" target="_blank">star / fork / pull request</a></li>
+				<li>部分实现参考了"围脖是个好图床"和"v2ex.ext"这两个插件，在此表示感谢</li>
+			</ul>
+	   </div>
+
+	   <div class="col-md-12 footer">
+			©2015 Sam Su
 	   </div>
 
 	</div>

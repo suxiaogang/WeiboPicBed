@@ -1,10 +1,10 @@
 $(document).ready(function(){
 
-	$(".uploadPreview").click(function () {
+	$(".clicker").click(function () {
 		$('#input').trigger('click');
 	});
 
-	$(".uploadPreview").on({ 
+	$(".dragger").on({ 
         dragleave:function(e){
             e.preventDefault();
 			e.stopPropagation();
@@ -26,7 +26,6 @@ $(document).ready(function(){
 	$(".res").hover(
 	  function () {
 		$(this).select();
-		$(this).attr('readonly', true);
 	  },
 	  function () {
 		$(this).blur();
@@ -69,14 +68,35 @@ $(document).ready(function(){
         event.preventDefault();
 		var filesToUpload = document.getElementById('input').files;
 		var file = filesToUpload[0];
-		if(!/image\/\w+/.test(file.type)){ 
-			alert("文件必须为图片！"); 
+		//console.log(file);
+		if(!/image\/\w+/.test(file.type) || file == "undefined"){ 
+			swal("文件必须为图片！"); 
 			return false; 
 		}
 		previewAndUpload(file);
     });
 
-	$(".uploadPreview").on("drop",function(e){ 
+	//HTML5 paste http://www.zhihu.com/question/20893119
+	$("#res_img").on("paste",function(e){ 
+		var oe = e.originalEvent;
+		var clipboardData, items, item;
+		if (oe && (clipboardData = oe.clipboardData) && (items = clipboardData.items)) {
+			var b = false;
+			for (var i = 0, l = items.length; i < l; i++) {
+			  if((item = items[i]) && item.kind == 'file' && item.type.match(/^image\//i)) {
+				b = true;
+				console.log(item);
+				previewAndUpload(item.getAsFile());
+			  } else {
+				swal("您粘贴的不是图片~"); 
+				$('#res_img').val('');
+			  }
+			}
+			if (b) return false;
+		}
+	});
+
+	$(".dragger").on("drop",function(e){ 
 		e.preventDefault(); //取消默认浏览器拖拽效果 
 		var fileList = e.originalEvent.dataTransfer.files; //获取文件对象 
 		//检测是否是拖拽文件到页面的操作 
@@ -84,8 +104,8 @@ $(document).ready(function(){
 			return false; 
 		} 
 		//检测文件是不是图片 
-		if(fileList[0].type.indexOf('image') === -1){ 
-			alert("您拖的不是图片~"); 
+		if(fileList[0].type.indexOf('image') === -1  || fileList[0] == "undefined"){ 
+			swal("您拖的不是图片~"); 
 			return false; 
 		} 
 		 
@@ -100,9 +120,9 @@ $(document).ready(function(){
 		var imgFile;
 		reader.readAsDataURL(file);
 		reader.onload = function(e){
-			$('.uploadPreview').prop('src', '');
-			$('.uploadPreview').css('background-image', 'url('+ this.result+')');
-			$('.uploadPreview').css('background-position', 'center');
+			$('.clicker').prop('src', '');
+			$('.clicker').css('background-image', 'url('+ this.result+')');
+			$('.clicker').css('background-position', 'center');
 		};
 		reader.onloadend = function(e) {	
 			imgFile = e.target;
