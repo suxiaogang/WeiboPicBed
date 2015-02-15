@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "新浪微博图床",
+  "short_name": "新浪微博图床",
+  "description": "简单好用的新浪微博图床,支持拖拽上传图片,并生成图片地址,HTML和Markdown三种格式",
+  "version": "1.0",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "background": { "scripts": ["js/background.js"] },
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "permissions": [
+    "storage", "notifications", "tts", "webRequest", "webRequestBlocking", "*://*/", "tabs", "contextMenus"
+  ]
+}
