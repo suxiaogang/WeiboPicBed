@@ -1,7 +1,17 @@
+var global_pid = "";
+
 $(document).ready(function(){
 
 	$(".clicker").click(function () {
 		$('#input').trigger('click');
+	});
+
+	$(".btn-default").click(function () {
+		$(this).parent().children().removeClass('active');
+		$(this).addClass('active');
+		if(global_pid != ""){
+			fillInputBlank(global_pid);
+		}
 	});
 
 	$(".dragger").on({ 
@@ -41,7 +51,6 @@ $(document).ready(function(){
 		  }
 		  var x = 0
 			, y = 0;
-
 		  crc = crc ^ (-1);
 		  for (var i = 0, iTop = str.length; i < iTop; i++) {
 			y = (crc ^ str.charCodeAt(i)) & 0xFF;
@@ -115,6 +124,14 @@ $(document).ready(function(){
 		previewAndUpload(file);
 	});
 
+	function fillInputBlank(pid) {
+		var picSizeType = $(".btn-group").children(".active").prop("value");
+		var callBackImg = pid2url(pid, picSizeType);
+		$('#res_img').val(callBackImg);
+		$('#res_html').val('<img src="'+ callBackImg +'"/>');
+		$('#res_md').val('![]('+ callBackImg +')');
+	}
+
 	function previewAndUpload(file) {
 		var reader = new FileReader();
 		var imgFile;
@@ -139,13 +156,12 @@ $(document).ready(function(){
 					splitIndex = resText.indexOf('{"');
 					rs = JSON.parse(resText.substring(splitIndex));
 					pid = rs.data.pics.pic_1.pid;
-					var callBackImg = pid2url(pid, 'large');
-					$('#res_img').val(callBackImg);
-					$('#res_html').val('<img src="'+ callBackImg +'"/>');
-					$('#res_md').val('![]('+ callBackImg +')');
-					return callBackImg;
+					global_pid = pid;
+					fillInputBlank(pid);
+					return true;
 				  } catch (e) {
 					swal("上传失败，请登录微博后再试~");
+					console.log(e);
 					return;
 				  }
 				} else {
