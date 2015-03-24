@@ -1,6 +1,15 @@
 var global_pid = "";
+var storageData = localStorage.weiboData ? JSON.parse(localStorage.weiboData) : [];
 
 $(document).ready(function(){
+
+	var options_url = chrome.extension.getURL('option.html');
+	//click to open option page
+	$("#optionPage").click(function() {
+		event.preventDefault();
+		chrome.tabs.create({url:options_url});
+		window.close();
+	});
 
 	$(".clicker").click(function () {
 		$('#input').trigger('click');
@@ -130,6 +139,14 @@ $(document).ready(function(){
 		$('#res_img').val(callBackImg);
 		$('#res_html').val('<img src="'+ callBackImg +'"/>');
 		$('#res_md').val('![]('+ callBackImg +')');
+
+		//store upload image to localStorage
+		storageData.push({
+			date: (new Date()).getTime(),
+			imgsrc: callBackImg
+		});
+		localStorage.weiboData = JSON.stringify(storageData);
+
 	}
 
 	function previewAndUpload(file) {

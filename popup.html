@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <title>微博图床</title>
-<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://cdn.bootcss.com/sweetalert/0.4.0/sweet-alert.min.css">
+<link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/sweet-alert.min.css" rel="stylesheet">
 <style>
 button:focus{outline:0 !important;}
 input:focus,input:active,label:focus,label:active{
 	outline:0 !important;
 }
 html {
-  position: relative;
+  	position: relative;
 }
 body {
-  font-size:12px;
+  	font-size:12px;
 }
 ::selection {
 	background: #4096EE;
@@ -25,6 +25,17 @@ body {
 	color:#CCC;
 	margin-left:10px;
 	font-weight:100;
+}
+a#optionPage{
+	-webkit-transition: all .4s;
+	padding:2px;
+	border-radius: 2px;
+	color: #808080;
+}
+a#optionPage:hover{
+	color: #FFF;
+	background-color: #808080;
+	text-decoration: none;
 }
 .btn-default{
 	color:#CCC;
@@ -96,13 +107,6 @@ li a:hover, li a:active{
 	font-size:9px;
 	margin-bottom:25px;
 }
-.tips{
-	text-align:left;
-	color:#C2C2C2;
-	margin-top:50px;
-	padding-top:50px;
-	border-top:1px dashed #E8E8E8;
-}
 </style>
 </head>
 <body>
@@ -115,7 +119,7 @@ li a:hover, li a:active{
 
 
 	   <div class="col-xs-4">
-	    <p>单击或者拖拽图片到此</p>
+	    <p>单击或者拖拽图片到此 | <a id="optionPage" href="#">上传历史</a></p>
 		<img src="placeholder.png" class="dragger clicker">
 	   </div>
 	   <div class="col-xs-8">
@@ -145,20 +149,9 @@ li a:hover, li a:active{
 		</div>
 	   </div>
 
-	   <div class="col-xs-12 tips">
-			<ul>
-				<li>喜欢这个插件？ 
-				<a href="https://chrome.google.com/webstore/detail/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E5%9B%BE%E5%BA%8A/fdfdnfpdplfbbnemmmoklbfjbhecpnhf/reviews" target="_blank">欢迎去Chrome插件商店给一发五星好评！</a></li>
-				<li>使用中碰到问题，<a href="http://www.v2ex.com/t/171098" target="_blank">这里提交反馈</a></li>
-				<li>这个插件是源码开放的，可以去GitHub
-					<a href="https://github.com/Suxiaogang/WeiboPicBed" target="_blank">star / fork / pull request</a></li>
-				<li>部分实现参考了"围脖是个好图床"和"v2ex.ext"这两个插件，在此表示感谢</li>
-			</ul>
-	   </div>
-
 	</div>
 </div>
-<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/sweet-alert.min.js"></script>
 <script type="text/javascript" src="js/popup.js"></script>
 </body>

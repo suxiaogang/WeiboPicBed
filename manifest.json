@@ -3,7 +3,7 @@
   "name": "新浪微博图床",
   "short_name": "新浪微博图床",
   "description": "简单好用的新浪微博图床,支持选择/拖拽/粘贴上传本地图片,并生成图片地址,HTML和Markdown三种格式",
-  "version": "1.2",
+  "version": "1.3",
   "icons": {
     "16": "icon.png",
     "48": "icon.png",
@@ -13,7 +13,9 @@
   "browser_action": {
     "default_icon": "icon.png"
   },
+  "options_page": "option.html",
   "permissions": [
     "storage", "notifications", "tts", "webRequest", "webRequestBlocking", "*://*/", "tabs", "contextMenus"
-  ]
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
