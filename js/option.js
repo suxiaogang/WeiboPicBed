@@ -17,7 +17,7 @@ function buildHtml() {
                     .replace(/{{imgsrc}}/g, src);
     }
     $('.box').html('<h5>上传历史</h5>' + html);
-	if(optionData[0].darkIcon){
+	if(optionData[0] != undefined && optionData[0].darkIcon){
 		$('input:checkbox[id="dark"]').prop("checked", true);
 	}
 }

@@ -1,6 +1,6 @@
 function buildIcon() {
 	var optionData = localStorage.weiboOptionData ? JSON.parse(localStorage.weiboOptionData) : [];
-	if(optionData[0].darkIcon){
+	if(optionData[0] != undefined && optionData[0].darkIcon){
 		chrome.browserAction.setIcon({
 			'path': {
 				'19': 'icon_19_gray.png',
