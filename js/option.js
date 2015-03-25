@@ -1,5 +1,6 @@
 
 var storageData = localStorage.weiboData ? JSON.parse(localStorage.weiboData) : [];
+var optionData = localStorage.weiboOptionData ? JSON.parse(localStorage.weiboOptionData) : [];
 
 function buildHtml() {
     var html = '';
@@ -16,6 +17,9 @@ function buildHtml() {
                     .replace(/{{imgsrc}}/g, src);
     }
     $('.box').html('<h5>上传历史</h5>' + html);
+	if(optionData[0].darkIcon){
+		$('input:checkbox[id="dark"]').prop("checked", true);
+	}
 }
 
 $(document).ready(function(){
@@ -47,5 +51,14 @@ $(document).ready(function(){
 		$(this).blur();
 	  }
 	);
+
+	$('#dark').click(function(){
+		var storageData = [];
+		var flag = $('input:checkbox[id="dark"]').is(':checked');
+		storageData.push({
+			darkIcon: flag
+		});
+		localStorage.weiboOptionData = JSON.stringify(storageData);
+	});
 
 });

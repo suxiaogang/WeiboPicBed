@@ -2,8 +2,8 @@
   "manifest_version": 2,
   "name": "新浪微博图床",
   "short_name": "新浪微博图床",
-  "description": "简单好用的新浪微博图床,支持选择/拖拽/粘贴上传本地图片,并生成图片地址,HTML和Markdown三种格式",
-  "version": "1.3",
+  "description": "简单好用的新浪微博图床,支持选择/拖拽/粘贴上传图片,并生成图片地址,HTML和Markdown三种格式,并且可以浏览历史记录",
+  "version": "1.4",
   "icons": {
     "16": "icon.png",
     "48": "icon.png",
@@ -11,7 +11,7 @@
   },
   "background": { "scripts": ["js/background.js"] },
   "browser_action": {
-    "default_icon": "icon.png"
+    "default_icon": "icon_38.png"
   },
   "options_page": "option.html",
   "permissions": [

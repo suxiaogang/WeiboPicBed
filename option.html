@@ -3,7 +3,7 @@
 <meta charset="UTF-8"/>
 <title>新浪微博图床</title>
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
-<link rel="shortcut icon" href="static/icons/icon_128.png" type="image/x-icon">
+<link rel="shortcut icon" href="icon.png" type="image/x-icon">
 <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
 <link type="text/css" href="css/sweet-alert.min.css" rel="stylesheet">
 <link type="text/css" href="source/jquery.fancybox.css" rel="stylesheet">
@@ -169,6 +169,20 @@ h5{
 .tips a:hover{
 	color:#000;
 }
+/*checkbox*/
+input[type='checkbox']{
+	background-image: -webkit-linear-gradient(#EDEDED, #EDEDED 38%, #DEDEDE);
+	border: 1px solid rgba(0, 0, 0, 0.25);
+	border-radius: 2px;
+	color: #444;
+	font: inherit;
+	text-shadow: 0 1px 0 #F0F0F0;
+}
+label.dark{
+	padding-left:0px;
+	display:inline-block;
+	margin-top:2px;
+}
 </style>
 </head>
 <body>
@@ -186,6 +200,10 @@ h5{
 			<a href="https://github.com/Suxiaogang/WeiboPicBed" target="_blank">star / fork / pull request</a></li>
 		<li>部分实现参考了"围脖是个好图床"和"v2ex.ext"这两个插件，在此表示感谢</li>
 	</ul>
+		<div class="checkbox hasInput" style="padding-left:20px;">
+			<input type="checkbox" id="dark">
+			<label for="dark" class="dark">使用灰色Toolbar图标</label>
+        </div>
 	</div>
 
 	<div class="box"></div>
