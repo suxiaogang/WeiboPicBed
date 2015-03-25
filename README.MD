@@ -8,3 +8,7 @@
 - 上传历史浏览.
 
 ![](http://ww3.sinaimg.cn/large/5fd37818jw1ep9b24zzang20oy0din32.gif)
+
+![](http://ww4.sinaimg.cn/large/5fd37818gw1eqhxj78743j20zk0m811d.jpg)
+
+![](http://ww2.sinaimg.cn/large/5fd37818gw1eqhxjffq1tj20zk0m8wj6.jpg)
