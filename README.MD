@@ -9,6 +9,26 @@
 
 ![](http://ww3.sinaimg.cn/large/5fd37818jw1ep9b24zzang20oy0din32.gif)
 
-![](http://ww4.sinaimg.cn/large/5fd37818gw1eqhxj78743j20zk0m811d.jpg)
+![](http://ww1.sinaimg.cn/large/5fd37818gw1eqps6zuxslj20xc0p0q9q.jpg)
 
 ![](http://ww2.sinaimg.cn/large/5fd37818gw1eqhxjffq1tj20zk0m8wj6.jpg)
+
+#####更新记录
+```
+2015-04-01 v1.5
+增加一个上传时的Loading效果(针对网络延迟和大文件上传)
+增加按下"Esc"键后关闭窗口
+
+2015-03-23 v1.4
+状态栏图标可以在选项里设置为灰色了
+
+2015-03-22 v1.3
+可以保存上传历史了
+
+2015-02-16 v1.2
+由browser action修改为popup
+
+2015-02-15 v1.0
+第一个版本发
+
+```

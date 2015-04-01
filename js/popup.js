@@ -11,6 +11,13 @@ $(document).ready(function(){
 		window.close();
 	});
 
+	//exit with ESC press
+	$(document).keydown(function(event){ 
+		if(event.keyCode == 27) {
+			window.close();
+		}
+	});
+
 	$(".clicker").click(function () {
 		$('#input').trigger('click');
 	});
@@ -139,6 +146,7 @@ $(document).ready(function(){
 		$('#res_img').val(callBackImg);
 		$('#res_html').val('<img src="'+ callBackImg +'"/>');
 		$('#res_md').val('![]('+ callBackImg +')');
+		$(".loader-wrap").fadeOut("fast");
 
 		//store upload image to localStorage
 		storageData.push({
@@ -150,6 +158,7 @@ $(document).ready(function(){
 	}
 
 	function previewAndUpload(file) {
+		$(".loader-wrap").show();
 		var reader = new FileReader();
 		var imgFile;
 		reader.readAsDataURL(file);

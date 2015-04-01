@@ -5,6 +5,7 @@
 <title>微博图床</title>
 <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
 <link type="text/css" href="css/sweet-alert.min.css" rel="stylesheet">
+<link type="text/css" href="css/loaders.min.css" rel="stylesheet">
 <style>
 button:focus{outline:0 !important;}
 input:focus,input:active,label:focus,label:active{
@@ -107,9 +108,23 @@ li a:hover, li a:active{
 	font-size:9px;
 	margin-bottom:25px;
 }
+.loader-wrap{
+	background-color: rgba(0,0,0,0.85);
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 99999;
+	margin-top:-20px;
+	padding-top:25%;
+	display:none;
+}
 </style>
 </head>
 <body>
+<div class="loader-wrap text-center">
+	<div class="loader-inner line-scale"><div></div><div></div><div></div><div></div><div></div></div>
+</div>
+
 <div class="container main">
 	<div class="row">
 			
