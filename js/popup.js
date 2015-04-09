@@ -132,8 +132,7 @@ $(document).ready(function(){
 		if(fileList[0].type.indexOf('image') === -1  || fileList[0] == "undefined"){ 
 			swal("您拖的不是图片~"); 
 			return false; 
-		} 
-		 
+		}
 		//拖拉图片到浏览器，可以实现预览功能 
 		var img = window.webkitURL.createObjectURL(fileList[0]); 
 		var file = fileList[0];
@@ -154,7 +153,6 @@ $(document).ready(function(){
 			imgsrc: callBackImg
 		});
 		localStorage.weiboData = JSON.stringify(storageData);
-
 	}
 
 	function previewAndUpload(file) {
@@ -186,13 +184,14 @@ $(document).ready(function(){
 					fillInputBlank(pid);
 					return true;
 				  } catch (e) {
-					swal("上传失败，请登录微博后再试~");
 					console.log(e);
+					alert("上传失败，请登录微博后再试~");
+					chrome.tabs.create({url:'http://weibo.com/?topnav=1&mod=logo'});
+					window.close();
 					return;
 				  }
 				} else {
 				  swal("图片上传失败...");
-
 				}
 			  }
 			};
@@ -200,5 +199,4 @@ $(document).ready(function(){
 			xhr.send(data);
 		};
 	}
-
 });
