@@ -27,6 +27,12 @@ a:focus,a:active{
 * {
 	margin: 0;
 	padding: 0;
+	outline-style:none;
+	box-shadow:none;
+	border-color:transparent;
+}
+*:focus {
+    outline:0!important;-webkit-appearance:none;
 }
 html {
 	position: relative;
@@ -183,6 +189,9 @@ label.dark{
 	display:inline-block;
 	margin-top:2px;
 }
+#syscBtn{
+	margin:10px;
+}
 </style>
 </head>
 <body>
@@ -208,14 +217,16 @@ label.dark{
 
 	<div class="box"></div>
 	</div>
+
 </div>
 
 <script id="image-item-template" type="template">
 <div class="col-md-2">
 	<div class="page-header">{{date}}</div>
-	<div class="page-content fancybox" data-fancybox-group="gallery" rel="gallery" href="{{imgsrc}}" title="<input type='text' class='form-control imgsrc' value='{{imgsrc}}'>" style="background-image:url('{{imgsrcthumb}}')"></div>
+	<div class="page-content fancybox" d="{{d}}" data-fancybox-group="gallery" rel="gallery" href="{{imgsrc}}" title="<input type='text' class='form-control imgsrc' value='{{imgsrc}}'>" style="background-image:url('{{imgsrcthumb}}')"></div>
 </div>
 </script>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/sweet-alert.min.js"></script>
 <script src="source/jquery.fancybox.pack.js"></script>

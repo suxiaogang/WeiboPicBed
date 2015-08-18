@@ -14,12 +14,25 @@ function buildHtml() {
         html += imageitemtemplate
 					.replace(/{{imgsrcthumb}}/g, thumb)
                     .replace(/{{date}}/g, d.toLocaleString())
+                    .replace(/{{d}}/g, timestamp)
                     .replace(/{{imgsrc}}/g, src);
     }
     $('.box').html('<h5>上传历史</h5>' + html);
 	if(optionData[0] != undefined && optionData[0].darkIcon){
 		$('input:checkbox[id="dark"]').prop("checked", true);
 	}
+}
+
+function removeImgItem(d) {
+	for (var i = 0; i < storageData.length; i++) {
+        var item = storageData[i];
+		var timestamp = item.date;
+		if(timestamp == d) {
+			storageData.splice(i, 1);
+			localStorage.weiboData = JSON.stringify(storageData);
+			return;
+		}
+    }
 }
 
 $(document).ready(function(){
@@ -43,7 +56,7 @@ $(document).ready(function(){
     	}
     });
 
-	$("input.imgsrc").hover(
+	$(".imgsrc").hover(
 	  function () {
 		$(this).select();
 	  },
@@ -59,6 +72,24 @@ $(document).ready(function(){
 			darkIcon: flag
 		});
 		localStorage.weiboOptionData = JSON.stringify(storageData);
+	});
+
+	$('.page-content').bind('contextmenu', function(e) {
+		e.preventDefault();
+		console.log(JSON.stringify(storageData));
+		var d = $(this).attr("d");
+		var div = $(this).parent();
+		swal({title: "确定要删除吗?",
+			text: "",
+			type: "error",
+			showCancelButton: true,
+			cancelButtonText: "取消",
+			confirmButtonColor: "#D9534F",
+			confirmButtonText: "删除"
+		}, function(){
+			div.fadeOut("fast");
+			removeImgItem(d);
+		});
 	});
 
 });
