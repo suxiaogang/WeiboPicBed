@@ -1,4 +1,5 @@
 var global_pid = "";
+var global_url = "";
 var storageData = localStorage.weiboData ? JSON.parse(localStorage.weiboData) : [];
 
 $(document).ready(function(){
@@ -11,8 +12,45 @@ $(document).ready(function(){
 		window.close();
 	});
 
+	$(".clicker").hover(
+		function () {
+			if (global_url != "") {
+				$('.clicker').prop('src', global_url);
+			}
+		},
+		function () {
+			//
+		}
+	);
+
+	$(".copyBtn").hover(
+	  	function() {
+			$(this).removeAttr('data-tooltip');
+	  	},
+	  	function () {
+			$(this).blur();
+	  	}
+	);
+
+	$(".copyBtn").click(function() {
+		event.preventDefault();
+		$(this).prev().select();
+		var dataToCpy = $(this).prev().val();
+		document.execCommand('copy');
+		$(this).attr("data-tooltip", "复制成功");//data-tooltip="复制成功"
+		document.getSelection().removeAllRanges();
+	});
+
+	$(".btn-size").click(function () {
+		$(this).parent().children().removeClass('active');
+		$(this).addClass('active');
+		if(global_pid != ""){
+			changePicSize(global_pid);
+		}
+	});
+
 	//exit with ESC press
-	$(document).keydown(function(event){ 
+	$(document).keydown(function(event){
 		if(event.keyCode == 27) {
 			window.close();
 		}
@@ -22,32 +60,24 @@ $(document).ready(function(){
 		$('#input').trigger('click');
 	});
 
-	$(".btn-default").click(function () {
-		$(this).parent().children().removeClass('active');
-		$(this).addClass('active');
-		if(global_pid != ""){
-			fillInputBlank(global_pid);
-		}
+	$(".dragger").on({
+	        dragleave:function(e){
+	            e.preventDefault();
+		e.stopPropagation();
+	        },
+	        drop:function(e){
+	            e.preventDefault();
+		e.stopPropagation();
+	        },
+	        dragenter:function(e){
+	            e.preventDefault();
+		e.stopPropagation();
+	        },
+	        dragover:function(e){
+	            e.preventDefault();
+		e.stopPropagation();
+	        }
 	});
-
-	$(".dragger").on({ 
-        dragleave:function(e){
-            e.preventDefault();
-			e.stopPropagation();
-        }, 
-        drop:function(e){
-            e.preventDefault();
-			e.stopPropagation();
-        }, 
-        dragenter:function(e){ 
-            e.preventDefault();
-			e.stopPropagation();
-        }, 
-        dragover:function(e){
-            e.preventDefault();
-			e.stopPropagation();
-        } 
-    });
 
 	$(".res").hover(
 	  function () {
@@ -90,19 +120,19 @@ $(document).ready(function(){
 	}
 
 	$('#input').change(function(){
-        event.preventDefault();
+        		event.preventDefault();
 		var filesToUpload = document.getElementById('input').files;
 		var file = filesToUpload[0];
 		//console.log(file);
-		if(!/image\/\w+/.test(file.type) || file == "undefined"){ 
-			swal("文件必须为图片！"); 
-			return false; 
+		if(!/image\/\w+/.test(file.type) || file == "undefined"){
+			swal("文件必须为图片！");
+			return false;
 		}
 		previewAndUpload(file);
-    });
+    	});
 
 	//HTML5 paste http://www.zhihu.com/question/20893119
-	$("#res_img").on("paste",function(e){ 
+	$("#res_img").on("paste",function(e){
 		var oe = e.originalEvent;
 		var clipboardData, items, item;
 		if (oe && (clipboardData = oe.clipboardData) && (items = clipboardData.items)) {
@@ -113,7 +143,7 @@ $(document).ready(function(){
 				console.log(item);
 				previewAndUpload(item.getAsFile());
 			  } else {
-				swal("您粘贴的不是图片~"); 
+				swal("您粘贴的不是图片~");
 				$('#res_img').val('');
 			  }
 			}
@@ -121,31 +151,41 @@ $(document).ready(function(){
 		}
 	});
 
-	$(".dragger").on("drop",function(e){ 
-		e.preventDefault(); //取消默认浏览器拖拽效果 
-		var fileList = e.originalEvent.dataTransfer.files; //获取文件对象 
-		//检测是否是拖拽文件到页面的操作 
-		if(fileList.length == 0){ 
-			return false; 
-		} 
-		//检测文件是不是图片 
-		if(fileList[0].type.indexOf('image') === -1  || fileList[0] == "undefined"){ 
-			swal("您拖的不是图片~"); 
-			return false; 
+	$(".dragger").on("drop",function(e){
+		e.preventDefault(); //取消默认浏览器拖拽效果
+		var fileList = e.originalEvent.dataTransfer.files; //获取文件对象
+		//检测是否是拖拽文件到页面的操作
+		if(fileList.length == 0){
+			return false;
 		}
-		//拖拉图片到浏览器，可以实现预览功能 
-		var img = window.webkitURL.createObjectURL(fileList[0]); 
+		//检测文件是不是图片
+		if(fileList[0].type.indexOf('image') === -1  || fileList[0] == "undefined"){
+			swal("您拖的不是图片~");
+			return false;
+		}
+		//拖拉图片到浏览器，可以实现预览功能
+		var img = window.webkitURL.createObjectURL(fileList[0]);
 		var file = fileList[0];
 		previewAndUpload(file);
 	});
 
-	function fillInputBlank(pid) {
+	function changePicSize(pid) {
 		var picSizeType = $(".btn-group").children(".active").prop("value");
 		var callBackImg = pid2url(pid, picSizeType);
 		$('#res_img').val(callBackImg);
 		$('#res_html').val('<img src="'+ callBackImg +'"/>');
 		$('#res_md').val('![]('+ callBackImg +')');
+	}
+
+	function fillInputBlank(pid) {
+		var picSizeType = $(".btn-group").children(".active").prop("value");
+		var callBackImg = pid2url(pid, picSizeType);
+		global_url = callBackImg;
+		$('#res_img').val(callBackImg);
+		$('#res_html').val('<img src="'+ callBackImg +'"/>');
+		$('#res_md').val('![]('+ callBackImg +')');
 		$(".loader-wrap").fadeOut("fast");
+		$(".copyBtn").removeClass("disabled");
 
 		//store upload image to localStorage
 		storageData.push({
@@ -165,7 +205,7 @@ $(document).ready(function(){
 			$('.clicker').css('background-image', 'url('+ this.result+')');
 			$('.clicker').css('background-position', 'center');
 		};
-		reader.onloadend = function(e) {	
+		reader.onloadend = function(e) {
 			imgFile = e.target;
 			var base64 = imgFile.result.split(',')[1];
 			var xhr = new XMLHttpRequest();
