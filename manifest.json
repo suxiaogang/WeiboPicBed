@@ -3,7 +3,7 @@
   "name": "新浪微博图床",
   "short_name": "新浪微博图床",
   "description": "简单好用的新浪微博图床,支持选择/拖拽/粘贴上传图片,并生成图片地址,HTML和Markdown三种格式,并且可以浏览和删除历史记录",
-  "version": "1.70",
+  "version": "1.71",
   "icons": {
     "16": "icon.png",
     "48": "icon.png",
