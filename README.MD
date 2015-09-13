@@ -4,10 +4,10 @@
 
 - 支持点选/拖拽/本地粘贴3种方式上传图片至新浪微博图床
 - 可选择返回的图片尺寸
-- 可生成图片链接,HTML和Markdown三种格式
+- 可生成图片链接,HTML,UBB和Markdown四种格式
 - 上传历史浏览和删除.
 
-![](http://ww1.sinaimg.cn/large/5fd37818jw1evs4sp0nzjg20lt0e8n8o.gif)
+![](http://ww3.sinaimg.cn/large/5fd37818jw1ew172qsxbog20lz0c2qcn.gif)
 
 ![](http://ww1.sinaimg.cn/large/5fd37818gw1eqps6zuxslj20xc0p0q9q.jpg)
 

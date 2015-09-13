@@ -174,6 +174,7 @@ $(document).ready(function(){
 		var callBackImg = pid2url(pid, picSizeType);
 		$('#res_img').val(callBackImg);
 		$('#res_html').val('<img src="'+ callBackImg +'"/>');
+		$('#res_ubb').val('[IMG]'+ callBackImg +'[/IMG');
 		$('#res_md').val('![]('+ callBackImg +')');
 	}
 
@@ -183,6 +184,7 @@ $(document).ready(function(){
 		global_url = callBackImg;
 		$('#res_img').val(callBackImg);
 		$('#res_html').val('<img src="'+ callBackImg +'"/>');
+		$('#res_ubb').val('[IMG]'+ callBackImg +'[/IMG]');
 		$('#res_md').val('![]('+ callBackImg +')');
 		$(".loader-wrap").fadeOut("fast");
 		$(".copyBtn").removeClass("disabled");

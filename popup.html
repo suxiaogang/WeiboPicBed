@@ -14,6 +14,9 @@ input:focus,input:active,label:focus,label:active{
 textarea:focus, input:focus{
     	outline: 0;
 }
+strong{
+	color:#555;
+}
 .res:focus {
     	outline: 0;
     	border-color: #31b0d5;
@@ -81,10 +84,13 @@ a#optionPage:hover{
 .btn-group>.btn:focus, .btn-group>.btn:active, .btn-group>.btn.active{
 	background-color:rgb(232, 232, 232);
 	-webkit-box-shadow: none;
-    box-shadow: none;
-    -webkit-transition: none;
-    transition: none;
-    color: #868686;
+    	box-shadow: none;
+    	-webkit-transition: none;
+    	transition: none;
+    	color: #868686;
+}
+.link-item{
+	margin-bottom: -15px;
 }
 .main{
 	margin-top: 20px;
@@ -94,7 +100,7 @@ a#optionPage:hover{
 	border-radius: 10px;
 	box-shadow: 0 1px 5px rgba(0,0,0,0.85);
 	display: inline-block;
-	margin-top:20px;
+	margin-top:45px;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-color: #BBB;
@@ -243,21 +249,28 @@ li a:hover, li a:active{
 		<div class="pull-right">
 		  <button type="button" class="btn btn-default btn-batch" style="display:none;">批量模式</button>
 		</div>
-		<div class="link-itm">
+		<div class="link-item">
 		 <strong>图片链接<small class="muted">(试一试粘贴图片到这里)</small></strong>
 		 <div class="input-append">
 		  <input class="res col-xs-10" id="res_img" value="" spelcheck="false"/>
 		  <button type="button" class="btn btn-default copyBtn disabled">复制</button>
 		 </div>
 		</div>
-		<div class="link-itm">
+		<div class="link-item">
 		 <strong>HTML</strong>
 		 <div class="input-append">
 		  <input class="res col-xs-10" id="res_html" value="" spellcheck="false" readonly="true"/>
 		  <button type="button" class="btn btn-default copyBtn disabled">复制</button>
 		 </div>
 		</div>
-		<div class="link-itm">
+		<div class="link-item">
+		 <strong>UBB</strong>
+		 <div class="input-append">
+		  <input class="res col-xs-10" id="res_ubb" value="" spellcheck="false" readonly="true"/>
+		  <button type="button" class="btn btn-default copyBtn disabled">复制</button>
+		 </div>
+		</div>
+		<div class="link-item">
 		 <strong>Markdown</strong>
 		 <div class="input-append">
 		  <input class="res col-xs-10" id="res_md" value="" spellcheck="false" readonly="true"/>
