@@ -120,7 +120,7 @@ $(document).ready(function(){
 	}
 
 	$('#input').change(function(){
-        		event.preventDefault();
+        event.preventDefault();
 		var filesToUpload = document.getElementById('input').files;
 		var file = filesToUpload[0];
 		//console.log(file);
@@ -129,7 +129,7 @@ $(document).ready(function(){
 			return false;
 		}
 		previewAndUpload(file);
-    	});
+    });
 
 	//HTML5 paste http://www.zhihu.com/question/20893119
 	$("#res_img").on("paste",function(e){

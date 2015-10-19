@@ -158,31 +158,33 @@ h5{
 	color:#000;
 }
 /*tips*/
+#tips_wrap {
+    background: url(../source/border.png) 8px 0 repeat;
+    padding: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    border-radius: 5px;
+    color: #555;
+    text-shadow: none;
+    margin: 30px 0 50px 0;
+    min-height:214px;
+}
 .tips{
-	text-align:left;
 	color:#999;
-	margin:0px 0px 20px 30px;
-	padding-top:10px;
-	border-bottom:1px dashed #E8E8E8;
+	padding: 20px 50px;
+	background: #fff;
 	font-size: 11px;
+	line-height: 22px;
 }
 .tips a{
 	color:#838383;
-	padding:2px;
+	padding:2px 4px;
 	-webkit-transition: 0.3s;
 	border-radius: 3px;
+	background-color: rgba(180, 208, 236, 0.45);
 }
 .tips a:hover{
 	color:#000;
-}
-/*checkbox*/
-input[type='checkbox']{
-	background-image: -webkit-linear-gradient(#EDEDED, #EDEDED 38%, #DEDEDE);
-	border: 1px solid rgba(0, 0, 0, 0.25);
-	border-radius: 2px;
-	color: #444;
-	font: inherit;
-	text-shadow: 0 1px 0 #F0F0F0;
+	background-color:rgba(180, 208, 236, 0.95);
 }
 label.dark{
 	padding-left:0px;
@@ -192,32 +194,72 @@ label.dark{
 #syscBtn{
 	margin:10px;
 }
+span.donate{
+	color: #666;
+	cursor: pointer;
+	margin: 0 3px;
+}
+/* 單選框 */
+.css3Label{
+    list-style: none;
+    display:inline-block;
+}
+.css3Label label {
+    cursor: pointer;
+    display: block;
+    width: 140px;
+    position: relative;
+}
+.css3Label label::before {
+    content:"";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    line-height: 12px;
+    border-radius: 50%;
+    margin-top: 4px;
+    color: #FFF;
+    background: #BEBEBE;
+    position: absolute;
+    left: -17;
+}
+.css3Label input[type="checkbox"] {
+    display: none;
+}
+.css3Label input[type="checkbox"]:checked + label::before {
+    content:"";
+    background: #000;
+    -webkit-transition: all 0.6s;
+}
 </style>
 </head>
 <body>
 
+<button type="button" class="close" title="关闭" style="margin-top:10px;">×</button>
+
 <div class="container">
 	<div class="row">
-	<button type="button" class="close" title="关闭" style="margin-top:10px;">×</button>
-
-	<div class="col-xs-12 tips">
-	<ul>
-		<li>喜欢这个插件？ 
-		<a href="https://chrome.google.com/webstore/detail/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E5%9B%BE%E5%BA%8A/fdfdnfpdplfbbnemmmoklbfjbhecpnhf/reviews" target="_blank">欢迎去Chrome插件商店给一发五星好评！</a></li>
-		<li>使用中碰到问题，<a href="https://github.com/Suxiaogang/WeiboPicBed/issues/new" target="_blank">这里提交反馈</a></li>
-		<li>这个插件是源码开放的，可以去GitHub
-			<a href="https://github.com/Suxiaogang/WeiboPicBed" target="_blank">star / fork / pull request</a></li>
-		<li>部分实现参考了"围脖是个好图床"和"v2ex.ext"这两个插件，在此表示感谢</li>
-	</ul>
-		<div class="checkbox hasInput" style="padding-left:20px;">
-			<input type="checkbox" id="dark">
-			<label for="dark" class="dark">使用灰色Toolbar图标</label>
-        </div>
-	</div>
+		<div id="tips_wrap">
+			<div class="col-xs-12 tips">
+			<ul>
+				<li>喜欢这个插件？ 
+				<a href="https://chrome.google.com/webstore/detail/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E5%9B%BE%E5%BA%8A/fdfdnfpdplfbbnemmmoklbfjbhecpnhf/reviews" target="_blank">欢迎去Chrome插件商店给一发五星好评！</a></li>
+				<li>使用中碰到问题，<a href="https://github.com/Suxiaogang/WeiboPicBed/issues/new" target="_blank">请提交反馈</a></li>
+				<li>这个插件是源码开放的，可以去GitHub
+					<a href="https://github.com/Suxiaogang/WeiboPicBed" target="_blank">star / fork / pull request</a></li>
+				<li>部分实现参考了"围脖是个好图床"和"v2ex.ext"这两个插件，在此表示感谢</li>
+				<li>想对开发者捐助一点您的心意<span class="donate">表(mǎi)示(bēi)感(kā)谢(fēi)</span>?</li>
+			</ul>
+				<div class="checkbox hasInput css3Label" style="padding-left:15px;">
+					<input type="checkbox" id="dark">
+					<label for="dark" class="dark">使用单色Toolbar图标</label>
+		        </div>
+			</div>
+		</div>
 
 	<div class="box"></div>
-	</div>
 
+	</div>
 </div>
 
 <script id="image-item-template" type="template">

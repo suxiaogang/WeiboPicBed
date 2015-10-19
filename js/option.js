@@ -42,6 +42,13 @@ $(document).ready(function(){
 		window.close();
 	});
 
+	$('.donate').on('click', function () {
+		swal({   title: "",   text: "微信扫码捐助",   
+			imageUrl: "http://ww2.sinaimg.cn/large/5fd37818jw1ex6kba7xq2j20ba0b6q4e.jpg",
+			imageSize: '200x200'});
+	});
+
+
 	// Build HTML on load
 	buildHtml();
 
