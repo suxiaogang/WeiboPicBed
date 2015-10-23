@@ -66,19 +66,19 @@ body {
 	overflow-y: auto;
 }
 /**** textarea scroll-bar ****/
-.box::-webkit-scrollbar-track-piece{ 
-	background-color:#FFF; 
-} 
-.box::-webkit-scrollbar{ 
-	width:7px; 
-} 
-.box::-webkit-scrollbar-thumb{ 
-	height:100px; 
-	background-color:#CDC9C9; 
-	outline:transparent; 
+.box::-webkit-scrollbar-track-piece{
+	background-color:#FFF;
 }
-.box::-webkit-scrollbar-thumb:hover{ 
-	background-color:#828282; 
+.box::-webkit-scrollbar{
+	width:7px;
+}
+.box::-webkit-scrollbar-thumb{
+	height:100px;
+	background-color:#CDC9C9;
+	outline:transparent;
+}
+.box::-webkit-scrollbar-thumb:hover{
+	background-color:#828282;
 }
 h5{
 	font-size:15px;
@@ -180,11 +180,11 @@ h5{
 	padding:2px 4px;
 	-webkit-transition: 0.3s;
 	border-radius: 3px;
-	background-color: rgba(180, 208, 236, 0.45);
+	background-color: rgba(180, 208, 236, 0.3);
 }
 .tips a:hover{
 	color:#000;
-	background-color:rgba(180, 208, 236, 0.95);
+	background-color:rgba(180, 208, 236, 0.75);
 }
 label.dark{
 	padding-left:0px;
@@ -198,6 +198,14 @@ span.donate{
 	color: #666;
 	cursor: pointer;
 	margin: 0 3px;
+	padding:2px 4px;
+	-webkit-transition: 0.3s;
+	border-radius: 3px;
+	background-color: rgba(238, 9, 22, 0.1);
+}
+.donate:hover{
+	color:#000;
+	background-color:rgba(180, 208, 236, 0.95);
 }
 /* 單選框 */
 .css3Label{
@@ -231,6 +239,69 @@ span.donate{
     background: #000;
     -webkit-transition: all 0.6s;
 }
+/*Animate*/
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+/*blinking*/
+@-webkit-keyframes twinkling {
+	0% {
+		background-color: rgba(238, 9, 22, 0.1);
+		opacity: 1;
+	}
+
+	50% {
+		background-color: rgba(238, 9, 22, 0.5);
+		opacity: 0.9;
+	}
+
+	100% {
+		background-color: rgba(238, 9, 22, 0.1);
+		opacity: 1;
+	}
+}
+.blinking {
+	cursor: not-allowed;
+	-webkit-animation: twinkling 1.2s infinite ease-in-out;
+	-moz-animation: twinkling 1.2s infinite ease-in-out;
+	animation: twinkling 1.2s infinite ease-in-out;
+	-webkit-transition: all 0.6s;
+}
 </style>
 </head>
 <body>
@@ -242,11 +313,11 @@ span.donate{
 		<div id="tips_wrap">
 			<div class="col-xs-12 tips">
 			<ul>
-				<li>喜欢这个插件？ 
+				<li>喜欢这个插件？
 				<a href="https://chrome.google.com/webstore/detail/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E5%9B%BE%E5%BA%8A/fdfdnfpdplfbbnemmmoklbfjbhecpnhf/reviews" target="_blank">欢迎去Chrome插件商店给一发五星好评！</a></li>
-				<li>使用中碰到问题，<a href="https://github.com/Suxiaogang/WeiboPicBed/issues/new" target="_blank">请提交反馈</a></li>
-				<li>这个插件是源码开放的，可以去GitHub
-					<a href="https://github.com/Suxiaogang/WeiboPicBed" target="_blank">star / fork / pull request</a></li>
+				<li>使用中碰到问题，<a href="https://github.com/Suxiaogang/WeiboPicBed/issues/new" target="_blank">请在这里提交反馈</a>（Chrome Web Store的反馈不一定看得到）</li>
+				<li>这个插件是源码开放的，如果你是开发者可以去GitHub
+					<a href="https://github.com/Suxiaogang/WeiboPicBed" target="_blank">Star / Fork / Pull Request</a></li>
 				<li>部分实现参考了"围脖是个好图床"和"v2ex.ext"这两个插件，在此表示感谢</li>
 				<li>想对开发者捐助一点您的心意<span class="donate">表(mǎi)示(bēi)感(kā)谢(fēi)</span>?</li>
 			</ul>
@@ -263,7 +334,7 @@ span.donate{
 </div>
 
 <script id="image-item-template" type="template">
-<div class="col-md-2">
+<div class="col-md-2 animated fadeInUp">
 	<div class="page-header">{{date}}</div>
 	<div class="page-content fancybox" d="{{d}}" data-fancybox-group="gallery" rel="gallery" href="{{imgsrc}}" title="<input type='text' class='form-control imgsrc' value='{{imgsrc}}'>" style="background-image:url('{{imgsrcthumb}}')"></div>
 </div>
