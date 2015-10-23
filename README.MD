@@ -23,8 +23,11 @@
 
 #####参考
 [Drag and drop](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Drag_and_drop)
+
 [DataTransfer](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer)
+
 [FileReader](https://developer.mozilla.org/en/docs/Web/API/FileReader)
+
 [localStorage](https://developer.mozilla.org/en/docs/Web/API/Window/localStorage)
 
 #####更新日志
@@ -57,4 +60,4 @@
 ```
 
 #####捐助
-<img width="150px" src="ttp://ww2.sinaimg.cn/large/5fd37818jw1ex6kba7xq2j20ba0b6q4e.jpg">
+<img width="150px" src="http://ww2.sinaimg.cn/large/5fd37818jw1ex6kba7xq2j20ba0b6q4e.jpg">
