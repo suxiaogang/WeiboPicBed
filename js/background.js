@@ -44,3 +44,19 @@ window.addEventListener('storage', onStorageChange, false);
 function onStorageChange() {
 	buildIcon();
 }
+
+var eventFilter = {url: [{urlPrefix: "https://www.zybuluo.com/mdeditor"}]};
+///added by Yumeng Li
+///@ 2016-04-16
+chrome.webNavigation.onCommitted.addListener(function(tab){
+  //console.log(tab);
+  chrome.tabs.executeScript(null,{file:"js/jquery.min.js"});
+  chrome.tabs.executeScript(null,{file:"js/zybuluo.js"});
+}, eventFilter);
+
+/*
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
+	console.log(tab);
+  
+});
+*/
