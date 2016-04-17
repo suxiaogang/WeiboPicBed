@@ -18,7 +18,7 @@
   },
   "options_page": "option.html",
   "permissions": [
-    "storage", "notifications", "tts", "webRequest", "webRequestBlocking", "*://*/", "tabs", "contextMenus","webNavigation"
+    "storage", "notifications", "tts", "webRequest", "webRequestBlocking", "*://*/", "tabs", "contextMenus","webNavigation","clipboardWrite"
   ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

@@ -50,7 +50,11 @@ function onStorageChange() {
 
 var eventFilter = {
 	url : [{
+			urlPrefix : "https://github.com/"
+		},{
 			urlPrefix : "https://www.zybuluo.com/mdeditor"
+		},{
+			urlPrefix:"http://write.blog.csdn.net/mdeditor"
 		}
 	]
 };
@@ -58,7 +62,7 @@ var eventFilter = {
 chrome.webNavigation.onCommitted.addListener(function (tab) {
 	//console.log(tab);
 	chrome.tabs.insertCSS(null, {
-		file : "css/zybuluo.css"
+		file : "css/image-parser.css"
 	});
 	chrome.tabs.insertCSS(null, {
 		file : "css/sweet-alert.min.css"
@@ -73,7 +77,7 @@ chrome.webNavigation.onCommitted.addListener(function (tab) {
 		file : "js/sweet-alert.min.js"
 	});	
 	chrome.tabs.executeScript(null, {
-		file : "js/zybuluo.js"
+		file : "js/image-parser.js"
 	});
 }, eventFilter);
 
