@@ -45,14 +45,16 @@ function onStorageChange() {
 	buildIcon();
 }
 
+///added by Yumeng Li
+///@ 2016-04-16
+
 var eventFilter = {
 	url : [{
 			urlPrefix : "https://www.zybuluo.com/mdeditor"
 		}
 	]
 };
-///added by Yumeng Li
-///@ 2016-04-16
+///通过设定eventFilter，使以下代码只对指定网站生效，减少内存占用
 chrome.webNavigation.onCommitted.addListener(function (tab) {
 	//console.log(tab);
 	chrome.tabs.insertCSS(null, {
@@ -67,7 +69,9 @@ chrome.webNavigation.onCommitted.addListener(function (tab) {
 	chrome.tabs.executeScript(null, {
 		file : "js/bootstrap.min.js"
 	});
-
+	chrome.tabs.executeScript(null, {
+		file : "js/sweet-alert.min.js"
+	});	
 	chrome.tabs.executeScript(null, {
 		file : "js/zybuluo.js"
 	});
@@ -75,10 +79,11 @@ chrome.webNavigation.onCommitted.addListener(function (tab) {
 
 chrome.extension.onMessage.addListener(function (request, sender, sendResponse) {
 	switch (request.message) {
-	case 'ImgUploadingEvent':
-		sendResponse("正在上传图片...");
-		onImgUploadingEvent(request,sender);
-		break;
+		//图片请求上传事件
+		case 'ImgUploadingEvent':
+			sendResponse("正在上传图片...");
+			onImgUploadingEvent(request,sender);
+			break;
 	}
 });
 
@@ -92,7 +97,7 @@ function onImgUploadingEvent(request,sender) {
 			href : "background"
 		});
 		
-		if(e.data!=null)	//如果图片上传成功的话
+		if(e.data!=null)	//如果图片上传成功的话，加入插件的历史记录中
 		{
 			var storageData = localStorage.weiboData ? JSON.parse(localStorage.weiboData) : [];
 			storageData.push({
@@ -104,12 +109,6 @@ function onImgUploadingEvent(request,sender) {
 	});
 };
 
-/*
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
-console.log(tab);
-
-});
- */
 //显示桌面通知
 function showMessage(title,content){
 	var n = new Notification(title, {
@@ -118,7 +117,11 @@ function showMessage(title,content){
 		body : content
 	});
 }
+
 //上传微博图片
+//传入图片的base64编码值，完成后调用callback函数
+//向callback中传入json格式的返回值，格式{data:url}
+//如果上传失败，url为null
 function uploadWeiboImg(base64,callback) {
 	var xhr = new XMLHttpRequest();
 	var data = new FormData();

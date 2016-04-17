@@ -10,7 +10,7 @@
     "128": "icon.png"
   },
   "background": {
-    "scripts": ["js/background.js","js/sweet-alert.min.js"],
+    "scripts": ["js/background.js"],
     "persistent":true
   },
   "browser_action": {
