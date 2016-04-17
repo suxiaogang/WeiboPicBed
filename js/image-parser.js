@@ -65,7 +65,7 @@ var ImagePaster = function () {
 		if (element == undefined || element == null || element.length == 0)
 			element = 'body';
 		$(element).bind("paste", pasteEventFunc);
-		$(element).bind("keydown", keydownEventFunc);
+		$(element).bind("keyup", keyupEventFunc);
 		//处理background发来的事件，目前只包括图片上传完成事件
 		chrome.extension.onMessage.addListener(function (request, sender, sendResponse) {
 			switch (request.message) {
@@ -124,8 +124,7 @@ var ImagePaster = function () {
 	}
 
 	//绑定键盘事件，如果图片地址已经粘贴，则关闭提示窗口
-	function keydownEventFunc(event) {
-
+	function keyupEventFunc(event) {
 		if (me.ImgUrlBuffer != null) {
 			me.ImgUrlBuffer = null;
 			$('.my-alert-box').alert('close'); //关闭其他提示窗口
@@ -138,14 +137,16 @@ var ImagePaster = function () {
 		var target = $(document.activeElement);
 		$('body').append('<textarea id="tmpPasteText2016" style="height:0;width:0;border:0;"></textarea>');
 		var tmp = $('#tmpPasteText2016');
+    var y=$(document).scrollTop();
 		tmp.focus();
 		tmp.text(content);
 		tmp.select();
 		var res = document.execCommand('copy');
 		console.log(res);
 		tmp.remove();
-
-		me.onEndSetClipboard(target);
+		$(document).scrollTop(y);
+    me.onEndSetClipboard(target);
+    
 		//target.focus();
 	}
 }
@@ -163,8 +164,12 @@ $(function () {
 	case location.href.startsWith('http://write.blog.csdn.net'):
 		paster.Init('.editor-content'); //在csdn上无法恢复光标原位置，因为它是一个div
 		break;
-	case location.href.startsWith('http://github.com'):
+	case location.href.startsWith('https://github.com'):
 		paster.Init('.commit-create'); //
+    paster.onEndSetClipboard = function (target) { 
+			target.focus(); //因为它是一个textarea
+      console.log(target);
+		};
 		break;
 	default:
 		paster.Init();

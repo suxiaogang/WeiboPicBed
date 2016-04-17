@@ -61,22 +61,22 @@ var eventFilter = {
 ///通过设定eventFilter，使以下代码只对指定网站生效，减少内存占用
 chrome.webNavigation.onCommitted.addListener(function (tab) {
 	//console.log(tab);
-	chrome.tabs.insertCSS(null, {
+	chrome.tabs.insertCSS(tab.id, {
 		file : "css/image-parser.css"
 	});
-	chrome.tabs.insertCSS(null, {
+	chrome.tabs.insertCSS(tab.id, {
 		file : "css/sweet-alert.min.css"
 	});
-	chrome.tabs.executeScript(null, {
+	chrome.tabs.executeScript(tab.id, {
 		file : "js/jquery.min.js"
 	});
-	chrome.tabs.executeScript(null, {
+	chrome.tabs.executeScript(tab.id, {
 		file : "js/bootstrap.min.js"
 	});
-	chrome.tabs.executeScript(null, {
+	chrome.tabs.executeScript(tab.id, {
 		file : "js/sweet-alert.min.js"
 	});	
-	chrome.tabs.executeScript(null, {
+	chrome.tabs.executeScript(tab.id, {
 		file : "js/image-parser.js"
 	});
 }, eventFilter);
@@ -182,7 +182,7 @@ function pid2url(pid, type) {
 	zone,
 	ext;
 	if (typeof(type) == 'undefined')
-		type = 'bmiddle';
+		type = 'large';
 	if (pid[9] == 'w') {
 		zone = (crc32(pid) & 3) + 1;
 		ext = (pid[21] == 'g') ? 'gif' : 'jpg';
