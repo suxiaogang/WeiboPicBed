@@ -13,7 +13,7 @@ var ImagePaster = function () {
 	}
 
   //用来防止循环自动粘贴
-  var isAutoPasting=false;
+  var m_isAutoPasting=false;
 	//上传图片过程中的提示框，使用bootstrap样式
 	me.WarningBoxTpl = heredoc(function () {
 			/*
@@ -59,15 +59,13 @@ var ImagePaster = function () {
 	//当设置完系统剪切板的值后触发
 	//target是在设置剪切板内容前，光标所在元素
 	me.onEndSetClipboard = function (target) {
-    if(isAutoPasting==false)
-    {
-      isAutoPasting=true;
+    
 		/*向系统剪切板赋值时会改变光标focus的元素，所以复制结束会进行一次光标位置还原*/
-    	target.focus(); //因为它是一个textarea
-      document.execCommand('paste');
-    }
+    //target.focus(); //因为它是一个textarea
+
 	}
 
+  var m_autoPaste=false;
 	//初始化，进行事件绑定
   //element传入jquery选择器，选择要绑定paste的元素，autoPaste用来配置在上传完图片之后是否自动粘贴
 	me.Init = function (element,autoPaste) {
@@ -75,10 +73,7 @@ var ImagePaster = function () {
 			element = 'body';
 		$(element).bind("paste", pasteEventFunc);
 		$(element).bind("keypress", keypressEventFunc);
-    if(autoPaste!=true)
-    {
-      me.onEndSetClipboard=function(target){};  //针对一些网站无法做到自动粘贴
-    }
+    m_autoPaste=autoPaste;  
     
 		//处理background发来的事件，目前只包括图片上传完成事件
 		chrome.extension.onMessage.addListener(function (request, sender, sendResponse) {
@@ -161,8 +156,11 @@ var ImagePaster = function () {
 		tmp.remove();
 		$(document).scrollTop(y);
     me.onEndSetClipboard(target);
-    
-		//target.focus();
+    if(m_autoPaste==true&&m_isAutoPasting==false)
+    {
+      m_isAutoPasting=true;
+      document.execCommand('paste');
+    }
 	}
 }
 
@@ -172,12 +170,21 @@ $(function () {
 	switch (true) {
 	case location.href.startsWith('https://www.zybuluo.com'):
 		paster.Init('#editor-column',true);
+    paster.onEndSetClipboard=function(target)
+    {
+      $('textarea.ace_text-input').focus();
+    }
 		break;
 	case location.href.startsWith('http://write.blog.csdn.net'):
 		paster.Init('.editor-content',false); //在csdn上无法恢复光标原位置，因为它是一个div
+
 		break;
 	case location.href.startsWith('https://github.com'):
-		paster.Init('.commit-create',true); 
+		paster.Init('.commit-create',true);
+    paster.onEndSetClipboard=function(target)
+    {
+      $('textarea.ace_text-input').focus();
+    }    
 		break;
 	default:
 		paster.Init();
