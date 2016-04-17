@@ -12,12 +12,14 @@ var ImagePaster = function () {
 		return fn.toString().match(reg)[1];
 	}
 
+  //用来防止循环自动粘贴
+  var isAutoPasting=false;
 	//上传图片过程中的提示框，使用bootstrap样式
 	me.WarningBoxTpl = heredoc(function () {
 			/*
 			<div class="alert alert-warning alert-dismissible fade in my-alert-box" role="alert" style="">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
+			<span aria-hidden="true" style="margin-right:5px;">&times;</span>
 			</button>
 			<span>
 			正在上传图片......
@@ -31,10 +33,10 @@ var ImagePaster = function () {
 			/*
 			<div class="alert alert-success alert-dismissible fade in my-alert-box" role="alert" style="">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
+			<span aria-hidden="true" style="margin-right:5px;">&times;</span>
 			</button>
 			<span>
-			上传成功，图片地址已复制到剪切板，再次按Ctrl+V完成图片粘贴。
+			图片上传成功，如果未自动粘贴请再次按Ctrl+V完成图片粘贴。
 			</span>
 			</div>
 			 */
@@ -57,15 +59,27 @@ var ImagePaster = function () {
 	//当设置完系统剪切板的值后触发
 	//target是在设置剪切板内容前，光标所在元素
 	me.onEndSetClipboard = function (target) {
-		/*主要进行光标位置移动的输出，因为向系统剪切板赋值时会改变光标focus的元素*/
+    if(isAutoPasting==false)
+    {
+      isAutoPasting=true;
+		/*向系统剪切板赋值时会改变光标focus的元素，所以复制结束会进行一次光标位置还原*/
+    	target.focus(); //因为它是一个textarea
+      document.execCommand('paste');
+    }
 	}
 
 	//初始化，进行事件绑定
-	me.Init = function (element) {
+  //element传入jquery选择器，选择要绑定paste的元素，autoPaste用来配置在上传完图片之后是否自动粘贴
+	me.Init = function (element,autoPaste) {
 		if (element == undefined || element == null || element.length == 0)
 			element = 'body';
 		$(element).bind("paste", pasteEventFunc);
-		$(element).bind("keyup", keyupEventFunc);
+		$(element).bind("keypress", keypressEventFunc);
+    if(autoPaste!=true)
+    {
+      me.onEndSetClipboard=function(target){};  //针对一些网站无法做到自动粘贴
+    }
+    
 		//处理background发来的事件，目前只包括图片上传完成事件
 		chrome.extension.onMessage.addListener(function (request, sender, sendResponse) {
 			switch (request.message) {
@@ -74,7 +88,7 @@ var ImagePaster = function () {
 				break;
 			}
 		});
-		console.log('inited');
+		console.log('Image Parser Initialized.');
 	}
 
 	function pasteEventFunc(event) {
@@ -108,7 +122,6 @@ var ImagePaster = function () {
 		if (request.data != null) {
 			me.ImgUrlBuffer = request.data;
 			setPasteContent('![](' + request.data + ')');
-			//$('textarea.ace_text-input').val('  ![](' + request.data + ')');
 			me.ShowUploaded();
 		} else {
 
@@ -124,9 +137,11 @@ var ImagePaster = function () {
 	}
 
 	//绑定键盘事件，如果图片地址已经粘贴，则关闭提示窗口
-	function keyupEventFunc(event) {
+	function keypressEventFunc(event) {
+    console.log(event);
 		if (me.ImgUrlBuffer != null) {
 			me.ImgUrlBuffer = null;
+      isAutoPasting=false;
 			$('.my-alert-box').alert('close'); //关闭其他提示窗口
 		}
 	}
@@ -156,20 +171,13 @@ $(function () {
 	//针对不同网站进行不同的初始化
 	switch (true) {
 	case location.href.startsWith('https://www.zybuluo.com'):
-		paster.Init('#editor-column');
-		paster.onEndSetClipboard = function (target) {
-			target.focus(); //在作业部落网站上可以恢复光标原位置，因为它是一个textarea
-		};
+		paster.Init('#editor-column',true);
 		break;
 	case location.href.startsWith('http://write.blog.csdn.net'):
-		paster.Init('.editor-content'); //在csdn上无法恢复光标原位置，因为它是一个div
+		paster.Init('.editor-content',false); //在csdn上无法恢复光标原位置，因为它是一个div
 		break;
 	case location.href.startsWith('https://github.com'):
-		paster.Init('.commit-create'); //
-    paster.onEndSetClipboard = function (target) { 
-			target.focus(); //因为它是一个textarea
-      console.log(target);
-		};
+		paster.Init('.commit-create',true); 
 		break;
 	default:
 		paster.Init();

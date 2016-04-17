@@ -87,7 +87,7 @@
 	opacity:1
 }
 button.close {
-	-webkit - appearance : none;
+	-webkit-appearance : none;
 	padding : 0;
 	cursor : pointer;
 	background : 0 0;
@@ -95,19 +95,19 @@ button.close {
 }
 .close {
 	float : right;
-	font - size : 21px;
-	font - weight : 700;
-	line - height : 1;
+	font-size : 21px;
+	font-weight : 700;
+	line-height : 1;
 	color :  # 000;
-	text - shadow : 0 1px 0 # fff;
-	filter : alpha(opacity = 20);
+	text-shadow : 0 1px 0 # fff;
+	filter : alpha(opacity=20);
 	opacity : .2
 }
 .close:hover, .close:focus {
 	color :  # 000;
-	text - decoration : none;
+	text-decoration : none;
 	cursor : pointer;
-	filter : alpha(opacity = 50);
+	filter : alpha(opacity=50);
 	opacity : .5
 }
 button, input, optgroup, select, textarea {
@@ -119,16 +119,16 @@ button {
 	overflow : visible
 }
 button, select {
-	text - transform : none
+	text-transform : none
 }
-button, html input[type = button], input[type = reset], input[type = submit]{
-	-webkit - appearance : button;
+button, html input[type=button], input[type=reset], input[type=submit]{
+	-webkit-appearance : button;
 	cursor : pointer
 }
 button[disabled], html input[disabled]{
 	cursor : default
 }
-button::-moz - focus - inner, input::-moz - focus - inner {
+button::-moz-focus-inner, input::-moz-focus-inner {
 	padding : 0;
 	border : 0
 }
