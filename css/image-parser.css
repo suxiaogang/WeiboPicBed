@@ -1,134 +1,95 @@
+.my-img-parser .imgp-alert-box {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: fixed;
+    z-index: 1000;
+    top: 50px;
+    left: 10px;
+    padding-right: 35px;
+    -webkit-transition: opacity .15s linear;
+    -o-transition: opacity .15s linear;
+    transition: opacity .15s linear;
+    opacity: 1;
+}
 
-.my-alert-box{
-	  position:fixed;
-    z-index:1000;
-    top:50px;
-    left:10px;
+    .my-img-parser .imgp-alert-box .close {
+        position: relative;
+        top: -2px;
+        right: -21px;
+        color: inherit;
+        -webkit-appearance: none;
+        padding: 0;
+        cursor: pointer;
+        background: 0 0;
+        border: 0;
+        float: right;
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 1;
+        color: #000000;
+        text-shadow: 0 1px 0 #fff;
+        filter: alpha(opacity=20);
+        opacity: .2;
+    }
+
+        .my-img-parser .imgp-alert-box .close:hover,
+        .my-img-parser .imgp-alert-box .close:focus {
+            color: #000000;
+            text-decoration: none;
+            cursor: pointer;
+            filter: alpha(opacity=50);
+            opacity: .5;
+        }
+
+    .my-img-parser .imgp-alert-box.imgp-alert-success {
+        color: #3c763d;
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+    }
+
+    .my-img-parser .imgp-alert-box.imgp-alert-warning {
+        color: #8a6d3b;
+        background-color: #fcf8e3;
+        border-color: #faebcc;
+    }
+
+
+.my-img-parser button,
+.my-img-parser input,
+.my-img-parser optgroup,
+.my-img-parser select,
+.my-img-parser textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
 }
-.alert {
-	padding:15px;
-	margin-bottom:20px;
-	border:1px solid transparent;
-	border-radius:4px
+
+.my-img-parser button {
+    overflow: visible;
 }
-.alert h4 {
-	margin-top:0;
-	color:inherit
+
+.my-img-parser button,
+.my-img-parser select {
+    text-transform: none;
 }
-.alert .alert-link {
-	font-weight:700
+
+.my-img-parser button,
+.my-img-parser html input[type=button],
+.my-img-parser input[type=reset],
+.my-img-parser input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
 }
-.alert > p, .alert > ul {
-	margin-bottom:0
-}
-.alert > p + p {
-	margin-top:5px
-}
-.alert-dismissable, .alert-dismissible {
-	padding-right:35px
-}
-.alert-dismissable .close, .alert-dismissible .close {
-	position:relative;
-	top:-2px;
-	right:-21px;
-	color:inherit
-}
-.alert-success {
-	color:#3c763d;
-	background-color :#dff0d8;
-	border-color:#d6e9c6
-}
-.alert-success hr {
-	border-top-color:#c9e2b3
-}
-.alert-success .alert-link {
-	color:#2b542c
-}
-.alert-info {
-	color:#31708f;
-	background-color:#d9edf7;
-	border-color:#bce8f1
-}
-.alert-info hr {
-	border-top-color:#a6e1ec
-}
-.alert-info.alert-link {
-	color:#245269
-}
-.alert-warning {
-	color:#8a6d3b;
-	background-color:#fcf8e3;
-	border-color:#faebcc
-}
-.alert-warning hr {
-	border-top-color:#f7e1b5
-}
-.alert-warning.alert-link {
-	color:#66512c
-}
-.alert-danger {
-	color:#a94442;
-	background-color:#f2dede;
-	border-color:#ebccd1
-}
-.alert-danger hr {
-	border-top-color:#e4b9c0
-}
-.alert-danger.alert-link {
-	color:#843534
-}
-.fade {
-	opacity:0;
-	-webkit-transition:opacity .15s linear;
-	-o-transition:opacity .15s linear;
-	transition:opacity .15s linear
-}
-.fade.in {
-	opacity:1
-}
-button.close {
-	-webkit-appearance : none;
-	padding : 0;
-	cursor : pointer;
-	background : 0 0;
-	border : 0
-}
-.close {
-	float : right;
-	font-size : 21px;
-	font-weight : 700;
-	line-height : 1;
-	color :  # 000;
-	text-shadow : 0 1px 0 # fff;
-	filter : alpha(opacity=20);
-	opacity : .2
-}
-.close:hover, .close:focus {
-	color :  # 000;
-	text-decoration : none;
-	cursor : pointer;
-	filter : alpha(opacity=50);
-	opacity : .5
-}
-button, input, optgroup, select, textarea {
-	margin : 0;
-	font : inherit;
-	color : inherit
-}
-button {
-	overflow : visible
-}
-button, select {
-	text-transform : none
-}
-button, html input[type=button], input[type=reset], input[type=submit]{
-	-webkit-appearance : button;
-	cursor : pointer
-}
-button[disabled], html input[disabled]{
-	cursor : default
-}
-button::-moz-focus-inner, input::-moz-focus-inner {
-	padding : 0;
-	border : 0
-}
+
+    .my-img-parser button[disabled],
+    .my-img-parser html input[disabled] {
+        cursor: default;
+    }
+
+    .my-img-parser button::-moz-focus-inner,
+    .my-img-parser input::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+    }
