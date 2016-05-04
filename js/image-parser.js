@@ -1,4 +1,4 @@
-﻿/*
+/*
 用于实现通用的在网站编辑器中粘贴markdown图片的功能
  */
 var ImagePaster = function () {
@@ -17,42 +17,46 @@ var ImagePaster = function () {
 	//上传图片过程中的提示框，使用bootstrap样式
 	me.WarningBoxTpl = heredoc(function () {
 			/*
-			<div class="alert alert-warning alert-dismissible fade in my-alert-box" role="alert" style="">
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true" style="margin-right:5px;">&times;</span>
-			</button>
-			<span>
-			正在上传图片......
-			</span>
-			</div>
+      <div class="my-img-parser">
+        <div class="alert imgp-alert-box imgp-alert-warning" role="alert" style="">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true" style="margin-right:5px;">&times;</span>
+          </button>
+          <span>
+          正在上传图片......
+          </span>
+        </div>
+      </div>
 			 */
 		});
 
 	//图片上传成功的提示框
 	me.SuccessBoxTpl = heredoc(function () {
 			/*
-			<div class="alert alert-success alert-dismissible fade in my-alert-box" role="alert" style="">
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true" style="margin-right:5px;">&times;</span>
-			</button>
-			<span>
-			图片上传成功，如果未自动粘贴请再次按Ctrl+V完成图片粘贴。
-			</span>
-			</div>
+      <div class="my-img-parser">
+        <div class="alert imgp-alert-box imgp-alert-success" role="alert" style="">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true" style="margin-right:5px;">&times;</span>
+          </button>
+          <span>
+          图片上传成功，如果未自动粘贴请再次按Ctrl+V完成图片粘贴。
+          </span>
+        </div>
+      <div>
 			 */
 		});
 
 	//弹出图片正在上传的提示
 	me.ShowUploading = function () {
 		//关闭其他提示窗口
-		$('.my-alert-box').alert('close');
+		$('.imgp-alert-box').alert('close');
 		$('body').prepend(me.WarningBoxTpl);
 	}
 
 	//弹出图片上传成功的提示
 	me.ShowUploaded = function () {
 		//关闭其他提示窗口
-		$('.my-alert-box').alert('close');
+		$('.imgp-alert-box').alert('close');
 		$('body').prepend(me.SuccessBoxTpl);
 	}
 
@@ -120,7 +124,7 @@ var ImagePaster = function () {
 			me.ShowUploaded();
 		} else {
 
-			$('.my-alert-box').alert('close'); //关闭其他提示窗口
+			$('.imgp-alert-box').alert('close'); //关闭其他提示窗口
 			swal({
 				title : '图片上传失败，请先登录微博',
 				text : '请不要屏蔽弹出窗口',
@@ -137,7 +141,7 @@ var ImagePaster = function () {
 		if (me.ImgUrlBuffer != null) {
 			me.ImgUrlBuffer = null;
       isAutoPasting=false;
-			$('.my-alert-box').alert('close'); //关闭其他提示窗口
+			$('.imgp-alert-box').alert('close'); //关闭其他提示窗口
 		}
 	}
 
