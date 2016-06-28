@@ -20,7 +20,9 @@
 
 #####常用在线markdown编辑器中使用ctrl+v粘贴图片
 [在github中的使用效果](http://ww3.sinaimg.cn/large/99b8535cjw1f306jse5g7j215n0jj444.jpg)
+
 [在csdn中的使用效果](http://ww2.sinaimg.cn/large/99b8535cjw1f306jftd8vj21gj0l646l.jpg)
+
 [在作业部落中的使用效果](http://ww4.sinaimg.cn/large/99b8535cjw1f306kv4yljj21gu0oz7cl.jpg)
 
 
@@ -46,7 +48,7 @@
 
 2016-04-18 v1.9
 支持在常用Markdown在线编辑器中，使用Ctrl+V进行图片粘贴，目前已支持github, csdn及作业部落的在线markdown编辑器
-其中csdn的markdown在线编辑器需要使用两次ctrl+v完成粘贴 (代码由[@liyumeng](https://github.com/liyumeng/WeiboPicBed)贡献)
+其中csdn的markdown在线编辑器需要使用两次ctrl+v完成粘贴 (代码由@liyumeng贡献)
 
 2015-09-13 v1.8
 支持生成UBB格式的图片外链
