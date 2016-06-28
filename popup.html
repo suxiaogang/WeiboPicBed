@@ -18,12 +18,12 @@ strong{
 	color:#777;
 }
 .res:focus {
-    	outline: 0;
-    	border-color: #31b0d5;
-    	box-shadow: none;
+	outline: 0;
+	border-color: #31b0d5;
+	box-shadow: none;
 }
 *:focus {
-    	outline: 0;
+    outline: 0;
 }
 input:focus{
 	outline:none;
@@ -84,10 +84,15 @@ a#optionPage:hover{
 .btn-group>.btn:focus, .btn-group>.btn:active, .btn-group>.btn.active{
 	background-color:rgb(232, 232, 232);
 	-webkit-box-shadow: none;
-    	box-shadow: none;
-    	-webkit-transition: none;
-    	transition: none;
-    	color: #868686;
+    box-shadow: none;
+    -webkit-transition: none;
+    transition: none;
+    color: #868686;
+}
+.https{
+	margin-top: 5px;
+	margin-right: 30px;
+	color: #ccc;
 }
 .link-item{
 	margin-bottom: -15px;
@@ -127,9 +132,9 @@ a#optionPage:hover{
 	line-height: 20px;
 	color: #717171;
 	font-size: 12px;
-    	cursor: default;
-    	box-shadow:none;
-    	border-radius: 5px;
+    cursor: default;
+    box-shadow:none;
+    border-radius: 5px;
 }
 .copyBtn{
 	height: 30px;
@@ -162,65 +167,65 @@ li a:hover, li a:active{
 
 /* Add this attribute to the element that needs a tooltip */
 [data-tooltip] {
-  position: relative;
-  z-index: 2;
-  cursor: pointer;
+	position: relative;
+	z-index: 2;
+	cursor: pointer;
 }
 
 /* Hide the tooltip content by default */
 [data-tooltip]:before,
 [data-tooltip]:after {
-  visibility: hidden;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
-  pointer-events: none;
+	visibility: hidden;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+	opacity: 0;
+	pointer-events: none;
 }
 
 /* Position tooltip above the element */
 [data-tooltip]:before {
-  position: absolute;
-  bottom: 150%;
-  left: 50%;
-  margin-bottom: 5px;
-  margin-left: -40px;
-  padding: 7px;
-  width: 80px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #000;
-  background-color: hsla(0, 0%, 20%, 0.7);
-  color: #fff;
-  content: attr(data-tooltip);
-  text-align: center;
-  font-size: 11px;
-  line-height: 1.2;
+	position: absolute;
+	bottom: 150%;
+	left: 50%;
+	margin-bottom: 5px;
+	margin-left: -40px;
+	padding: 7px;
+	width: 80px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #000;
+	background-color: hsla(0, 0%, 20%, 0.7);
+	color: #fff;
+	content: attr(data-tooltip);
+	text-align: center;
+	font-size: 11px;
+	line-height: 1.2;
 }
 
 /* Triangle hack to make tooltip look like a speech bubble */
 [data-tooltip]:after {
-  position: absolute;
-  bottom: 150%;
-  left: 50%;
-  margin-left: -5px;
-  width: 0;
-  border-top: 5px solid #000;
-  border-top: 5px solid hsla(0, 0%, 20%, 0.7);
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
-  content: " ";
-  font-size: 0;
-  line-height: 0;
+	position: absolute;
+	bottom: 150%;
+	left: 50%;
+	margin-left: -5px;
+	width: 0;
+	border-top: 5px solid #000;
+	border-top: 5px solid hsla(0, 0%, 20%, 0.7);
+	border-right: 5px solid transparent;
+	border-left: 5px solid transparent;
+	content: " ";
+	font-size: 0;
+	line-height: 0;
 }
 
 /* Show tooltip content on hover */
 [data-tooltip]:hover:before,
 [data-tooltip]:hover:after {
-  visibility: visible;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
-  opacity: 1;
+	visibility: visible;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+	opacity: 1;
 }
 </style>
 </head>
@@ -231,54 +236,53 @@ li a:hover, li a:active{
 
 <div class="container main">
 	<div class="row">
-
 		<div class="col-xs-12" style="">
 			<input id="input" type="file" class="uploadTrigger" style="display:none;">
 		</div>
-
-	   <div class="col-xs-4">
-	    <p>单击或者拖拽图片到此 | <a id="optionPage" href="#">上传历史</a></p>
-		<img src="placeholder.png" class="dragger clicker">
-	   </div>
-	   <div class="col-xs-8">
-		<div class="btn-group" role="group">
-		  <button type="button" class="btn btn-default btn-size" value="thumbnail">缩略图</button>
-		  <button type="button" class="btn btn-default btn-size" value="mw690">中等尺寸</button>
-		  <button type="button" class="btn btn-default btn-size active" value="large">原图</button>
+		<div class="col-xs-4">
+			<p>单击或者拖拽图片到此 |
+				<a id="optionPage" href="#">上传历史</a></p>
+			<img src="placeholder.png" class="dragger clicker">
 		</div>
-		<div class="pull-right">
-		  <button type="button" class="btn btn-default btn-batch" style="display:none;">批量模式</button>
+		<div class="col-xs-8">
+			<div class="btn-group" role="group">
+				<button type="button" class="btn btn-default btn-size" value="thumbnail">缩略图</button>
+				<button type="button" class="btn btn-default btn-size" value="mw690">中等尺寸</button>
+				<button type="button" class="btn btn-default btn-size active" value="large">原图</button>
+			</div>
+			<div class="pull-right https">
+				HTTPS <input id="https" type="checkbox">
+			</div>
+			<div class="link-item">
+				<strong>图片链接
+					<small class="muted">(试一试粘贴图片到这里)</small></strong>
+				<div class="input-append">
+					<input class="res col-xs-10" id="res_img" value="" spelcheck="false" />
+					<button type="button" class="btn btn-default copyBtn disabled">复制</button>
+				</div>
+			</div>
+			<div class="link-item">
+				<strong>HTML</strong>
+				<div class="input-append">
+					<input class="res col-xs-10" id="res_html" value="" spellcheck="false" readonly="true" />
+					<button type="button" class="btn btn-default copyBtn disabled">复制</button>
+				</div>
+			</div>
+			<div class="link-item">
+				<strong>UBB</strong>
+				<div class="input-append">
+					<input class="res col-xs-10" id="res_ubb" value="" spellcheck="false" readonly="true" />
+					<button type="button" class="btn btn-default copyBtn disabled">复制</button>
+				</div>
+			</div>
+			<div class="link-item">
+				<strong>Markdown</strong>
+				<div class="input-append">
+					<input class="res col-xs-10" id="res_md" value="" spellcheck="false" readonly="true" />
+					<button type="button" class="btn btn-default copyBtn disabled">复制</button>
+				</div>
+			</div>
 		</div>
-		<div class="link-item">
-		 <strong>图片链接<small class="muted">(试一试粘贴图片到这里)</small></strong>
-		 <div class="input-append">
-		  <input class="res col-xs-10" id="res_img" value="" spelcheck="false"/>
-		  <button type="button" class="btn btn-default copyBtn disabled">复制</button>
-		 </div>
-		</div>
-		<div class="link-item">
-		 <strong>HTML</strong>
-		 <div class="input-append">
-		  <input class="res col-xs-10" id="res_html" value="" spellcheck="false" readonly="true"/>
-		  <button type="button" class="btn btn-default copyBtn disabled">复制</button>
-		 </div>
-		</div>
-		<div class="link-item">
-		 <strong>UBB</strong>
-		 <div class="input-append">
-		  <input class="res col-xs-10" id="res_ubb" value="" spellcheck="false" readonly="true"/>
-		  <button type="button" class="btn btn-default copyBtn disabled">复制</button>
-		 </div>
-		</div>
-		<div class="link-item">
-		 <strong>Markdown</strong>
-		 <div class="input-append">
-		  <input class="res col-xs-10" id="res_md" value="" spellcheck="false" readonly="true"/>
-		  <button type="button" class="btn btn-default copyBtn disabled">复制</button>
-		 </div>
-		</div>
-	   </div>
-
 	</div>
 </div>
 <script type="text/javascript" src="js/jquery.min.js"></script>
