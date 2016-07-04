@@ -71,3 +71,10 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+.idea/vcs.xml
+
+.idea/modules.xml
+
+.idea/WeiboPicBed.iml
+
+.idea/workspace.xml

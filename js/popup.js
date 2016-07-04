@@ -10,156 +10,207 @@ Wbpd.prototype={
                 xhr_arr:[],//用来记录xhr对象,后面用来做abort操作
                 pic_num:0,//用来记录上传文件的总个数,后面递减来判断是否上传完成
                 init:function(){
-                        $("#optionPage").click(function() {
-                            event.preventDefault();
-                            chrome.tabs.create({url:Wbpd.prototype.options_url});
-                            window.close();
-                        });
+                    $("#optionPage").click(function() {
+                        event.preventDefault();
+                        chrome.tabs.create({url:Wbpd.prototype.options_url});
+                        window.close();
+                    });
+                    //批量模式按钮
+                    // 批量模式,0关闭,1开启
+                    $(".btn-batch").on("click",function () {
+                        Wbpd.prototype.toggleBatch();
+                    });
 
-                        $(".clicker").hover(
-                            function () {
-                                var img_url = $(this).data('url');
+                    //给所有图片,带有clicker的全部加上鼠标滑动事件和点击事件
+                    $('body').on('mouseenter', '.clicker', function () {
+                            var img_url = $(this).parent().nextAll().find('#res_img').data('url');
 
-                                if (img_url!=''&&img_url!=undefined&&$(this).attr('data-url')!=1) {
-                                    $(this).prop('src', img_url);
-                                    $(this).attr('data-url',1);
-                                }
-                            },
-                            function () {
-                                //
+                            if (img_url != '' && img_url != undefined && $(this).attr('data-url') != 1) {
+                                $(this).prop('src', img_url);
+                                $(this).attr('data-url', 1);
                             }
-                        );
-                        $(".batch-model").on('mouseenter', '.batch-display',function() {
-                                var img_url = $(this).nextAll().find('.batch-url').data('url');
-
-                                if (img_url!=''&&img_url!=undefined&&$(this).attr('data-url')!=1) {
-                                    $(this).prop('src', img_url);
-                                    $(this).attr('data-url',1);
-                                }
-                            }
-                        );
-
-                        $(".copyBtn,.btn-batchcopy").hover(
-                            function() {
-                                $(this).removeAttr('data-tooltip');
-                            },
-                            function () {
-                                $(this).blur();
-                            }
-                        );
-                        $(".batch-model").on('mouseenter', '.batch-url',function() {
-                                $(this).parent().removeAttr('data-tooltip');
-                            }).on('mouseleave', '.batch-url',function () {
-                                $(this).blur();
-                            }
-                        );
-
-                        $(".copyBtn").on("click",function() {
-                            event.preventDefault();
-                            $(this).prev().select();
-                            var dataToCpy = $(this).prev().val();
-                            document.execCommand('copy');
-                            $(this).attr("data-tooltip", "复制成功");//data-tooltip="复制成功"
-                            document.getSelection().removeAllRanges();
-                        });
-                        //修改图片尺寸和返回内容格式,绑定同一个事件
-                        $(".btn-size,.btn-format").on("click",function () {
-                            $(this).parent().children().removeClass('active');
-                            $(this).addClass('active');
-                            if(global_pid != ""){
-                                if (Wbpd.prototype.is_batch>0) {//如果是批量模式,此处循环执行
-                                    var img_length=$('.batch-model img').length;
-                                    for (var i = 0; i < img_length; i++) {
-                                        Wbpd.prototype.changePicFormat($('#res'+i).data('pid'),i);
-                                    }
-
-                                }else{
-                                    Wbpd.prototype.changePicFormat(global_pid);
-                                }
-                            }
-                        });
-                        //是否开启批量模式,0关闭,1开启
-                        $(".btn-batch").on("click",function () {
-                            Wbpd.prototype.toggleBatch();
-                        });
-                        $(".batch-model").on('focus', '.batch-url', function() {
-                            event.preventDefault();
-                            $(this).select();
-                            var dataToCpy = $(this).val();
-                            document.execCommand('copy');
-                            $(this).parent().attr("data-tooltip", "复制成功");//data-tooltip="复制成功"
-                            document.getSelection().removeAllRanges();
-                        });
-
-                        //exit with ESC press
-                        $(document).keydown(function(event){
-                            if(event.keyCode == 27) {
-                                window.close();
-                            }
-                        });
-
-                        $(".clicker").click(function () {
-                            $('#input').trigger('click');
-                        });
-
-                        $(".batch-model").on('click', '.batch-display',function() {
-                                $('#input').trigger('click');
-                            }
-                        );
-                        $(".batch-model").on('click', '.fancybox-close',function() {
-                                $(this).parent().remove();
-                            }
-                        );
-
-                        $(".dragger").on({
-                                dragleave:function(e){
-                                    e.preventDefault();
-                            e.stopPropagation();
-                                },
-                                drop:function(e){
-                                    e.preventDefault();
-                            e.stopPropagation();
-                                },
-                                dragenter:function(e){
-                                    e.preventDefault();
-                            e.stopPropagation();
-                                },
-                                dragover:function(e){
-                                    e.preventDefault();
-                            e.stopPropagation();
-                                }
-                        });
-
-                        $(".res").hover(
-                          function () {
-                            $(this).select();
-                          },
-                          function () {
+                    }).on("click",'.clicker',function () {
+                        $('#input').trigger('click');
+                    });
+                    //单图模式下的"复制"按钮 和批量模式下的"一键复制"按钮,添加鼠标划过移除data-tooltip
+                    $(".btn-copy,.btn-batchcopy").hover(
+                        function() {
+                            $(this).removeAttr('data-tooltip');
+                        },
+                        function () {
                             $(this).blur();
-                          }
-                        );
-                        $('.btn-batchcopy').click(function() {
-                            var url_list=[];
-                            $('.batch-display').each(function(){
-                                url_list.push($(this).nextAll().find('.batch-url').val());
-                                // console.log($(this).next().find('.batch-url').val());
-                            });
-                            var text = url_list.join('\n');
-                            var copyFrom = $('<textarea id="copyFrom"/>');
-                            copyFrom.css({
-                             position: "absolute",
-                             left: "-1000px",
-                             top: "-1000px",
-                            });
-                             copyFrom.text(text);
-                             $('body').append(copyFrom);
-                             copyFrom.select();
-                             document.execCommand('copy');
-                             $(copyFrom).remove();
-                             $(this).attr("data-tooltip", "复制成功");
-                        });
+                        }
+                    );
+                    //单图模式下的"复制"按钮,添加点击事件
+                    $(".btn-copy").on("click",function() {
+                        event.preventDefault();
+                        $(this).prev().select();
+                        var dataToCpy = $(this).prev().val();
+                        document.execCommand('copy');
+                        $(this).attr("data-tooltip", "复制成功");//data-tooltip="复制成功"
+                        document.getSelection().removeAllRanges();
+                    });
+                    //批量模式下,给所有图片添加鼠标滑动事件
+                    $(".batch-model").on('mouseenter', '.batch-img',function() {
+                            var img_url = $(this).nextAll().find('.batch-url').data('url');
 
-                 },
+                            if (img_url!=''&&img_url!=undefined&&$(this).attr('data-url')!=1) {
+                                $(this).prop('src', img_url);
+                                $(this).attr('data-url',1);
+                            }
+                        }
+                    );
+                    // //批量模式下,给所有图片添加点击事件
+                    // $(".batch-model").on('click', '.batch-img',function() {
+                    //         $('#input').trigger('click');
+                    //     }
+                    // );
+                    //"批量模式"下所有的地址框,添加鼠标划过移除data-tooltip
+                    $(".batch-model").on('mouseenter', '.batch-url',function() {
+                            $(this).parent().removeAttr('data-tooltip');
+                        }).on('mouseleave', '.batch-url',function () {
+                            $(this).blur();
+                        }
+                    );
+                    //修改图片尺寸和返回内容格式,绑定同一个事件
+                    $(".btn-size,.btn-format").on("click",function () {
+                        $(this).parent().children().removeClass('active');
+                        $(this).addClass('active');
+                        if(global_pid != ""){
+                            if (Wbpd.prototype.is_batch>0) {//如果是批量模式,此处循环执行
+                                var img_length=$('.batch-model img').length;
+                                for (var i = 0; i < img_length; i++) {
+                                    Wbpd.prototype.changePicFormat($('#res'+i).data('pid'),i);
+                                }
+
+                            }else{
+                                Wbpd.prototype.changePicFormat(global_pid);
+                            }
+                        }
+                    });
+                    //批量模式下,点击叉叉删除事件
+                    $(".batch-model").on('click', '.fancybox-close',function() {
+                        if ($(this).parent().parent().children().length==1){
+                            $(this).parent().remove();
+                            Wbpd.prototype.clearData();
+                        }else{
+                            $(this).parent().remove();
+                        }
+                    });
+                    //批量模式下,地址框的获取焦点事件
+                    $(".batch-model").on('focus', '.batch-url', function() {
+                        event.preventDefault();
+                        $(this).select();
+                        var dataToCpy = $(this).val();
+                        document.execCommand('copy');
+                        $(this).parent().attr("data-tooltip", "复制成功");//data-tooltip="复制成功"
+                        document.getSelection().removeAllRanges();
+                    });
+                    //批量模式下,地址框的获取焦点事件
+                    $(".res").hover(
+                      function () {
+                        $(this).select();
+                      },
+                      function () {
+                        $(this).blur();
+                      }
+                    );
+                    //批量模式下,一键复制所有,添加点击事件
+                    $('.btn-batchcopy').click(function() {
+                        var url_list=[];
+                        $('.batch-img').each(function(){
+                            url_list.push($(this).nextAll().find('.batch-url').val());
+                        });
+                        var text = url_list.join('\n');
+                        var copyFrom = $('<textarea id="copyFrom"/>');
+                        copyFrom.css({
+                         position: "absolute",
+                         left: "-1000px",
+                         top: "-1000px",
+                        });
+                         copyFrom.text(text);
+                         $('body').append(copyFrom);
+                         copyFrom.select();
+                         document.execCommand('copy');
+                         $(copyFrom).remove();
+                         $(this).attr("data-tooltip", "复制成功");
+                    });
+
+                    $("body").on({
+                        dragleave:function(e){
+                            e.preventDefault();
+                            // e.stopPropagation();
+                        },
+                        drop:function(e){
+                            e.preventDefault();
+                            // e.stopPropagation();
+                        },
+                        dragenter:function(e){
+                            e.preventDefault();
+                            // e.stopPropagation();
+                        },
+                        dragover:function(e){
+                            e.preventDefault();
+                            // e.stopPropagation();
+                        }
+                    });
+
+                    //exit with ESC press
+                    $(document).keydown(function(event){
+                        if(event.keyCode == 27) {
+                            window.close();
+                        }
+                    });
+
+                    //此处是手动选择文件
+                    $('#input').change(function(){
+                        event.preventDefault();
+                        var filesToUpload = document.getElementById('input').files;
+                        var img_file = [];
+                        for (var i = 0; i < filesToUpload.length; i++) {
+                            var file = filesToUpload[i];
+                            if(/image\/\w+/.test(file.type) && file != "undefined"){
+                                img_file.push(file);
+                            }
+                        }
+                        Wbpd.prototype.getImageFile(img_file,filesToUpload.length);
+                    });
+
+                    //此处是拖拽
+                    // $('body').on("drop",".row",function(e){
+                    // $(".dragger").on('drop',function(e){
+                    $("body").on('drop',function(e){
+                        e.preventDefault(); //取消默认浏览器拖拽效果
+                        var fileList = e.originalEvent.dataTransfer.files; //获取文件对象
+                        var img_file = [];
+                        for (var i = 0; i < fileList.length; i++) {
+                            var file = fileList[i];
+                            if(fileList[0].type.indexOf('image') !== -1  && fileList[0] != "undefined"){
+                                img_file.push(file);
+                            }
+                        }
+                        Wbpd.prototype.getImageFile(img_file,fileList.length);
+                    });
+
+                    //HTML5 paste http://www.zhihu.com/question/20893119
+                    $("#res_img").on("paste",function(e){
+                        var oe = e.originalEvent;
+                        var clipboardData, items, item;
+                        if (oe && (clipboardData = oe.clipboardData) && (items = clipboardData.items)) {
+                            var b = false;
+                            var img_file=[];
+                            for (var i = 0, l = items.length; i < l; i++) {
+                                if((item = items[i]) && item.kind == 'file' && item.type.match(/^image\//i)) {
+                                    b = true;
+                                    img_file.push(item.getAsFile());
+                                }
+                            }
+                            Wbpd.prototype.getImageFile(img_file,items.length);
+                            if (b) return false;
+                        }
+                    });
+                },
+                //切换批量模式
                  toggleBatch:function(flag) {
                     if (arguments.length>0&&!isNaN(flag)) {
                         var batch=parseInt(flag)>0?1:0;
@@ -185,6 +236,7 @@ Wbpd.prototype={
                         $('.batch-model').hide();
                     }
                  },
+                //pid计算url
                  pid2url:function (pid, type) {
                         function crc32(str) {
                           str = String(str);
@@ -219,7 +271,7 @@ Wbpd.prototype={
                     var picSizeType = $(".btn-group").children(".active").prop("value");//获取图片大小
                     var callBackImg = Wbpd.prototype.pid2url(pid, picSizeType);
                     if (Wbpd.prototype.is_batch>0&&arguments.length>1) {//批量模式
-                        $('#res'+i).data('url',callBackImg);
+                        $('#res'+i).data('url',callBackImg);//批量模式,数据存到下面的地址框中
                         var url_format=parseInt($(".btn-format").parent().children(".active").prop("value"));
                         switch(url_format){
                             case 1:
@@ -239,7 +291,7 @@ Wbpd.prototype={
                                 break;
                         }
                     }else{//单图模式
-                        $('.single-model img').data('url',callBackImg);//数据存到图片上去
+                        $('#res_img').data('url',callBackImg);//单图模式,数据存到第一个输入框
                         $('#res_img').val(callBackImg);
                         $('#res_html').val('<img src="'+ callBackImg +'"/>');
                         $('#res_ubb').val('[IMG]'+ callBackImg +'[/IMG]');
@@ -255,7 +307,7 @@ Wbpd.prototype={
                         $('#res_img').data('pid',pid);
                         $('#res_img').data('url',image);
                         $(".loader-wrap").fadeOut("fast");
-                        $(".copyBtn").removeClass("disabled");
+                        $(".btn-copy").removeClass("disabled");
                     }
 
                     //store upload image to localStorage
@@ -272,8 +324,13 @@ Wbpd.prototype={
                         str=str+'\
                         <div class="col-xs-4">\
                             <div class="fancybox-close"></div>\
-                            <img src="placeholder.png" class="clicker batch-display" id="pic'+i+'">\
-                            <div class="input-append">\
+                            <img src="placeholder2.png" class="clicker dragger batch-img" id="pic'+i+'">\
+                            <div class="progress">\
+                                <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">\
+                                    <span class="sr-only">20% Complete</span>\
+                                </div>\
+                            </div>\
+                            <div class="input-append" style="display: none">\
                                 <span id="span'+i+'">\
                                 <input class="res col-xs-12 batch-url" id="res'+i+'" value="" spellcheck="false" readonly="true"/>\
                                 </span>\
@@ -291,13 +348,33 @@ Wbpd.prototype={
                     }
                     if (btn===0) {
                         $('.btn-batch').attr('disabled','disabled');
-                        $('.btn-batchcopy').removeAttr('disabled');
+                        $('.btn-batchcopy').attr('disabled','disabled');
                     }else{
                         $('.btn-batch').removeAttr('disabled');
                         $('.btn-batchcopy').removeAttr('disabled','disabled');
 
                     }
 
+                },
+                getImageFile:function (img_file,flag) {
+
+                    if (img_file.length>0&&($('.clicker:first').attr('src') != 'placeholder.png' || $('.clicker:last').attr('src')!= 'placeholder2.png')){
+                        Wbpd.prototype.clearData();
+                    }
+                    if (img_file.length>1||(img_file.length>0&&Wbpd.prototype.is_batch>0)) {//如果选择多个文件,自动切换到批量模式
+                        Wbpd.prototype.toggleBatch(1);
+                        Wbpd.prototype.toggleBtn(0);//按钮切换
+                        Wbpd.prototype.batchDisplay(img_file.length);
+                    }
+                    for (var i = 0; i < img_file.length; i++) {
+                        var file = img_file[i];
+                        Wbpd.prototype.previewAndUpload(file,i);
+                    }
+                    //检测文件是不是图片
+                    if(img_file.length<1&&flag){
+                        swal("您拖的不是图片~");
+                        return false;
+                    }
                 },
                 //预览和上传
                 previewAndUpload:function (file,i) {
@@ -306,13 +383,14 @@ Wbpd.prototype={
                     var imgFile;
                     reader.readAsDataURL(file);
                     reader.onload = function(e){
-                        $('#pic'+i).prop('src', '');
-                        $('#pic'+i).css('background-image', 'url('+ this.result+')');
-                        $('#pic'+i).css('background-position', 'center');
                         if (Wbpd.prototype.is_batch!=1) {
-                            $('.clicker').prop('src', '');
-                            $('.clicker').css('background-image', 'url('+ this.result+')');
-                            $('.clicker').css('background-position', 'center');
+                            $('.single-model img').prop('src', '');
+                            $('.single-model img').css('background-image', 'url('+ this.result+')');
+                            $('.single-model img').css('background-position', 'center');
+                        }else{
+                            $('#pic'+i).prop('src', '');
+                            $('#pic'+i).css('background-image', 'url('+ this.result+')');
+                            $('#pic'+i).css('background-position', 'center');
                         }
                     };
                     reader.onloadend = function(e) {
@@ -320,6 +398,7 @@ Wbpd.prototype={
                         imgFile = e.target;
                         var base64 = imgFile.result.split(',')[1];
                         var xhr = new XMLHttpRequest();
+                        xhr.upload.addEventListener("progress", function(){Wbpd.prototype.updateProgress(event,i)});
                         Wbpd.prototype.xhr_arr.push(xhr);//保存xhr对象
                         Wbpd.prototype.pic_num++;//计数
                         var data = new FormData();
@@ -339,6 +418,8 @@ Wbpd.prototype={
                                 if (--Wbpd.prototype.pic_num == 0) {//如果图片数递减至0,说明所有图片上传完成
                                     Wbpd.prototype.toggleBtn(1);
                                 }
+                                  $('#pic'+i).nextAll('.progress').hide();
+                                  $('#pic'+i).nextAll('.input-append').show();
                                 return true;
                               } catch (e) {
                                 console.log(e);
@@ -355,76 +436,49 @@ Wbpd.prototype={
                         xhr.open('POST', 'http://picupload.service.weibo.com/interface/pic_upload.php?&mime=image%2Fjpeg&data=base64&url=0&markpos=1&logo=&nick=0&marks=1&app=miniblog');
                         xhr.send(data);
                     };
-                }
-                };
+                },
+                updateProgress:function (evt,i) {
+                    if (evt.lengthComputable) {
+                        var percentComplete = evt.loaded / evt.total;
+                        // $('#pic0').nextAll('.progress').attr('width',percentComplete*100+"%");
+                        $('#pic'+i).nextAll('.progress').children('.progress-bar').css('width',percentComplete*100+"%");
+                    } else {
+                        //如果无法计算就给个假的进度条
+                        $('#pic'+i).nextAll('.progress').children('.progress-bar').css('width',"60%");
+
+                    }
+                },
+                //清空之前的上传数据
+                clearData:function () {
+                    //清空图片的style
+                    $('.clicker').removeAttr('style');
+                    Wbpd.prototype.xhr_arr=[];//清空xhr的值
+                    global_pid='';
+
+                    //清空批量模式中的数据
+                    $('.batch-model').html('<div>\
+                        <img src="placeholder2.png" class="dragger clicker">\
+                        </div>');
+
+                    //清空单图模式下的数据
+                    $('.single-model[class^=col-xs-4] img').prop('src', 'placeholder.png');
+                    $('.single-model[class^=col-xs-4] img').attr('data-url',0);
+                    
+                    //清空所有的输入框的内容,包括批量模式和单图模式
+                    $('.res').each(function () {
+                        $(this).val('');
+                        if ($(this).data('url') != undefined){//如果当前输入框记录了url,就清空
+                            $(this).data('url','');
+                        }
+                    });
+                    //将单图模式中"复制"按钮设置为disabled
+                    $('.btn-copy').each(function () {
+                        $(this).addClass('disabled');
+                    });
+                },
+
+};
 $(function(){
     my = Wbpd.prototype;
     my.init();
  });
-
-$(document).ready(function(){
-
-    // var options_url = chrome.extension.getURL('option.html');
-    //click to open option page
-
-
-    //此处是手动选择文件
-    $('#input').change(function(){
-        event.preventDefault();
-        var filesToUpload = document.getElementById('input').files;
-        if (filesToUpload.length>1) {
-            my.toggleBatch(1);//如果选择多个文件,自动切换到批量模式
-            my.toggleBtn(0);//按钮切换
-            my.batchDisplay(filesToUpload.length);
-        }
-        for (var i = 0; i < filesToUpload.length; i++) {
-            var file = filesToUpload[i];
-            if(!/image\/\w+/.test(file.type) || file == "undefined"){
-                swal("文件必须为图片！2");
-                return false;
-            }
-            my.previewAndUpload(file,i);
-        }
-    });
-
-    //HTML5 paste http://www.zhihu.com/question/20893119
-    $("#res_img").on("paste",function(e){
-        var oe = e.originalEvent;
-        var clipboardData, items, item;
-        if (oe && (clipboardData = oe.clipboardData) && (items = clipboardData.items)) {
-            var b = false;
-            for (var i = 0, l = items.length; i < l; i++) {
-              if((item = items[i]) && item.kind == 'file' && item.type.match(/^image\//i)) {
-                b = true;
-                console.log(item);
-                my.previewAndUpload(item.getAsFile());
-              } else {
-                swal("您粘贴的不是图片~");
-                $('#res_img').val('');
-              }
-            }
-            if (b) return false;
-        }
-    });
-    //此处是拖拽
-    $(".dragger").on("drop",function(e){
-        e.preventDefault(); //取消默认浏览器拖拽效果
-        var fileList = e.originalEvent.dataTransfer.files; //获取文件对象
-        //检测是否是拖拽文件到页面的操作
-        if(fileList.length == 0){
-            return false;
-        }
-        //检测文件是不是图片
-        if(fileList[0].type.indexOf('image') === -1  || fileList[0] == "undefined"){
-            swal("您拖的不是图片~");
-            return false;
-        }
-        //拖拉图片到浏览器，可以实现预览功能
-        var img = window.webkitURL.createObjectURL(fileList[0]);
-        var file = fileList[0];
-        my.previewAndUpload(file);
-    });
-
-    //更新网址输入框
-
-});

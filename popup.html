@@ -136,6 +136,10 @@ a#optionPage:hover{
 .batch-model div img[class~=dragger]{
     width: 200px;
 }
+.batch-model div[class=progress]{
+	margin-top: 5px;
+	height: 30px;
+}
 .clicker:hover{
     -webkit-transition: all .6s;
     border-color: #808080;
@@ -159,7 +163,7 @@ a#optionPage:hover{
     	box-shadow:none;
     	border-radius: 5px;
 }
-.copyBtn{
+.btn-copy{
 	height: 30px;
 	margin-top: 5px;
 	border: 2px solid rgba(187,187,187,0.5);
@@ -293,7 +297,7 @@ span[data-tooltip]{
 	<div class="row">
 
 		<div class="col-xs-12" style="">
-			<input id="input" type="file" class="uploadTrigger" style="display:none;" multiple>
+			<input id="input" type="file" class="uploadTrigger" style="display:none;" accept="image/jpeg, image/png" multiple>
 
         <div class="pull-left"><p style="padding:6px;">单击或者拖拽图片到此 | <a id="optionPage" href="#">上传历史</a></p></div>
         <div class="btn-group" role="group">
@@ -323,34 +327,34 @@ span[data-tooltip]{
          <strong>图片链接<small class="muted">(试一试粘贴图片到这里)</small></strong>
          <div class="input-append">
           <input class="res col-xs-10" id="res_img" value="" spelcheck="false"/>
-          <button type="button" class="btn btn-default copyBtn disabled">复制</button>
+          <button type="button" class="btn btn-default btn-copy disabled">复制</button>
          </div>
         </div>
 		<div class="link-item">
 		 <strong>HTML</strong>
 		 <div class="input-append">
 		  <input class="res col-xs-10" id="res_html" value="" spellcheck="false" readonly="true"/>
-		  <button type="button" class="btn btn-default copyBtn disabled">复制</button>
+		  <button type="button" class="btn btn-default btn-copy disabled">复制</button>
 		 </div>
 		</div>
 		<div class="link-item">
 		 <strong>UBB</strong>
 		 <div class="input-append">
 		  <input class="res col-xs-10" id="res_ubb" value="" spellcheck="false" readonly="true"/>
-		  <button type="button" class="btn btn-default copyBtn disabled">复制</button>
+		  <button type="button" class="btn btn-default btn-copy disabled">复制</button>
 		 </div>
 		</div>
 		<div class="link-item">
 		 <strong>Markdown</strong>
 		 <div class="input-append">
 		  <input class="res col-xs-10" id="res_md" value="" spellcheck="false" readonly="true"/>
-		  <button type="button" class="btn btn-default copyBtn disabled">复制</button>
+		  <button type="button" class="btn btn-default btn-copy disabled">复制</button>
 		 </div>
 		</div>
 	   </div>
        <div class="col-xs-12 batch-model">
             <div>
-                <img src="placeholder.png" class="dragger clicker">
+                <img src="placeholder2.png" class="dragger clicker">
             </div>
 	   </div>
 </div>
