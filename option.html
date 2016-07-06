@@ -8,8 +8,10 @@
 <link type="text/css" href="css/sweet-alert.min.css" rel="stylesheet">
 <link type="text/css" href="source/jquery.fancybox.css" rel="stylesheet">
 <style>
-.container{
-	width: 1040px;
+@media (min-width: 1200px) {
+	.container {
+		width: 1040px;
+	}
 }
 a{
 	color:#AFAFAF;
@@ -166,7 +168,7 @@ h5{
     color: #555;
     text-shadow: none;
     margin: 30px 0 50px 0;
-    min-height:214px;
+    min-height:245px;
 }
 .tips{
 	color:#999;
@@ -176,18 +178,18 @@ h5{
 	line-height: 22px;
 }
 .tips a{
-	color:#838383;
+	color:#969696;
 	padding:2px 4px;
 	-webkit-transition: 0.3s;
 	border-radius: 3px;
-	background-color: rgba(180, 208, 236, 0.3);
+	background-color: rgba(180, 208, 236, 0.2);
 }
 .tips a:hover{
 	color:#000;
-	background-color:rgba(180, 208, 236, 0.75);
+	background-color:rgba(180, 208, 236, 0.5);
 }
-label.dark{
-	padding-left:0px;
+label.defaultIcon, label.customIcon{
+	padding-left:5px;
 	display:inline-block;
 	margin-top:2px;
 }
@@ -239,12 +241,17 @@ span.donate{
     background: #000;
     -webkit-transition: all 0.6s;
 }
+#custom-icon-preview{
+	height:45px;width:45px;border:1px solid #efefef;padding:10px;
+	border-radius: 5px;
+	opacity: 0.9;
+}
 /*Animate*/
 .animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
 }
 @-webkit-keyframes fadeInUp {
   from {
@@ -306,24 +313,31 @@ span.donate{
 </head>
 <body>
 
-<button type="button" class="close" title="关闭" style="margin-top:10px;">×</button>
+<button type="button" class="close" title="关闭" style="margin:10px;">×</button>
 
 <div class="container">
 	<div class="row">
 		<div id="tips_wrap">
 			<div class="col-xs-12 tips">
 			<ul>
-				<li>喜欢这个插件？
-				<a href="https://chrome.google.com/webstore/detail/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E5%9B%BE%E5%BA%8A/fdfdnfpdplfbbnemmmoklbfjbhecpnhf/reviews" target="_blank">欢迎去Chrome插件商店给一发五星好评！</a></li>
-				<li>使用中碰到问题，<a href="https://github.com/Suxiaogang/WeiboPicBed/issues/new" target="_blank">请在这里提交反馈</a>（Chrome Web Store的反馈不一定看得到）</li>
-				<li>这个插件是源码开放的，如果你是开发者可以去GitHub
-					<a href="https://github.com/Suxiaogang/WeiboPicBed" target="_blank">Star / Fork / Pull Request</a></li>
-				<li>部分实现参考了"围脖是个好图床"和"v2ex.ext"这两个插件，在此表示感谢</li>
-				<li>想对开发者捐助一点您的心意<span class="donate">表(mǎi)示(bēi)感(kā)谢(fēi)</span>?</li>
+				<li>喜欢这个扩展程序?
+				<a href="https://chrome.google.com/webstore/detail/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E5%9B%BE%E5%BA%8A/fdfdnfpdplfbbnemmmoklbfjbhecpnhf/reviews" target="_blank">欢迎去 Chrome 应用商店来一发五星好评！</a></li>
+				<li>使用中碰到任何问题，<a href="https://github.com/Suxiaogang/WeiboPicBed/issues/new" target="_blank">请在这里提交反馈</a></li>
+				<li>本扩展程序是托管于Github的开源项目，欢迎开发者<a href="https://github.com/Suxiaogang/WeiboPicBed" target="_blank">贡献想法和代码</a></li>
+				<li><span class="donate">捐助开发者</span>以便我做的更好</li>
 			</ul>
-				<div class="checkbox hasInput css3Label" style="padding-left:15px;">
-					<input type="checkbox" id="dark">
-					<label for="dark" class="dark">使用单色Toolbar图标</label>
+				<hr>
+				<div class="checkbox css3Label" style="padding-left:15px;">
+					<div class="col-xs-8">
+						<input type="checkbox" id="defaultIcon">
+						<label for="defaultIcon" class="defaultIcon">使用默认图标</label>
+						<input type="checkbox" id="customIcon">
+						<label for="customIcon" class="customIcon">使用自定义图标</label>
+						<input type="file" id="custom-icon-file" style="display:none;">
+					</div>
+					<div class="col-xs-4">
+						<img id="custom-icon-preview">
+					</div>
 		        </div>
 			</div>
 		</div>

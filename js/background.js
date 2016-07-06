@@ -1,12 +1,11 @@
 function buildIcon() {
-	var optionData = localStorage.weiboOptionData ? JSON.parse(localStorage.weiboOptionData) : [];
-	if (optionData[0] != undefined && optionData[0].darkIcon) {
-		chrome.browserAction.setIcon({
-			'path' : {
-				'19' : 'icon_19_gray.png',
-				'38' : 'icon_38_gray.png'
-			}
-		});
+	if(localStorage.customIcon) {
+		var canvas = document.createElement('canvas');
+		var ctx = canvas.getContext('2d');
+		var customIcon = JSON.parse(localStorage.customIcon);
+		var imageData = ctx.getImageData(0, 0, 38, 38);
+		for (var key in customIcon) imageData.data[key] = customIcon[key];
+		chrome.browserAction.setIcon({imageData: imageData});
 	} else {
 		chrome.browserAction.setIcon({
 			'path' : {
@@ -75,7 +74,7 @@ chrome.webNavigation.onCommitted.addListener(function (tab) {
 	});
 	chrome.tabs.executeScript(tab.id, {
 		file : "js/sweet-alert.min.js"
-	});	
+	});
 	chrome.tabs.executeScript(tab.id, {
 		file : "js/image-parser.js"
 	});
@@ -100,7 +99,7 @@ function onImgUploadingEvent(request,sender) {
 			data : e.data,
 			href : "background"
 		});
-		
+
 		if(e.data!=null)	//如果图片上传成功的话，加入插件的历史记录中
 		{
 			var storageData = localStorage.weiboData ? JSON.parse(localStorage.weiboData) : [];

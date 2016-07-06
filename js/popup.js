@@ -1,6 +1,8 @@
 var global_pid = "";
-var global_url = "";
 var storageData = localStorage.weiboData ? JSON.parse(localStorage.weiboData) : [];
+var https = $('#https');
+var http_pre  = "http://ww";
+var https_pre = "https://ws";
 
 
 var Wbpd = Wbpd || {};
@@ -256,14 +258,15 @@ Wbpd.prototype={
                         }
 
                         var url, zone, ext;
+                        var url_pre = $("#https").is(':checked') ? https_pre : http_pre;
                         if (typeof(type) == 'undefined') type = 'bmiddle';
                         if (pid[9] == 'w') {
                           zone = (crc32(pid) & 3) + 1;
                           ext = (pid[21] == 'g') ? 'gif' : 'jpg';
-                          url = 'http://ww' + zone + '.sinaimg.cn/' + type + '/' + pid + '.' + ext;
+                          url = url_pre + zone + '.sinaimg.cn/' + type + '/' + pid + '.' + ext;
                         } else {
                           zone = ((pid.substr(-2, 2), 16) & 0xf) + 1;
-                          url = 'http://ss' + zone + '.sinaimg.cn/' + type + '/' + pid + '&690';
+                          url = url_pre + zone + '.sinaimg.cn/' + type + '/' + pid + '&690';
                         }
                         return url;
                 },
