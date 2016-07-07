@@ -60,7 +60,7 @@ a#optionPage:hover{
 	font-size:9px;
 	margin-bottom:25px;
 }
-.btn-default, .btn-batch{
+.btn-default, .btn-batch, .btn-batchcopy{
 	color:#818181;
 	height: 21px;
 	padding-top: 5px;
@@ -74,6 +74,15 @@ a#optionPage:hover{
 	line-height:20px;
 	border: 2px solid rgba(187,187,187,0.5);
 	-webkit-transition: all .4s;
+}
+.pull-right>.btn-batchcopy{
+    color:#555;
+    height: 30px;
+    margin-right: 15px;
+    padding: 3px 6px;
+    line-height:20px;
+    border: 2px solid rgba(187,187,187,0.5);
+    -webkit-transition: all .4s;
 }
 .btn-group>.btn, .btn-group-vertical>.btn{
 	border: 1px solid rgba(187,187,187,0.5);
@@ -90,15 +99,37 @@ a#optionPage:hover{
     color: #868686;
 }
 .https{
+<<<<<<< HEAD
 	margin-top: 5px;
 	margin-right: 30px;
 	color: #ccc;
+=======
+	margin-top: 10px;
+	color: black;
+}
+.https input{
+    margin:10px;
+}
+.btn-group>.btn-format:first-child{
+    margin-left: 15px;
+>>>>>>> pr/30
 }
 .link-item{
 	margin-bottom: -15px;
 }
 .main{
 	margin-top: 20px;
+}
+.main div[class~=https]{
+    height: 32px;
+    background-color: rgb(232, 232, 232);
+}
+.batch-model{
+    display: none;
+
+}
+.single-model{
+    display: block;
 }
 .clicker{
 	border: 5px dashed #FDFDFD;
@@ -112,6 +143,19 @@ a#optionPage:hover{
 	width:200px;
 	height:200px;
 	opacity:1;
+}
+.batch-model img[class~=clicker]{
+    width: 100%;
+}
+.batch-model div{
+    text-align: center;
+}
+.batch-model div img[class~=dragger]{
+    width: 200px;
+}
+.batch-model div[class=progress]{
+	margin-top: 5px;
+	height: 30px;
 }
 .clicker:hover{
     -webkit-transition: all .6s;
@@ -136,7 +180,7 @@ a#optionPage:hover{
     box-shadow:none;
     border-radius: 5px;
 }
-.copyBtn{
+.btn-copy{
 	height: 30px;
 	margin-top: 5px;
 	border: 2px solid rgba(187,187,187,0.5);
@@ -170,6 +214,12 @@ li a:hover, li a:active{
 	position: relative;
 	z-index: 2;
 	cursor: pointer;
+<<<<<<< HEAD
+=======
+}
+span[data-tooltip]{
+    margin-left: -50%;
+>>>>>>> pr/30
 }
 
 /* Hide the tooltip content by default */
@@ -202,7 +252,6 @@ li a:hover, li a:active{
 	font-size: 11px;
 	line-height: 1.2;
 }
-
 /* Triangle hack to make tooltip look like a speech bubble */
 [data-tooltip]:after {
 	position: absolute;
@@ -218,7 +267,6 @@ li a:hover, li a:active{
 	font-size: 0;
 	line-height: 0;
 }
-
 /* Show tooltip content on hover */
 [data-tooltip]:hover:before,
 [data-tooltip]:hover:after {
@@ -226,6 +274,40 @@ li a:hover, li a:active{
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 	filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
 	opacity: 1;
+<<<<<<< HEAD
+=======
+}
+.btn-batchcopy[data-tooltip]:before{
+    bottom: -175%;
+}
+.btn-batchcopy[data-tooltip]:after{
+    bottom: -50%;
+    border-top: 0;
+    border-bottom: 5px solid #000;
+    border-bottom: 5px solid hsla(0, 0%, 20%, 0.7);
+}
+.fancybox-close{
+    background-image: url('source/fancybox_sprite.png');
+}
+.fancybox-close {
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    z-index: 8040;
+}
+/*Retina graphics!*/
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min--moz-device-pixel-ratio: 1.5),
+       only screen and (min-device-pixel-ratio: 1.5){
+
+    .fancybox-close {
+        background-image: url('source/fancybox_sprite@2x.png');
+        background-size: 44px 152px; /*The size of the normal image, half the size of the hi-res image*/
+    }
+>>>>>>> pr/30
 }
 </style>
 </head>
@@ -237,8 +319,28 @@ li a:hover, li a:active{
 <div class="container main">
 	<div class="row">
 		<div class="col-xs-12" style="">
-			<input id="input" type="file" class="uploadTrigger" style="display:none;">
+			<input id="input" type="file" class="uploadTrigger" style="display:none;" accept="image/jpeg, image/png" multiple>
+
+        <div class="pull-left"><p style="padding:6px;">单击或者拖拽图片到此 | <a id="optionPage" href="#">上传历史</a></p></div>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-default btn-size" value="thumbnail">缩略图</button>
+          <button type="button" class="btn btn-default btn-size" value="mw690">中等尺寸</button>
+          <button type="button" class="btn btn-default btn-size active" value="large">原图</button>
+        </div>
+        <div class="btn-group" style="display:none" role="group">
+          <button type="button" class="btn btn-default btn-format  active" value="1">A</button>
+          <button type="button" class="btn btn-default btn-format" value="2">H</button>
+          <button type="button" class="btn btn-default btn-format" value="3">U</button>
+          <button type="button" class="btn btn-default btn-format" value="4">M</button>
+        </div>
+        <div class="pull-right">
+          <button type="button" class="btn btn-default btn-batch" style="">批量模式</button>
+        </div>
+        <div class="pull-right" style="display:none">
+          <button type="button" class="btn btn-default btn-batchcopy" disabled>一键复制所有地址</button>
+        </div>
 		</div>
+<<<<<<< HEAD
 		<div class="col-xs-4">
 			<p>单击或者拖拽图片到此 |
 				<a id="optionPage" href="#">上传历史</a></p>
@@ -284,6 +386,51 @@ li a:hover, li a:active{
 			</div>
 		</div>
 	</div>
+=======
+
+	   <div class="col-xs-4 single-model">
+		<img src="placeholder.png" class="dragger clicker">
+	   </div>
+	   <div class="col-xs-8 single-model">
+        <div class="link-item">
+         <strong>图片链接<small class="muted">(试一试粘贴图片到这里)</small></strong>
+         <div class="input-append">
+          <input class="res col-xs-10" id="res_img" value="" spelcheck="false"/>
+          <button type="button" class="btn btn-default btn-copy disabled">复制</button>
+         </div>
+        </div>
+		<div class="link-item">
+		 <strong>HTML</strong>
+		 <div class="input-append">
+		  <input class="res col-xs-10" id="res_html" value="" spellcheck="false" readonly="true"/>
+		  <button type="button" class="btn btn-default btn-copy disabled">复制</button>
+		 </div>
+		</div>
+		<div class="link-item">
+		 <strong>UBB</strong>
+		 <div class="input-append">
+		  <input class="res col-xs-10" id="res_ubb" value="" spellcheck="false" readonly="true"/>
+		  <button type="button" class="btn btn-default btn-copy disabled">复制</button>
+		 </div>
+		</div>
+		<div class="link-item">
+		 <strong>Markdown</strong>
+		 <div class="input-append">
+		  <input class="res col-xs-10" id="res_md" value="" spellcheck="false" readonly="true"/>
+		  <button type="button" class="btn btn-default btn-copy disabled">复制</button>
+		 </div>
+		</div>
+	   </div>
+       <div class="col-xs-12 batch-model">
+            <div>
+                <img src="placeholder2.png" class="dragger clicker">
+            </div>
+	   </div>
+    </div>
+    <div class="navbar-fixed-bottom pull-right https">
+        <input id="https" type="checkbox"> HTTPS
+    </div>
+>>>>>>> pr/30
 </div>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/sweet-alert.min.js"></script>
