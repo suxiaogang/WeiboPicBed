@@ -28,9 +28,8 @@
 
 
 #####contributors
-@liyumeng
-
-@Jackroyal
+[@liyumeng](https://github.com/liyumeng)
+[@Jackroyal](https://github.com/Jackroyal)
 
 #####最常被问到的问题
 > Q:我上传的图片去哪了?
@@ -49,7 +48,7 @@
 #####更新日志
 ```
 2016-07-07 v2.1
-支持批量上传(代码由@Jackroyal贡献)
+支持批量上传 (代码由@Jackroyal贡献)
 
 2016-06-28 v2.0
 支持自定义Chrome菜单栏图标 (建议使用尺寸接近或者等于38*38的正方形png图片文件)
