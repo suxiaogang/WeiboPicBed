@@ -1,439 +1,444 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-<meta charset="utf-8">
-<title>微博图床</title>
-<link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
-<link type="text/css" href="css/sweet-alert.min.css" rel="stylesheet">
-<link type="text/css" href="css/loaders.min.css" rel="stylesheet">
-<style>
-button:focus{outline:0 !important;}
-input:focus,input:active,label:focus,label:active{
-	outline:0 !important;
-}
-textarea:focus, input:focus{
-    	outline: 0;
-}
-strong{
-	color:#777;
-}
-.res:focus {
-	outline: 0;
-	border-color: #31b0d5;
-	box-shadow: none;
-}
-*:focus {
-    outline: 0;
-}
-input:focus{
-	outline:none;
-}
-html {
-  	position: relative;
-}
-body {
-  	font-size:12px;
-}
-::selection {
-	background: #4096EE;
-	color:#FFF;
-	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-}
-.muted{
-	color:#CCC;
-	margin-left:10px;
-	font-weight:100;
-}
-a#optionPage{
-	-webkit-transition: all .4s;
-	padding:2px;
-	border-radius: 2px;
-	color: #808080;
-}
-a#optionPage:hover{
-	color: #FFF;
-	background-color: #808080;
-	text-decoration: none;
-}
-.btn {
-	border: 1px solid #BBB;
-	font-size:9px;
-	margin-bottom:25px;
-}
-.btn-default, .btn-batch, .btn-batchcopy{
-	color:#818181;
-	height: 21px;
-	padding-top: 5px;
-	line-height:10px;
-	-webkit-transition: all .4s;
-}
-.btn-batch{
-	color:#555;
-	height: 30px;
-	padding: 3px 6px;
-	line-height:20px;
-	border: 2px solid rgba(187,187,187,0.5);
-	-webkit-transition: all .4s;
-}
-.pull-right>.btn-batchcopy{
-    color:#555;
-    height: 30px;
-    margin-right: 15px;
-    padding: 3px 6px;
-    line-height:20px;
-    border: 2px solid rgba(187,187,187,0.5);
-    -webkit-transition: all .4s;
-}
-.btn-group>.btn, .btn-group-vertical>.btn{
-	border: 1px solid rgba(187,187,187,0.5);
-	padding: 10px;
-	height: 28px;
-	line-height: 6px;
-}
-.btn-group>.btn:focus, .btn-group>.btn:active, .btn-group>.btn.active{
-	background-color:rgb(232, 232, 232);
-	-webkit-box-shadow: none;
-    box-shadow: none;
-    -webkit-transition: none;
-    transition: none;
-    color: #868686;
-}
-.https{
-<<<<<<< HEAD
-	margin-top: 5px;
-	margin-right: 30px;
-	color: #ccc;
-=======
-	margin-top: 10px;
-	color: black;
-}
-.https input{
-    margin:10px;
-}
-.btn-group>.btn-format:first-child{
-    margin-left: 15px;
->>>>>>> pr/30
-}
-.link-item{
-	margin-bottom: -15px;
-}
-.main{
-	margin-top: 20px;
-}
-.main div[class~=https]{
-    height: 32px;
-    background-color: rgb(232, 232, 232);
-}
-.batch-model{
-    display: none;
+    <meta charset="utf-8">
+    <title>微博图床</title>
+    <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="css/sweet-alert.min.css" rel="stylesheet">
+    <link type="text/css" href="css/loaders.min.css" rel="stylesheet">
+    <style>
+    button:focus {
+        outline: 0 !important;
+    }
 
-}
-.single-model{
-    display: block;
-}
-.clicker{
-	border: 5px dashed #FDFDFD;
-	border-radius: 10px;
-	box-shadow: 0 1px 5px rgba(0,0,0,0.85);
-	display: inline-block;
-	margin-top:45px;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-color: #BBB;
-	width:200px;
-	height:200px;
-	opacity:1;
-}
-.batch-model img[class~=clicker]{
-    width: 100%;
-}
-.batch-model div{
-    text-align: center;
-}
-.batch-model div img[class~=dragger]{
-    width: 200px;
-}
-.batch-model div[class=progress]{
-	margin-top: 5px;
-	height: 30px;
-}
-.clicker:hover{
-    -webkit-transition: all .6s;
-    border-color: #808080;
-	cursor:pointer;
-	opacity:0.7;
-}
-.res{
-	height: 30px;
-	background-color: #FFF;
-	cursor: default;
-	position: relative;
-	margin: 5px 5px 0px 0px;
-	vertical-align: top;
-	border: 2px solid rgba(187,187,187,0.5);
-	display: inline-block;
-	padding: 4px 6px;
-	line-height: 20px;
-	color: #717171;
-	font-size: 12px;
-    cursor: default;
-    box-shadow:none;
-    border-radius: 5px;
-}
-.btn-copy{
-	height: 30px;
-	margin-top: 5px;
-	border: 2px solid rgba(187,187,187,0.5);
-	margin-bottom:20px;
-}
-li a{
-	color: #909090;
-	border-radius: 2px;
-	padding:0px 2px;
-	-webkit-transition: all .6s;
-}
-li a:hover, li a:active{
-	text-decoration: none;
-	color:#FFF;
-    background-color:#999;
-	outline:none;
-}
-.loader-wrap{
-	background-color: rgba(0,0,0,0.65);
-	height: 100%;
-	width: 100%;
-	position: fixed;
-	z-index: 99999;
-	margin-top:-20px;
-	padding-top:25%;
-	display:none;
-}
+    input:focus,
+    input:active,
+    label:focus,
+    label:active {
+        outline: 0 !important;
+    }
 
-/* Add this attribute to the element that needs a tooltip */
-[data-tooltip] {
-	position: relative;
-	z-index: 2;
-	cursor: pointer;
-<<<<<<< HEAD
-=======
-}
-span[data-tooltip]{
-    margin-left: -50%;
->>>>>>> pr/30
-}
+    textarea:focus,
+    input:focus {
+        outline: 0;
+    }
 
-/* Hide the tooltip content by default */
-[data-tooltip]:before,
-[data-tooltip]:after {
-	visibility: hidden;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
-	opacity: 0;
-	pointer-events: none;
-}
+    strong {
+        color: #777;
+    }
 
-/* Position tooltip above the element */
-[data-tooltip]:before {
-	position: absolute;
-	bottom: 150%;
-	left: 50%;
-	margin-bottom: 5px;
-	margin-left: -40px;
-	padding: 7px;
-	width: 80px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	background-color: #000;
-	background-color: hsla(0, 0%, 20%, 0.7);
-	color: #fff;
-	content: attr(data-tooltip);
-	text-align: center;
-	font-size: 11px;
-	line-height: 1.2;
-}
-/* Triangle hack to make tooltip look like a speech bubble */
-[data-tooltip]:after {
-	position: absolute;
-	bottom: 150%;
-	left: 50%;
-	margin-left: -5px;
-	width: 0;
-	border-top: 5px solid #000;
-	border-top: 5px solid hsla(0, 0%, 20%, 0.7);
-	border-right: 5px solid transparent;
-	border-left: 5px solid transparent;
-	content: " ";
-	font-size: 0;
-	line-height: 0;
-}
-/* Show tooltip content on hover */
-[data-tooltip]:hover:before,
-[data-tooltip]:hover:after {
-	visibility: visible;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-	filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
-	opacity: 1;
-<<<<<<< HEAD
-=======
-}
-.btn-batchcopy[data-tooltip]:before{
-    bottom: -175%;
-}
-.btn-batchcopy[data-tooltip]:after{
-    bottom: -50%;
-    border-top: 0;
-    border-bottom: 5px solid #000;
-    border-bottom: 5px solid hsla(0, 0%, 20%, 0.7);
-}
-.fancybox-close{
-    background-image: url('source/fancybox_sprite.png');
-}
-.fancybox-close {
-    position: absolute;
-    top: 30px;
-    right: 0px;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    z-index: 8040;
-}
-/*Retina graphics!*/
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-       only screen and (min--moz-device-pixel-ratio: 1.5),
-       only screen and (min-device-pixel-ratio: 1.5){
+    .res:focus {
+        outline: 0;
+        border-color: #31b0d5;
+        box-shadow: none;
+    }
+
+    *:focus {
+        outline: 0;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    html {
+        position: relative;
+    }
+
+    body {
+        font-size: 12px;
+    }
+
+    ::selection {
+        background: #4096EE;
+        color: #FFF;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .muted {
+        color: #CCC;
+        margin-left: 10px;
+        font-weight: 100;
+    }
+
+    a#optionPage {
+        -webkit-transition: all .4s;
+        padding: 2px;
+        border-radius: 2px;
+        color: #808080;
+    }
+
+    a#optionPage:hover {
+        color: #FFF;
+        background-color: #808080;
+        text-decoration: none;
+    }
+
+    .btn {
+        border: 1px solid #BBB;
+        font-size: 9px;
+        margin-bottom: 25px;
+    }
+
+    .btn-default,
+    .btn-batch,
+    .btn-batchcopy {
+        color: #818181;
+        height: 21px;
+        padding-top: 5px;
+        line-height: 10px;
+        -webkit-transition: all .4s;
+    }
+
+    .pull-right>.btn-batchcopy {
+        color: #555;
+        height: 30px;
+        margin-right: 15px;
+        padding: 3px 6px;
+        line-height: 20px;
+        border: 2px solid rgba(187, 187, 187, 0.5);
+        -webkit-transition: all .4s;
+    }
+
+    .btn-group>.btn,
+    .btn-group-vertical>.btn {
+        border: 1px solid rgba(187, 187, 187, 0.5);
+        padding: 10px;
+        height: 28px;
+        line-height: 6px;
+    }
+
+    .btn-group>.btn:focus,
+    .btn-group>.btn:active,
+    .btn-group>.btn.active {
+        background-color: rgb(232, 232, 232);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        -webkit-transition: none;
+        transition: none;
+        color: #868686;
+    }
+
+    .navbar-fixed-bottom {
+        background-color: rgba(232, 232, 232, 0.65);
+    }
+
+    .https {
+        color: black;
+    }
+
+    .https input {
+        margin: 18px 0;
+    }
+
+    .btn-batch {
+        color: #555;
+        height: 30px;
+        padding: 3px 6px;
+        line-height: 20px;
+        margin: 10px 0;
+        border: 2px solid rgba(187, 187, 187, 0.5);
+        -webkit-transition: all .4s;
+    }
+
+    .btn-group>.btn-format:first-child {
+        margin-left: 15px;
+    }
+
+    .link-item {
+        margin-bottom: -15px;
+    }
+
+    .main {
+        margin-top: 20px;
+    }
+
+    .batch-model {
+        display: none;
+    }
+
+    .single-model {
+        display: block;
+    }
+
+    .clicker {
+        border: 5px dashed #FDFDFD;
+        border-radius: 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+        display: inline-block;
+        margin-top: 20px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: #BBB;
+        width: 200px;
+        height: 200px;
+        opacity: 1;
+    }
+
+    .batch-model img[class~=clicker] {
+        width: 100%;
+    }
+
+    .batch-model div {
+        text-align: center;
+    }
+
+    .batch-model div img[class~=dragger] {
+        width: 200px;
+    }
+
+    .batch-model div[class=progress] {
+        margin-top: 5px;
+        height: 30px;
+    }
+
+    .clicker:hover {
+        -webkit-transition: all .6s;
+        border-color: #808080;
+        cursor: pointer;
+        opacity: 0.7;
+    }
+
+    .res {
+        height: 30px;
+        background-color: #FFF;
+        cursor: default;
+        position: relative;
+        margin: 5px 5px 0px 0px;
+        vertical-align: top;
+        border: 2px solid rgba(187, 187, 187, 0.5);
+        display: inline-block;
+        padding: 4px 6px;
+        line-height: 20px;
+        color: #717171;
+        font-size: 12px;
+        cursor: default;
+        box-shadow: none;
+        border-radius: 5px;
+    }
+
+    .btn-copy {
+        height: 30px;
+        margin-top: 5px;
+        border: 2px solid rgba(187, 187, 187, 0.5);
+        margin-bottom: 20px;
+    }
+
+    li a {
+        color: #909090;
+        border-radius: 2px;
+        padding: 0px 2px;
+        -webkit-transition: all .6s;
+    }
+
+    li a:hover,
+    li a:active {
+        text-decoration: none;
+        color: #FFF;
+        background-color: #999;
+        outline: none;
+    }
+
+    .loader-wrap {
+        background-color: rgba(0, 0, 0, 0.65);
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        z-index: 99999;
+        margin-top: -20px;
+        padding-top: 25%;
+        display: none;
+    }
+    /* Add this attribute to the element that needs a tooltip */
+
+    [data-tooltip] {
+        position: relative;
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    span[data-tooltip] {
+        margin-left: -50%;
+    }
+    /* Hide the tooltip content by default */
+
+    [data-tooltip]:before,
+    [data-tooltip]:after {
+        visibility: hidden;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+        opacity: 0;
+        pointer-events: none;
+    }
+    /* Position tooltip above the element */
+
+    [data-tooltip]:before {
+        position: absolute;
+        bottom: 150%;
+        left: 50%;
+        margin-bottom: 5px;
+        margin-left: -40px;
+        padding: 7px;
+        width: 80px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        background-color: #000;
+        background-color: hsla(0, 0%, 20%, 0.7);
+        color: #fff;
+        content: attr(data-tooltip);
+        text-align: center;
+        font-size: 11px;
+        line-height: 1.2;
+    }
+    /* Triangle hack to make tooltip look like a speech bubble */
+
+    [data-tooltip]:after {
+        position: absolute;
+        bottom: 150%;
+        left: 50%;
+        margin-left: -5px;
+        width: 0;
+        border-top: 5px solid #000;
+        border-top: 5px solid hsla(0, 0%, 20%, 0.7);
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+        content: " ";
+        font-size: 0;
+        line-height: 0;
+    }
+    /* Show tooltip content on hover */
+
+    [data-tooltip]:hover:before,
+    [data-tooltip]:hover:after {
+        visibility: visible;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+        opacity: 1;
+    }
+
+    .btn-batchcopy[data-tooltip]:before {
+        bottom: -175%;
+    }
+
+    .btn-batchcopy[data-tooltip]:after {
+        bottom: -50%;
+        border-top: 0;
+        border-bottom: 5px solid #000;
+        border-bottom: 5px solid hsla(0, 0%, 20%, 0.7);
+    }
 
     .fancybox-close {
-        background-image: url('source/fancybox_sprite@2x.png');
-        background-size: 44px 152px; /*The size of the normal image, half the size of the hi-res image*/
+        background-image: url('source/fancybox_sprite.png');
     }
->>>>>>> pr/30
-}
-</style>
+
+    .fancybox-close {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+        z-index: 8040;
+    }
+    /*Retina graphics!*/
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+    only screen and (min--moz-device-pixel-ratio: 1.5),
+    only screen and (min-device-pixel-ratio: 1.5) {
+        .fancybox-close {
+            background-image: url('source/fancybox_sprite@2x.png');
+            background-size: 44px 152px;
+            /*The size of the normal image, half the size of the hi-res image*/
+        }
+    }
+    </style>
 </head>
+
 <body>
-<div class="loader-wrap text-center">
-	<div class="loader-inner line-scale"><div></div><div></div><div></div><div></div><div></div></div>
-</div>
-
-<div class="container main">
-	<div class="row">
-		<div class="col-xs-12" style="">
-			<input id="input" type="file" class="uploadTrigger" style="display:none;" accept="image/jpeg, image/png" multiple>
-
-        <div class="pull-left"><p style="padding:6px;">单击或者拖拽图片到此 | <a id="optionPage" href="#">上传历史</a></p></div>
-        <div class="btn-group" role="group">
-          <button type="button" class="btn btn-default btn-size" value="thumbnail">缩略图</button>
-          <button type="button" class="btn btn-default btn-size" value="mw690">中等尺寸</button>
-          <button type="button" class="btn btn-default btn-size active" value="large">原图</button>
+    <div class="loader-wrap text-center">
+        <div class="loader-inner line-scale">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-        <div class="btn-group" style="display:none" role="group">
-          <button type="button" class="btn btn-default btn-format  active" value="1">A</button>
-          <button type="button" class="btn btn-default btn-format" value="2">H</button>
-          <button type="button" class="btn btn-default btn-format" value="3">U</button>
-          <button type="button" class="btn btn-default btn-format" value="4">M</button>
-        </div>
-        <div class="pull-right">
-          <button type="button" class="btn btn-default btn-batch" style="">批量模式</button>
-        </div>
-        <div class="pull-right" style="display:none">
-          <button type="button" class="btn btn-default btn-batchcopy" disabled>一键复制所有地址</button>
-        </div>
-		</div>
-<<<<<<< HEAD
-		<div class="col-xs-4">
-			<p>单击或者拖拽图片到此 |
-				<a id="optionPage" href="#">上传历史</a></p>
-			<img src="placeholder.png" class="dragger clicker">
-		</div>
-		<div class="col-xs-8">
-			<div class="btn-group" role="group">
-				<button type="button" class="btn btn-default btn-size" value="thumbnail">缩略图</button>
-				<button type="button" class="btn btn-default btn-size" value="mw690">中等尺寸</button>
-				<button type="button" class="btn btn-default btn-size active" value="large">原图</button>
-			</div>
-			<div class="pull-right https">
-				HTTPS <input id="https" type="checkbox">
-			</div>
-			<div class="link-item">
-				<strong>图片链接
-					<small class="muted">(试一试粘贴图片到这里)</small></strong>
-				<div class="input-append">
-					<input class="res col-xs-10" id="res_img" value="" spelcheck="false" />
-					<button type="button" class="btn btn-default copyBtn disabled">复制</button>
-				</div>
-			</div>
-			<div class="link-item">
-				<strong>HTML</strong>
-				<div class="input-append">
-					<input class="res col-xs-10" id="res_html" value="" spellcheck="false" readonly="true" />
-					<button type="button" class="btn btn-default copyBtn disabled">复制</button>
-				</div>
-			</div>
-			<div class="link-item">
-				<strong>UBB</strong>
-				<div class="input-append">
-					<input class="res col-xs-10" id="res_ubb" value="" spellcheck="false" readonly="true" />
-					<button type="button" class="btn btn-default copyBtn disabled">复制</button>
-				</div>
-			</div>
-			<div class="link-item">
-				<strong>Markdown</strong>
-				<div class="input-append">
-					<input class="res col-xs-10" id="res_md" value="" spellcheck="false" readonly="true" />
-					<button type="button" class="btn btn-default copyBtn disabled">复制</button>
-				</div>
-			</div>
-		</div>
-	</div>
-=======
-
-	   <div class="col-xs-4 single-model">
-		<img src="placeholder.png" class="dragger clicker">
-	   </div>
-	   <div class="col-xs-8 single-model">
-        <div class="link-item">
-         <strong>图片链接<small class="muted">(试一试粘贴图片到这里)</small></strong>
-         <div class="input-append">
-          <input class="res col-xs-10" id="res_img" value="" spelcheck="false"/>
-          <button type="button" class="btn btn-default btn-copy disabled">复制</button>
-         </div>
-        </div>
-		<div class="link-item">
-		 <strong>HTML</strong>
-		 <div class="input-append">
-		  <input class="res col-xs-10" id="res_html" value="" spellcheck="false" readonly="true"/>
-		  <button type="button" class="btn btn-default btn-copy disabled">复制</button>
-		 </div>
-		</div>
-		<div class="link-item">
-		 <strong>UBB</strong>
-		 <div class="input-append">
-		  <input class="res col-xs-10" id="res_ubb" value="" spellcheck="false" readonly="true"/>
-		  <button type="button" class="btn btn-default btn-copy disabled">复制</button>
-		 </div>
-		</div>
-		<div class="link-item">
-		 <strong>Markdown</strong>
-		 <div class="input-append">
-		  <input class="res col-xs-10" id="res_md" value="" spellcheck="false" readonly="true"/>
-		  <button type="button" class="btn btn-default btn-copy disabled">复制</button>
-		 </div>
-		</div>
-	   </div>
-       <div class="col-xs-12 batch-model">
-            <div>
-                <img src="placeholder2.png" class="dragger clicker">
+    </div>
+    <div class="container main">
+        <div class="row">
+            <input id="input" type="file" class="uploadTrigger" style="display:none;" accept="image/jpeg, image/png" multiple>
+            <div class="col-xs-4 pull-left">
+                <p style="padding-top:6px;margin-left:10px;">单击或者拖拽图片到此 | <a id="optionPage" href="#">上传历史</a></p>
             </div>
-	   </div>
+            <div class="col-xs-8">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default btn-size" value="thumbnail">缩略图</button>
+                    <button type="button" class="btn btn-default btn-size" value="mw690">中等尺寸</button>
+                    <button type="button" class="btn btn-default btn-size active" value="large">原图</button>
+                </div>
+                <div class="btn-group" style="display:none" role="group">
+                    <button type="button" class="btn btn-default btn-format  active" value="1">A</button>
+                    <button type="button" class="btn btn-default btn-format" value="2">H</button>
+                    <button type="button" class="btn btn-default btn-format" value="3">U</button>
+                    <button type="button" class="btn btn-default btn-format" value="4">M</button>
+                </div>
+                <div class="pull-right" style="display:none">
+                    <button type="button" class="btn btn-default btn-batchcopy" disabled>一键复制所有地址</button>
+                </div>
+            </div>
+            <div class="col-xs-4 single-model">
+                <img src="placeholder.png" class="dragger clicker">
+            </div>
+            <div class="col-xs-8 single-model">
+                <div class="link-item">
+                    <strong>图片链接<small class="muted">(试一试粘贴图片到这里)</small></strong>
+                    <div class="input-append">
+                        <input class="res col-xs-10" id="res_img" value="" spelcheck="false" />
+                        <button type="button" class="btn btn-default btn-copy disabled">复制</button>
+                    </div>
+                </div>
+                <div class="link-item">
+                    <strong>HTML</strong>
+                    <div class="input-append">
+                        <input class="res col-xs-10" id="res_html" value="" spellcheck="false" readonly="true" />
+                        <button type="button" class="btn btn-default btn-copy disabled">复制</button>
+                    </div>
+                </div>
+                <div class="link-item">
+                    <strong>UBB</strong>
+                    <div class="input-append">
+                        <input class="res col-xs-10" id="res_ubb" value="" spellcheck="false" readonly="true" />
+                        <button type="button" class="btn btn-default btn-copy disabled">复制</button>
+                    </div>
+                </div>
+                <div class="link-item">
+                    <strong>Markdown</strong>
+                    <div class="input-append">
+                        <input class="res col-xs-10" id="res_md" value="" spellcheck="false" readonly="true" />
+                        <button type="button" class="btn btn-default btn-copy disabled">复制</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 batch-model">
+                <div>
+                    <img src="placeholder2.png" class="dragger clicker">
+                </div>
+            </div>
+        </div>
+        <div class="navbar-fixed-bottom">
+            <div class="https col-xs-8">
+                <input id="https" type="checkbox"> HTTPS
+            </div>
+            <div class="col-xs-4">
+                <button class="pull-right btn btn-default btn-batch" type="button">批量模式</button>
+            </div>
+        </div>
     </div>
-    <div class="navbar-fixed-bottom pull-right https">
-        <input id="https" type="checkbox"> HTTPS
-    </div>
->>>>>>> pr/30
-</div>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/sweet-alert.min.js"></script>
-<script type="text/javascript" src="js/popup.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/sweet-alert.min.js"></script>
+    <script type="text/javascript" src="js/popup.js"></script>
 </body>
+
 </html>
