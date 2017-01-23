@@ -264,7 +264,7 @@ Wbpd.prototype = {
             url = url_pre + zone + '.sinaimg.cn/' + type + '/' + pid + '.' + ext;
         } else {
             zone = ((pid.substr(-2, 2), 16) & 0xf) + 1;
-            url = url_pre + zone + '.sinaimg.cn/' + type + '/' + pid + '&690';
+            url = url_pre + zone + '.sinaimg.cn/' + type + '/' + pid;
         }
         return url;
     },
