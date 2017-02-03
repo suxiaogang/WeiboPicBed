@@ -24,8 +24,8 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 
 	var w = 800;
 	var h = 550;
-	var left = (screen.width / 2) - (w / 2);
-	var top = (screen.height / 2) - (h / 2);
+	var left = Math.round((screen.width / 2) - (w / 2));
+	var top = Math.round((screen.height / 2) - (h / 2));
 
 	chrome.windows.create({
 		url : 'popup.html',
