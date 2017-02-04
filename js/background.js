@@ -188,7 +188,7 @@ function pid2url(pid, type) {
 		url = 'http://ww' + zone + '.sinaimg.cn/' + type + '/' + pid + '.' + ext;
 	} else {
 		zone = ((pid.substr(-2, 2), 16) & 0xf) + 1;
-		url = 'http://ss' + zone + '.sinaimg.cn/' + type + '/' + pid + '&690';
+		url = 'http://ss' + zone + '.sinaimg.cn/' + type + '/' + pid;
 	}
 	return url;
 }

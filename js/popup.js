@@ -1,26 +1,30 @@
 var global_pid = "";
 var storageData = localStorage.weiboData ? JSON.parse(localStorage.weiboData) : [];
-var https = $('#https');
-var http_pre = "http://ww";
+var https = localStorage.is_https ? localStorage.is_https : $("#https").is(':checked');
+var http_pre  = "http://ww";
 var https_pre = "https://ws";
 
 
 var Wbpd = Wbpd || {};
-Wbpd.prototype = {
-    options_url: chrome.extension.getURL('option.html'),
-    is_batch: $(this).data('batch') | 0, //当前是否是批量模式
-    xhr_arr: [], //用来记录xhr对象,后面用来做abort操作
-    pic_num: 0, //用来记录上传文件的总个数,后面递减来判断是否上传完成
-    init: function() {
+Wbpd.prototype={
+    options_url:chrome.extension.getURL('option.html'),
+    is_batch:$(this).data('batch')|0,//当前是否是批量模式
+    xhr_arr:[],//用来记录xhr对象,后面用来做abort操作
+    pic_num:0,//用来记录上传文件的总个数,后面递减来判断是否上传完成
+    init:function(){
         $("#optionPage").click(function() {
             event.preventDefault();
-            chrome.tabs.create({ url: Wbpd.prototype.options_url });
+            chrome.tabs.create({url:Wbpd.prototype.options_url});
             window.close();
         });
         //批量模式按钮
         // 批量模式,0关闭,1开启
-        $(".btn-batch").on("click", function() {
+        $(".btn-batch").on("click",function () {
             Wbpd.prototype.toggleBatch();
+        });
+        $('#https').attr('checked',https);//记住上次的设定
+        $("#https").on("click",function () {
+            localStorage.is_https=$("#https").is(':checked');
         });
 
         //给所有图片,带有clicker的全部加上鼠标滑动事件和点击事件
