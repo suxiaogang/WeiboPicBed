@@ -1,6 +1,6 @@
 var global_pid = "";
 var storageData = localStorage.weiboData ? JSON.parse(localStorage.weiboData) : [];
-var https = localStorage.is_https ? localStorage.is_https : $("#https").is(':checked');
+var https = localStorage.is_https ? JSON.parse(localStorage.is_https) : $("#https").is(':checked');
 var http_pre  = "http://ww";
 var https_pre = "https://ws";
 
