@@ -79,8 +79,8 @@
         box-shadow: 1px 1px 3px rgba(100, 100, 100, 0.15);
         overflow-y: auto;
     }
-    /**** textarea scroll-bar ****/
 
+    /**** textarea scroll-bar ****/
     .box::-webkit-scrollbar-track-piece {
         background-color: #FFF;
     }
@@ -120,20 +120,19 @@
         background-size: cover;
         background-position: 50% 50%;
         background-repeat: no-repeat;
-        background-color: #FFF;
         -webkit-transition: 0.3s;
-        border: 2px solid #DBDBDB;
-        border-radius: 1px;
         box-shadow: 0 14px 20px -20px #000;
     }
 
     .page-content:hover {
         cursor: pointer;
-        opacity: 0.8;
+        background-color: #000;
+        opacity: 0.6;
         box-shadow: 0 20px 20px -20px #000;
+        -webkit-transform: scale(1.05);
     }
-    /***footer***/
 
+    /***footer***/
     .footer {
         position: absolute;
         bottom: 0;
@@ -187,8 +186,8 @@
     .imgsrc:focus {
         color: #000;
     }
-    /*tips*/
 
+    /*tips*/
     #tips_wrap {
         background: url(../source/border.png) 8px 0 repeat;
         padding: 5px;
@@ -246,8 +245,8 @@
         color: #000;
         background-color: rgba(180, 208, 236, 0.95);
     }
-    /* 單選框 */
 
+    /* 單選框 */
     .css3Label {
         list-style: none;
         display: inline-block;
@@ -292,8 +291,8 @@
         border-radius: 5px;
         opacity: 0.9;
     }
-    /*Animate*/
 
+    /*Animate*/
     .animated {
         -webkit-animation-duration: 1s;
         animation-duration: 1s;
@@ -359,7 +358,7 @@
 </head>
 
 <body>
-    <button type="button" class="close" title="关闭" style="margin:10px;">×</button>
+    <button type="button" class="close" title="关闭" style="margin:20px;">×</button>
     <div class="container">
         <div class="row">
             <div id="tips_wrap">
