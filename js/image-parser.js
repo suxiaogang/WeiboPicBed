@@ -109,6 +109,7 @@ var ImagePaster = function () {
 			chrome.extension.sendMessage({
 				message : 'ImgUploadingEvent',
 				data : base64,
+				acceptType: file.type,
 				href : location.href
 			}, function (response) {
 				console.log(response);
