@@ -63,6 +63,9 @@ function removeImgItem(d) {
 
 $(document).ready(function() {
 
+    var version = chrome.runtime.getManifest().version;
+    $(".current_version").text(version);
+
     $(document).on('click','input[type=text]',function(){ this.select(); });
 
     $('.close').on('click', function() {
