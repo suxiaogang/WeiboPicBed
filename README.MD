@@ -2,7 +2,7 @@
 	<img width="300px" src="http://ww3.sinaimg.cn/large/5fd37818jw1eq7bx4bc4ej20c0038mx9.jpg">
 </a>
 
-## 🚀features
+## 🚀 features
 - 支持点选/拖拽/本地粘贴3种方式上传图片至新浪微博图床
 - 支持批量上传
 - 可选择返回的图片尺寸
@@ -12,7 +12,7 @@
 - 支持返回https安全协议的图片地址
 - 支持自定义Chrome菜单栏图标
 
-## 🖼screenshots
+## 🖼 screenshots
 ![](http://ww3.sinaimg.cn/large/5fd37818jw1ew172qsxbog20lz0c2qcn.gif)
 
 ![](http://ww1.sinaimg.cn/large/5fd37818gw1eqps6zuxslj20xc0p0q9q.jpg)
@@ -27,12 +27,14 @@
 [在作业部落中的使用效果](http://ww4.sinaimg.cn/large/99b8535cjw1f306kv4yljj21gu0oz7cl.jpg)
 
 
-## 👬contributors
+## 👬 contributors
 [@liyumeng](https://github.com/liyumeng)
+
 [@Jackroyal](https://github.com/Jackroyal)
+
 [Aqours](https://github.com/Aqours)
 
-## ❓最常被问到的问题
+## ❓ 最常被问到的问题
 > Q:我上传的图片去哪了?
 >
 > A:图片上传调用了新浪微博这个接口 http://picupload.service.weibo.com/interface (该地址不一定可以直接访问), 然而上传的图片并不会保存到任何一个你的微博相册里(即使你已经登陆了微博),在插件的设置页面,你可以看到本机上传的图片历史记录(目前还不支持多设备同步)
@@ -46,7 +48,7 @@
 
 [localStorage](https://developer.mozilla.org/en/docs/Web/API/Window/localStorage)
 
-## 📑更新日志
+## 📑 更新日志
 ```
 2017-03-16 v2.5
 支持大图和原图上传,修复上传图片url中图片后缀丢失的问题
@@ -93,8 +95,7 @@
 ```
 
 ## 💰捐助
-<img width="150px" src="http://ww2.sinaimg.cn/large/5fd37818gw1f46gp47ynsj20dw0dwq4i.jpg">
-<img width="150px" src="http://ww3.sinaimg.cn/large/5fd37818gw1f46gph7932j20dw0dwmz6.jpg">
+<img width="150px" src="http://ww2.sinaimg.cn/large/5fd37818gw1f46gp47ynsj20dw0dwq4i.jpg"><img width="150px" src="http://ww3.sinaimg.cn/large/5fd37818gw1f46gph7932j20dw0dwmz6.jpg">
 
 ## 💎Licence
 
