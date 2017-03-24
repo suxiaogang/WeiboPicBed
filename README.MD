@@ -2,6 +2,8 @@
 	<img width="300px" src="http://ww3.sinaimg.cn/large/5fd37818jw1eq7bx4bc4ej20c0038mx9.jpg">
 </a>
 
+<img width="650px" src="http://ww1.sinaimg.cn/large/5fd37818ly1fdy2kft6qyj20w609yjt5.jpg">
+
 ## 💰捐助
 <img width="150px" src="http://ww2.sinaimg.cn/large/5fd37818gw1f46gp47ynsj20dw0dwq4i.jpg"><img width="150px" src="http://ww3.sinaimg.cn/large/5fd37818gw1f46gph7932j20dw0dwmz6.jpg">
 
@@ -22,7 +24,7 @@
 
 ![](http://ww2.sinaimg.cn/large/5fd37818gw1eqhxjffq1tj20zk0m8wj6.jpg)
 
-## ✍️常用在线markdown编辑器中使用ctrl+v粘贴图片
+## ✍️ 常用在线markdown编辑器中使用ctrl+v粘贴图片
 [在github中的使用效果](http://ww3.sinaimg.cn/large/99b8535cjw1f306jse5g7j215n0jj444.jpg)
 
 [在csdn中的使用效果](http://ww2.sinaimg.cn/large/99b8535cjw1f306jftd8vj21gj0l646l.jpg)
@@ -97,6 +99,6 @@
 
 ```
 
-## 💎Licence
+## 💎 Licence
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by/4.0/)
