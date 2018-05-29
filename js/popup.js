@@ -450,6 +450,11 @@ Wbpd.prototype={
             var percentComplete = evt.loaded / evt.total;
             // $('#pic0').nextAll('.progress').attr('width',percentComplete*100+"%");
             $('#pic' + i).nextAll('.progress').children('.progress-bar').css('width', percentComplete * 100 + "%");
+
+            // hack 检测是否是单图模式
+            if($('.single-model:visible')[0]) {
+                $('#single-progress').children('.progress-bar').css('width', percentComplete * 100 + "%");
+            }
         } else {
             //如果无法计算就给个假的进度条
             $('#pic' + i).nextAll('.progress').children('.progress-bar').css('width', "60%");
