@@ -16,7 +16,50 @@ function buildIcon() {
 	}
 }
 
+
+function initPopupPage(url = 'popup.html', callback) {
+  var w = 800;
+	var h = 550;
+	var left = Math.round((screen.width / 2) - (w / 2));
+	var top = Math.round((screen.height / 2) - (h / 2));
+
+	chrome.windows.create({
+		url : url,
+		width : w,
+		height : h,
+		focused : true,
+		'left' : left,
+		'top' : top,
+		type : 'popup'
+	}, callback);
+}
+
 buildIcon();
+
+// 注册右键
+chrome.contextMenus.create({
+  title: '上传图片',
+  id: 'uploadWeiboPic',
+  contexts: ['image']
+});
+
+chrome.contextMenus.onClicked.addListener(function(itemData) {
+  if (itemData.menuItemId === "uploadWeiboPic") {
+    var imageURL = itemData.srcUrl;
+
+    if (document.querySelector) {
+      initPopupPage(undefined, (win) => {
+        const tabId = win.tabs[0].id;
+        chrome.tabs.onUpdated.addListener(function (id , info) {
+          if (info.status === 'complete' && id === tabId) {
+            chrome.tabs.sendMessage(tabId, { message: 'uploadImageDataByURL', url: imageURL });
+          }
+        });          
+      });
+    }
+  }
+});
+
 
 chrome.browserAction.onClicked.addListener(function (tab) {
 	//chrome.tabs.create({'url': chrome.extension.getURL('popup.html')}, function(tab) {});
