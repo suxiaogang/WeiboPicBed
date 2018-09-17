@@ -484,9 +484,42 @@ Wbpd.prototype={
             $(this).addClass('disabled');
         });
     },
-
+    imageToBase64: function(url, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.onload = function() {
+        var reader = new FileReader();
+        reader.onloadend = function() {
+          callback(reader.result, xhr.response);
+        }
+        reader.readAsDataURL(xhr.response);
+      };
+      xhr.open('GET', url);
+      xhr.responseType = 'blob';
+      xhr.send();
+    }
 };
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  switch (request.message) {
+    //图片请求上传事件
+    case 'uploadImageDataByURL':
+      var imageURL = request.url;
+      if (imageURL) {
+        Wbpd.prototype.imageToBase64(imageURL, (base64, data) => {
+            Wbpd.prototype.getImageFile([data], 1);
+        });
+      }
+      break;
+  }
+});
+
 $(function() {
     my = Wbpd.prototype;
     my.init();
+
+    // 另一种实现方式
+    // const background = chrome.extension.getBackgroundPage();
+    // if (background.imageData) {
+    //   my.getImageFile([background.imageData], 1);
+    // }
 });
