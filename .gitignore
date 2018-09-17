@@ -1,21 +1,16 @@
 # Created by http://www.gitignore.io
 
-#!! ERROR: JAVA is undefined. Use list command to see defined gitignore types !!#
-
-### Java ###
+.DS_Store
 *.class
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
 *.jar
 *.war
 *.ear
 
+/.idea
+**/*.iml
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-
 
 ### Eclipse ###
 *.pydevproject
@@ -46,6 +41,7 @@ local.properties
 
 # sbteclipse plugin 
 .target
+**/target
 
 # TeXlipse plugin
 .texlipse
@@ -53,7 +49,6 @@ local.properties
 
 ### SVN ###
 .svn/
-
 
 ### Windows ###
 # Windows image file caches
