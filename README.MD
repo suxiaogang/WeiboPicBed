@@ -2,7 +2,9 @@
 	<img width="300px" src="http://ww3.sinaimg.cn/large/5fd37818jw1eq7bx4bc4ej20c0038mx9.jpg">
 </a>
 
-<img width="650px" src="http://ww1.sinaimg.cn/large/5fd37818ly1fqii9kjf13j20ya0b8jt3.jpg">
+---
+
+<img width="650px" src="https://ws1.sinaimg.cn/large/5fd37818ly1fz9jyhd1a7j20v20eo0up.jpg">
 
 ## 💰捐助
 <img width="150px" src="http://ww2.sinaimg.cn/large/5fd37818gw1f46gp47ynsj20dw0dwq4i.jpg"><img width="150px" src="http://ww3.sinaimg.cn/large/5fd37818gw1f46gph7932j20dw0dwmz6.jpg">
