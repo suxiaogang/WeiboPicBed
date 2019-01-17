@@ -12,6 +12,7 @@ Wbpd.prototype={
     xhr_arr:[],//用来记录xhr对象,后面用来做abort操作
     pic_num:0,//用来记录上传文件的总个数,后面递减来判断是否上传完成
     init:function(){
+        $('input').prop('spellcheck', false);
         $("#optionPage").click(function() {
             event.preventDefault();
             chrome.tabs.create({url:Wbpd.prototype.options_url});
@@ -213,6 +214,45 @@ Wbpd.prototype={
                 if (b) return false;
             }
         });
+
+        // //上线时放开
+        // chrome.notifications.create({
+        //     type: "basic",
+        //     iconUrl: "icon.png",
+        //     title: "提示",
+        //     message: "微博账户未登录...",
+        //     requireInteraction: true,
+        // });
+    },
+    //上传完成或者出错时的处理
+    uploadFinishEvent: function() {
+        $('#uploadPlaceHolder').prop('src', '1x1.png');
+        $('.clicker').css('border', 'none').css('background-color', 'transparent').css('box-shadow','none');
+    },
+    //检查微博登录状态
+    checkWeiboStatus: function() {
+        setInterval(function(){
+            $.ajax({
+                url: "http://weibo.com/aj/onoff/getstatus",
+                cache: false,
+                success: function(result){
+                    if (result && result.code == '100000') {
+                        $('#statusBadge').addClass('badge-success');
+                    } else {
+                        $('#statusBadge').removeClass('badge-success');
+                        //上线时放开
+                        // chrome.notifications.create({
+                        //     type: "basic",
+                        //     iconUrl: "icon.png",
+                        //     title: "提示",
+                        //     message: "微博登录信息校验失败，请确认微博登录后再次尝试其他操作",
+                        //     contextMessage: "单击转到微博的登录页面进行登录操作",
+                        //     requireInteraction: true,
+                        // });
+                    }
+                }
+            });
+        }, 10000);
     },
     //切换批量模式
     toggleBatch: function(flag) {
@@ -382,17 +422,25 @@ Wbpd.prototype={
     },
     //预览和上传
     previewAndUpload: function(file, i) {
+        Wbpd.prototype.uploadFinishEvent();
         $(".loader-wrap").show();
         var reader = new FileReader();
         var imgFile;
         reader.readAsDataURL(file);
         reader.onload = function(e) {
             if (Wbpd.prototype.is_batch != 1) {
-                $('.single-model img').prop('src', '');
+                $('.single-model img').prop('src', '1x1.png');
                 $('.single-model img').css('background-image', 'url(' + this.result + ')');
                 $('.single-model img').css('background-position', 'center');
+                $('.file-info').css('display', 'inline-block');
+                if (file.name.length > 30) {
+                    $("#fileName").text(file.name.substring(0, 8) + "..." + file.name.substring(file.name.length - 8, file.name.length));
+                } else {
+                    $("#fileName").text(file.name);
+                }
+                $("#fileSize").text((e.total / 1024).toFixed(2) + " kb");
             } else {
-                $('#pic' + i).prop('src', '');
+                $('#pic' + i).prop('src', '1x1.png');
                 $('#pic' + i).css('background-image', 'url(' + this.result + ')');
                 $('#pic' + i).css('background-position', 'center');
             }
@@ -431,9 +479,20 @@ Wbpd.prototype={
                             $('#pic' + i).nextAll('.input-append').show();
                             return true;
                         } catch (e) {
-                            alert("上传失败，请登录微博后再试~");
-                            chrome.tabs.create({ url: 'http://weibo.com/?topnav=1&mod=logo' });
-                            window.close();
+                            Wbpd.prototype.uploadFinishEvent();
+                            chrome.notifications.create({
+                                type: "basic",
+                                iconUrl: "icon.png",
+                                title: "提示",
+                                message: "微博账户未登录...",
+                                requireInteraction: false,
+                            });
+                            chrome.tabs.create({url : 'http://weibo.com/?topnav=1&mod=logo'});
+                            setTimeout(
+                                function() {
+                                    window.close();
+                                }, 
+                            3000);
                             return;
                         }
                     } else {
@@ -446,6 +505,7 @@ Wbpd.prototype={
         };
     },
     updateProgress: function(evt, i) {
+        $('#single-progress').css('display', 'block');
         if (evt.lengthComputable) {
             var percentComplete = evt.loaded / evt.total;
             // $('#pic0').nextAll('.progress').attr('width',percentComplete*100+"%");
@@ -469,9 +529,7 @@ Wbpd.prototype={
         global_pid = '';
 
         //清空批量模式中的数据
-        $('.batch-model').html('<div>\
-                        <img src="placeholder2.png" class="dragger clicker">\
-                        </div>');
+        $('.batch-model').html('<div><img src="placeholder2.png" class="dragger clicker"></div>');
 
         //清空单图模式下的数据
         $('.single-model[class^=col-xs-4] img').prop('src', 'placeholder.png');
@@ -521,10 +579,5 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 $(function() {
     my = Wbpd.prototype;
     my.init();
-
-    // 另一种实现方式
-    // const background = chrome.extension.getBackgroundPage();
-    // if (background.imageData) {
-    //   my.getImageFile([background.imageData], 1);
-    // }
+    my.checkWeiboStatus();
 });

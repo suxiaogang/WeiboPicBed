@@ -102,7 +102,7 @@ var eventFilter = {
 };
 ///通过设定eventFilter，使以下代码只对指定网站生效，减少内存占用
 chrome.webNavigation.onCommitted.addListener(function (tab) {
-	//console.log(tab);
+	console.log(tab);
 	chrome.tabs.insertCSS(tab.id, {
 		file : "css/image-parser.css"
 	});
