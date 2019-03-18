@@ -7,7 +7,7 @@
 <img width="650px" src="https://ws1.sinaimg.cn/large/5fd37818ly1g16swogtf3j213y0huwgm.jpg">
 
 ## 💰捐助
-<img width="150px" src="http://ww2.sinaimg.cn/large/5fd37818gw1f46gp47ynsj20dw0dwq4i.jpg"><img width="150px" src="https://ws1.sinaimg.cn/large/5fd37818ly1g16tafjlomj20gj0glgob.jpg">
+<img width="150px" src="http://ww2.sinaimg.cn/large/5fd37818gw1f46gp47ynsj20dw0dwq4i.jpg"><img width="150px" src="https://ws1.sinaimg.cn/large/5fd37818ly1g16tkcd41ij20gj0gl76z.jpg">
 
 ## 🚀 features
 - 支持点选/拖拽/本地粘贴3种方式上传图片至新浪微博图床
