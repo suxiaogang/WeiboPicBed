@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
     <meta charset="utf-8">
     <title>微博图床</title>
-    <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" href="css/sweet-alert.min.css" rel="stylesheet">
-    <link type="text/css" href="css/loaders.min.css" rel="stylesheet">
-    <link type="text/css" href="css/popup.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/sweet-alert.min.css">
+    <link rel="stylesheet" href="css/loaders.min.css">
+    <link rel="stylesheet" href="css/popup.css">
 </head>
 
 <body>
+    <div class="loading-bar"></div>
     <div class="loader-wrap text-center">
         <div class="loader-inner line-scale">
             <div></div>
@@ -23,7 +24,7 @@
         <div class="row">
             <input id="input" type="file" class="uploadTrigger" style="display:none;" accept="image/jpeg, image/png" multiple>
             <div class="col-xs-4 pull-left">
-                <p style="padding-top:6px;margin-left:10px;">单击或者拖拽图片到此 | <a id="optionPage" href="#">上传历史</a></p>
+                <p style="padding-top:6px;margin-left:10px;">单击或者拖拽图片到此 | <a id="optionPage" href="#">设置/历史</a></p>
             </div>
             <div class="col-xs-8">
                 <div class="btn-group" role="group">

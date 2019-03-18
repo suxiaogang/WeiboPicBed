@@ -215,14 +215,6 @@ Wbpd.prototype={
             }
         });
 
-        // //上线时放开
-        // chrome.notifications.create({
-        //     type: "basic",
-        //     iconUrl: "icon.png",
-        //     title: "提示",
-        //     message: "微博账户未登录...",
-        //     requireInteraction: true,
-        // });
     },
     //上传完成或者出错时的处理
     uploadFinishEvent: function() {
@@ -231,28 +223,29 @@ Wbpd.prototype={
     },
     //检查微博登录状态
     checkWeiboStatus: function() {
-        setInterval(function(){
-            $.ajax({
-                url: "http://weibo.com/aj/onoff/getstatus",
-                cache: false,
-                success: function(result){
-                    if (result && result.code == '100000') {
-                        $('#statusBadge').addClass('badge-success');
-                    } else {
-                        $('#statusBadge').removeClass('badge-success');
-                        //上线时放开
-                        // chrome.notifications.create({
-                        //     type: "basic",
-                        //     iconUrl: "icon.png",
-                        //     title: "提示",
-                        //     message: "微博登录信息校验失败，请确认微博登录后再次尝试其他操作",
-                        //     contextMessage: "单击转到微博的登录页面进行登录操作",
-                        //     requireInteraction: true,
-                        // });
-                    }
+        $("body").addClass("app-loading");
+        $.ajax({
+            url: "http://weibo.com/aj/onoff/getstatus",
+            cache: false,
+            success: function(result){
+                $("div.loading-bar").remove();
+                if (result && result.code == '100000') {
+                    $('#statusBadge').addClass('badge-success');
+                } else {
+                    $('#statusBadge').removeClass('badge-success');
+                    chrome.notifications.create({
+                        type: "basic",
+                        iconUrl: "icon.png",
+                        title: "提示",
+                        message: "微博账户未登录...",
+                        requireInteraction: true,
+                    });
                 }
-            });
-        }, 10000);
+            },
+            error : function(){
+                $("div.loading-bar").remove();
+            }
+        });
     },
     //切换批量模式
     toggleBatch: function(flag) {
