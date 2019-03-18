@@ -22,7 +22,7 @@
 ## 🖼 screenshots
 ![](http://ww3.sinaimg.cn/large/5fd37818jw1ew172qsxbog20lz0c2qcn.gif)
 
-![](https://upload-images.jianshu.io/upload_images/3203841-ecf76e0396a53b3b.gif?imageMogr2/auto-orient/strip) 
+![](https://upload-images.jianshu.io/upload_images/3203841-ecf76e0396a53b3b.gif) 
 
 (图片来自https://github.com/zhaoolee/ChromeAppHeroes)
 
