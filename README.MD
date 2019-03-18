@@ -22,11 +22,12 @@
 ## 🖼 screenshots
 ![](http://ww3.sinaimg.cn/large/5fd37818jw1ew172qsxbog20lz0c2qcn.gif)
 
+![](https://upload-images.jianshu.io/upload_images/3203841-ecf76e0396a53b3b.gif?imageMogr2/auto-orient/strip) 
+(图片来自https://github.com/zhaoolee/ChromeAppHeroes)
+
 ![](http://ww1.sinaimg.cn/large/5fd37818gw1eqps6zuxslj20xc0p0q9q.jpg)
 
 ![](http://ww2.sinaimg.cn/large/5fd37818gw1eqhxjffq1tj20zk0m8wj6.jpg)
-
-![](https://upload-images.jianshu.io/upload_images/3203841-ecf76e0396a53b3b.gif?imageMogr2/auto-orient/strip) (图片来自https://github.com/zhaoolee/ChromeAppHeroes)
 
 ## ✍️ 常用在线markdown编辑器中使用ctrl+v粘贴图片
 [在github中的使用效果](http://ww3.sinaimg.cn/large/99b8535cjw1f306jse5g7j215n0jj444.jpg)
