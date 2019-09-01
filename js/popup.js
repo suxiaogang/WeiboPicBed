@@ -321,7 +321,7 @@ Wbpd.prototype={
                     $('#res' + i).val('[IMG]' + callBackImg + '[/IMG]'); //ubb
                     break;
                 case 4:
-                    $('#res' + i).val('![](' + callBackImg + ')'); //markdown
+                    $('#res' + i).val('!['+params.pic_name+'](' + callBackImg + ')'); //markdown
                     break;
                 default:
                     $('#res' + i).val(callBackImg);
@@ -332,7 +332,7 @@ Wbpd.prototype={
             $('#res_img').val(callBackImg);
             $('#res_html').val('<img src="' + callBackImg + '"/>');
             $('#res_ubb').val('[IMG]' + callBackImg + '[/IMG]');
-            $('#res_md').val('![](' + callBackImg + ')');
+            $('#res_md').val('!['+params.pic_name+'](' + callBackImg + ')');
         }
         return callBackImg;
     },
@@ -458,34 +458,51 @@ Wbpd.prototype={
                             splitIndex = resText.indexOf('{"');
                             rs = JSON.parse(resText.substring(splitIndex));
                             pid = rs.data.pics.pic_1.pid;
-                            global_pid = pid;
-                            params = {
-                                pid: pid,
-                                ext: acceptType == 'data:image/gif' ? '.gif' : '.jpg'
-                            };
-                            image_url = Wbpd.prototype.changePicFormat(params, i);
-                            Wbpd.prototype.saveUrlToLocal(params, image_url, i);
-                            if (--Wbpd.prototype.pic_num == 0) { //如果图片数递减至0,说明所有图片上传完成
-                                Wbpd.prototype.toggleBtn(1);
-                            }
-                            $('#pic' + i).nextAll('.progress').hide();
-                            $('#pic' + i).nextAll('.input-append').show();
-                            return true;
+							ret = rs.data.pics.pic_1.ret;
+							if(ret == 1){
+								//获取成功
+								global_pid = pid;
+								params = {
+									pid: pid,
+									ext: acceptType == 'data:image/gif' ? '.gif' : '.jpg',
+									pic_name: file.name
+								};
+								image_url = Wbpd.prototype.changePicFormat(params, i);
+								Wbpd.prototype.saveUrlToLocal(params, image_url, i);
+								if (--Wbpd.prototype.pic_num == 0) { //如果图片数递减至0,说明所有图片上传完成
+									Wbpd.prototype.toggleBtn(1);
+								}
+								$('#pic' + i).nextAll('.progress').hide();
+								$('#pic' + i).nextAll('.input-append').show();
+								return true;								
+							}	
+							if(ret == -1){
+								//未登陆???
+								Wbpd.prototype.uploadFinishEvent();
+								chrome.notifications.create({
+									type: "basic",
+									iconUrl: "icon.png",
+									title: "提示",
+									message: "微博账户未登录...",
+									requireInteraction: false,
+								});
+								chrome.tabs.create({url : 'http://weibo.com/?topnav=1&mod=logo'});
+								setTimeout(
+									function() {
+										window.close();
+									}, 
+								3000);								
+							} else if(ret == -11){
+								//格式错误 比如ico 微博不支持 png 只能用gif->
+								swal("格式错误...");
+								return;
+							} else{
+								//其他错误
+								swal("其他错误...,错误编码为:"+ret + "请联系作者进行添加");
+								return;
+							}
+
                         } catch (e) {
-                            Wbpd.prototype.uploadFinishEvent();
-                            chrome.notifications.create({
-                                type: "basic",
-                                iconUrl: "icon.png",
-                                title: "提示",
-                                message: "微博账户未登录...",
-                                requireInteraction: false,
-                            });
-                            chrome.tabs.create({url : 'http://weibo.com/?topnav=1&mod=logo'});
-                            setTimeout(
-                                function() {
-                                    window.close();
-                                }, 
-                            3000);
                             return;
                         }
                     } else {
