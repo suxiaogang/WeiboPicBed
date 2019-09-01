@@ -45,6 +45,10 @@
 
 [Aqours](https://github.com/Aqours)
 
+[zjuchenyuan](https://github.com/zjuchenyuan)
+
+[pzx521521](https://github.com/pzx521521)
+
 ## ❓ 最常被问到的问题
 > Q:我上传的图片去哪了?
 >
@@ -61,6 +65,9 @@
 
 ## 📑 更新日志
 ```
+2019-09-01 v2.7
+修复上传错误的问题
+
 2019-01-16 v2.6
 更改部分样式,增加badge显示微博登录状态
 (尝试修复部分浏览器总是提示微博未登录)
