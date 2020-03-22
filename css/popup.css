@@ -227,22 +227,48 @@ body {
 
 .badge{
     position: relative;
-    top: 1px;
-    height: 14px;
-    width: 10px;
-    zoom: 0.7;
-    margin-right: 10px;
+    top: 2px;
+    height: 12px;
+    width: 12px;
+    padding: 0;
+    margin-left: 15px;
+    margin-right: 5px;
 }
 .badge-success{
     background-color: green;
 }
 
+kbd {
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    background-color: #E5E5E5;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+	font-weight: bold;
+    color: #444;
+	-moz-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2),0 0 0 2px #FFF inset;
+	box-shadow: 0 1px 0 rgba(181, 201, 243, 0.2),0 0 0 2px #FFF inset;
+	border-radius: 3px;
+	text-shadow: 0 1px 0 #FFF;
+	line-height: 1.4;
+	white-space: nowrap;
+}
+
 a#optionPage {
     transition: all .4s;
     -webkit-transition: all .4s;
-    padding: 2px;
+    padding: 2px 4px;
     border-radius: 2px;
     color: #808080;
+    font-weight: 600;
     background-color: #f0f0f0;
 }
 
@@ -332,7 +358,7 @@ a#optionPage:hover {
 }
 
 .main {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .batch-model {
@@ -348,7 +374,7 @@ a#optionPage:hover {
     overflow: hidden;
 }
 figure {
-    margin-top: 15px;
+    margin-top: 10px;
 	width: 200px;
 	height: 200px;
     overflow: hidden;

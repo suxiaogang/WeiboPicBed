@@ -2,7 +2,7 @@ var global_pid = "";
 var storageData = localStorage.weiboData ? JSON.parse(localStorage.weiboData) : [];
 var https = localStorage.is_https ? JSON.parse(localStorage.is_https) : $("#https").is(':checked');
 var http_pre  = "http://ww";
-var https_pre = "https://ws";
+var https_pre = "https://wx";
 
 
 var Wbpd = Wbpd || {};
@@ -48,6 +48,10 @@ Wbpd.prototype={
                 $(this).blur();
             }
         );
+
+        $("#closeSVG").on("click", function() {
+            $("#versionDIV").toggle();
+        });
         //单图模式下的"复制"按钮,添加点击事件
         $(".btn-copy").on("click", function() {
             event.preventDefault();
@@ -198,7 +202,7 @@ Wbpd.prototype={
         });
 
         //HTML5 paste http://www.zhihu.com/question/20893119
-        $("#res_img").on("paste", function(e) {
+        $("body").on("paste", function(e) {
             var oe = e.originalEvent;
             var clipboardData, items, item;
             if (oe && (clipboardData = oe.clipboardData) && (items = clipboardData.items)) {
@@ -302,6 +306,8 @@ Wbpd.prototype={
             zone = ((params.pid.substr(-2, 2), 16) & 0xf) + 1;
             url = url_pre + zone + '.sinaimg.cn/' + type + '/' + params.pid;
         }
+        console.log("params.ext : " + params.ext);
+        console.log("url : " + url);
         return url + params.ext;
     },
     changePicFormat: function(params, i) {

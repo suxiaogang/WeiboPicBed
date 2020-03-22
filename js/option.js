@@ -76,9 +76,11 @@ $(document).ready(function() {
     $('.donate').on('click', function() {
         swal({
             title: "扫码捐助",
-            text: '<img width="200" height="200" src="http://ww2.sinaimg.cn/large/5fd37818gw1f46gp47ynsj20dw0dwq4i.jpg">' +
-                '<span style="margin:10px;">或</span>' +
-                '<img width="200" height="200" src="http://ww3.sinaimg.cn/large/5fd37818gw1f46gph7932j20dw0dwmz6.jpg">',
+            text: '<img width="300" height="300" src="img/wechat.png">' +
+                '<span style="margin:20px;font-weight:bold;">或</span>' +
+                '<img width="300" height="300" src="img/alipay.jpg">',
+            customClass: 'swal-wide',
+            confirmButtonText: '关闭',
             html: true
         });
     });
