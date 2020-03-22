@@ -1,5 +1,5 @@
 <a href="https://chrome.google.com/webstore/detail/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E5%9B%BE%E5%BA%8A/fdfdnfpdplfbbnemmmoklbfjbhecpnhf/reviews" target="_blank">
-	<img width="300px" src="http://ww3.sinaimg.cn/large/5fd37818jw1eq7bx4bc4ej20c0038mx9.jpg">
+	<img width="300px" src="https://wx1.sinaimg.cn/large/5fd37818jw1eq7bx4bc4ej20c0038mx9.jpg">
 </a>
 
 ---
@@ -7,7 +7,8 @@
 <img width="650px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/screenshot/webstore.jpg">
 
 ## 💰捐助
-<img width="150px" src="http://ww2.sinaimg.cn/large/5fd37818gw1f46gp47ynsj20dw0dwq4i.jpg"><img width="150px" src="https://ws1.sinaimg.cn/large/5fd37818ly1g16tkcd41ij20gj0gl76z.jpg">
+<img width="150px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/img/wechat.png">
+<img width="150px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/img/alipay.jpg">
 
 ## 🚀 features
 - 支持点选/拖拽/本地粘贴3种方式上传图片至新浪微博图床
@@ -20,7 +21,7 @@
 - 支持自定义Chrome菜单栏图标
 
 ## 🖼 screenshots
-![](http://ww3.sinaimg.cn/large/5fd37818jw1ew172qsxbog20lz0c2qcn.gif)
+![](https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/screenshot/screen.gif)
 
 ![](https://upload-images.jianshu.io/upload_images/3203841-ecf76e0396a53b3b.gif) 
 
@@ -30,41 +31,12 @@
 
 ![](http://ww2.sinaimg.cn/large/5fd37818gw1eqhxjffq1tj20zk0m8wj6.jpg)
 
-## ✍️ 常用在线markdown编辑器中使用ctrl+v粘贴图片
-[在github中的使用效果](http://ww3.sinaimg.cn/large/99b8535cjw1f306jse5g7j215n0jj444.jpg)
-
-[在csdn中的使用效果](http://ww2.sinaimg.cn/large/99b8535cjw1f306jftd8vj21gj0l646l.jpg)
-
-[在作业部落中的使用效果](http://ww4.sinaimg.cn/large/99b8535cjw1f306kv4yljj21gu0oz7cl.jpg)
-
-
-## 👬 contributors
-[@liyumeng](https://github.com/liyumeng)
-
-[@Jackroyal](https://github.com/Jackroyal)
-
-[Aqours](https://github.com/Aqours)
-
-[zjuchenyuan](https://github.com/zjuchenyuan)
-
-[pzx521521](https://github.com/pzx521521)
-
-## ❓ 最常被问到的问题
-> Q:我上传的图片去哪了?
->
-> A:图片上传调用了新浪微博这个接口 http://picupload.service.weibo.com/interface (该地址不一定可以直接访问), 然而上传的图片并不会保存到任何一个你的微博相册里(即使你已经登陆了微博),在插件的设置页面,你可以看到本机上传的图片历史记录(目前还不支持多设备同步)
-
-## 🔗 参考
-[Drag and drop](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Drag_and_drop)
-
-[DataTransfer](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer)
-
-[FileReader](https://developer.mozilla.org/en/docs/Web/API/FileReader)
-
-[localStorage](https://developer.mozilla.org/en/docs/Web/API/Window/localStorage)
-
 ## 📑 更新日志
 ```
+2020-03-22 v2.8
+修复新浪域名解析
+增加(优化)全局从粘贴板上传的功能
+
 2019-09-01 v2.7
 修复上传错误的问题
 
@@ -115,6 +87,39 @@
 第一个版本发布
 
 ```
+
+## ✍️ 常用在线markdown编辑器中使用ctrl+v粘贴图片
+[在github中的使用效果](http://ww3.sinaimg.cn/large/99b8535cjw1f306jse5g7j215n0jj444.jpg)
+
+[在csdn中的使用效果](http://ww2.sinaimg.cn/large/99b8535cjw1f306jftd8vj21gj0l646l.jpg)
+
+[在作业部落中的使用效果](http://ww4.sinaimg.cn/large/99b8535cjw1f306kv4yljj21gu0oz7cl.jpg)
+
+
+## 👬 contributors
+[@liyumeng](https://github.com/liyumeng)
+
+[@Jackroyal](https://github.com/Jackroyal)
+
+[Aqours](https://github.com/Aqours)
+
+[zjuchenyuan](https://github.com/zjuchenyuan)
+
+[pzx521521](https://github.com/pzx521521)
+
+## ❓ 最常被问到的问题
+> Q:我上传的图片去哪了?
+>
+> A:图片上传调用了新浪微博这个接口 http://picupload.service.weibo.com/interface (该地址不一定可以直接访问), 然而上传的图片并不会保存到任何一个你的微博相册里(即使你已经登陆了微博),在插件的设置页面,你可以看到本机上传的图片历史记录(目前还不支持多设备同步)
+
+## 🔗 参考
+[Drag and drop](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Drag_and_drop)
+
+[DataTransfer](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer)
+
+[FileReader](https://developer.mozilla.org/en/docs/Web/API/FileReader)
+
+[localStorage](https://developer.mozilla.org/en/docs/Web/API/Window/localStorage)
 
 ## 💎 Licence
 
