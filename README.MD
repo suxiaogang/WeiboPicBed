@@ -7,8 +7,7 @@
 <img width="650px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/screenshot/webstore.jpg">
 
 ## 💰捐助
-<img width="150px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/img/wechat.png">
-<img width="150px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/img/alipay.jpg">
+<img width="150px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/img/wechat.png"><img width="150px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/img/alipay.jpg">
 
 ## 🚀 features
 - 支持点选/拖拽/本地粘贴3种方式上传图片至新浪微博图床
