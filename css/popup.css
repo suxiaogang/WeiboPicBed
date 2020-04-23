@@ -252,7 +252,7 @@ kbd {
     -o-user-select: none;
     user-select: none;
 	font-weight: bold;
-    color: #444;
+    color: #767b93;
 	-moz-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
 	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2),0 0 0 2px #FFF inset;
 	box-shadow: 0 1px 0 rgba(181, 201, 243, 0.2),0 0 0 2px #FFF inset;

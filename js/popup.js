@@ -339,6 +339,8 @@ Wbpd.prototype={
             $('#res_html').val('<img src="' + callBackImg + '"/>');
             $('#res_ubb').val('[IMG]' + callBackImg + '[/IMG]');
             $('#res_md').val('!['+params.pic_name+'](' + callBackImg + ')');
+            $('#res_img').select();
+            document.execCommand("Copy");
         }
         return callBackImg;
     },
@@ -395,12 +397,10 @@ Wbpd.prototype={
         } else {
             $('.btn-batch').removeAttr('disabled');
             $('.btn-batchcopy').removeAttr('disabled', 'disabled');
-
         }
 
     },
     getImageFile: function(img_file, flag) {
-
         if (img_file.length > 0 && ($('.clicker:first').attr('src') != 'placeholder.png' || $('.clicker:last').attr('src') != 'placeholder2.png')) {
             Wbpd.prototype.clearData();
         }
@@ -596,4 +596,7 @@ $(function() {
     my = Wbpd.prototype;
     my.init();
     my.checkWeiboStatus();
+    setTimeout(function() { 
+        $("#versionDIV").slideUp();
+    }, 6000);
 });
