@@ -1,8 +1,8 @@
 var global_pid = "";
 var storageData = localStorage.weiboData ? JSON.parse(localStorage.weiboData) : [];
 var https = localStorage.is_https ? JSON.parse(localStorage.is_https) : $("#https").is(':checked');
-var http_pre  = "http://ww";
-var https_pre = "https://wx";
+var http_pre  = "http://tva";
+var https_pre = "https://tva";
 
 
 var Wbpd = Wbpd || {};
