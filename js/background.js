@@ -230,10 +230,10 @@ function pid2url(params, type) {
 		type = 'large';
 	if (params.pid[9] == 'w') {
 		zone = (crc32(params.pid) & 3) + 1;
-		url = 'http://ww' + zone + '.sinaimg.cn/' + type + '/' + params.pid;
+		url = 'http://tva' + zone + '.sinaimg.cn/' + type + '/' + params.pid;
 	} else {
 		zone = ((params.pid.substr(-2, 2), 16) & 0xf) + 1;
-		url = 'http://ss' + zone + '.sinaimg.cn/' + type + '/' + params.pid;
+		url = 'http://tva' + zone + '.sinaimg.cn/' + type + '/' + params.pid;
 	}
 	return url + params.ext;
 }
