@@ -11,20 +11,17 @@
 a {
     color: #AFAFAF;
 }
-
 a:hover {
     text-decoration: none;
     -webkit-transition: 0.2s;
     -moz-transition: 0.2s;
     transition: 0.2s;
 }
-
 a:focus,
 a:active {
     text-decoration: none;
     outline: 0 !important;
 }
-
 * {
     margin: 0;
     padding: 0;
@@ -33,26 +30,33 @@ a:active {
     border-color: transparent;
     color: #555;
 }
-
 *:focus {
     outline: 0!important;
     -webkit-appearance: none;
 }
-
 html {
     position: relative;
     min-height: 100%;
 }
-
 body {
     margin-bottom: 60px;
     background-color: #EDEFF0;
     background-size: cover;
 }
+.code {
+    font-family: Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+    border: none;
+    font-size: 12px;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    display: block;
+    padding: 10px;
+    background-color: #eee;
+    color: #000;
+}
 .swal-wide{
     width:700px !important;
 }
-
 .nav {
     display: block;
     background-color: #fff;
@@ -61,7 +65,6 @@ body {
     margin: 20px 0px;
     z-index: 100;
 }
-
 .box {
     background-color: #FFF;
     margin-top: 40px;
@@ -76,31 +79,25 @@ body {
     box-shadow: 1px 1px 3px rgba(100, 100, 100, 0.15);
     overflow-y: auto;
 }
-
 /**** textarea scroll-bar ****/
 .box::-webkit-scrollbar-track-piece {
     background-color: #FFF;
 }
-
 .box::-webkit-scrollbar {
     width: 7px;
 }
-
 .box::-webkit-scrollbar-thumb {
     height: 100px;
     background-color: #CDC9C9;
     outline: transparent;
 }
-
 .box::-webkit-scrollbar-thumb:hover {
     background-color: #828282;
 }
-
 h5 {
     font-size: 15px;
     margin-left: 15px;
 }
-
 .page-header {
     margin: 10px 0;
     padding-top: 12px;
@@ -108,7 +105,6 @@ h5 {
     line-height: 0px;
     color: #989898;
 }
-
 .page-content {
     width: 100%;
     min-height: 135px;
@@ -120,7 +116,6 @@ h5 {
     -webkit-transition: 0.3s;
     box-shadow: 0 14px 20px -20px #000;
 }
-
 .page-content:hover {
     cursor: pointer;
     background-color: #000;
@@ -128,7 +123,19 @@ h5 {
     box-shadow: 0 20px 20px -20px #000;
     -webkit-transform: scale(1.05);
 }
-
+#beta{
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
+    /* box-shadow: 1px 1px 3px rgb(100 100 100 / 15%); */
+}
+.beta p{
+    margin-top: 10px;
+}
 /***footer***/
 .footer {
     position: absolute;
@@ -139,30 +146,24 @@ h5 {
     font-size: 12px;
     background-color: #2C3E50;
 }
-
 .footer p {
     margin-top: 20px;
     color: #C5C5C5;
 }
-
 .footer p a {
     color: #C5C5C5;
     margin-left: 3px;
     margin-right: 3px;
 }
-
 .footer p a:hover {
     color: #888;
 }
-
 .footer .fa-heart {
     color: red;
 }
-
 .fa {
     color: #5C5C5C;
 }
-
 .imgsrc {
     padding: 8px 10px;
     min-width: 100%;
@@ -178,7 +179,6 @@ h5 {
     color: #7D7D7D;
     z-index: 9999;
 }
-
 .imgsrc:focus {
     color: #000;
 }
@@ -194,7 +194,6 @@ h5 {
     margin: 30px 0 50px 0;
     min-height: 245px;
 }
-
 .tips {
     color: #999;
     padding: 20px 50px;
@@ -203,7 +202,6 @@ h5 {
     line-height: 22px;
     height: 235px;
 }
-
 .tips a {
     color: #515151;
     padding: 2px 4px;
@@ -211,7 +209,6 @@ h5 {
     border-radius: 3px;
     background-color: rgba(180, 208, 236, 0.5);
 }
-
 .tips a:hover {
     color: #fff;
     background-color: #0077ff;
@@ -239,11 +236,9 @@ label.customIcon {
     display: inline-block;
     margin-top: 2px;
 }
-
 #syscBtn {
     margin: 10px;
 }
-
 span.donate {
     color: #666;
     cursor: pointer;
@@ -253,25 +248,21 @@ span.donate {
     border-radius: 3px;
     background-color: rgba(238, 9, 22, 0.35);
 }
-
 .donate:hover {
     color: #000;
     background-color: rgba(180, 208, 236, 0.95);
 }
-
 /* 單選框 */
 .css3Label {
     list-style: none;
     display: inline-block;
 }
-
 .css3Label label {
     cursor: pointer;
     display: block;
     width: 140px;
     position: relative;
 }
-
 .css3Label label::before {
     content: "";
     display: inline-block;
@@ -285,17 +276,14 @@ span.donate {
     position: absolute;
     left: -17;
 }
-
 .css3Label input[type="checkbox"] {
     display: none;
 }
-
 .css3Label input[type="checkbox"]:checked + label::before {
     content: "";
     background: #000;
     -webkit-transition: all 0.6s;
 }
-
 #custom-icon-preview {
     height: 45px;
     width: 45px;
@@ -304,13 +292,131 @@ span.donate {
     border-radius: 5px;
     opacity: 0.9;
 }
-
 /*Animate*/
 .animated {
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
+}
+
+
+/**
+  * Overlay
+  * -- only show for tablet and up
+  */
+  @media only screen and (min-width: 40em) {
+    .modal-overlay {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        background-color: rgba(0, 0, 0, 0.75);
+        opacity: 0;
+        visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transition: opacity 0.6s cubic-bezier(0.55, 0, 0.1, 1), visibility 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+    }
+    .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+img.zoom-img{
+	overflow: hidden;
+	-webkit-transform: scale(1, 1);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 500ms;
+    -moz-transform: scale(1, 1);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 500ms;
+}
+img.zoom-img:hover {
+    -webkit-transform: scale(1.05);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 500ms;
+    -moz-transform: scale(1.1=05);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 500ms;
+    overflow: hidden;
+}
+
+#save-to-local {
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #f8f8f8;
+}
+/** Modal* */
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0 auto;
+    background-color: #fff;
+    width: 800px;
+    min-height: 500px;
+    padding: 1rem;
+    border-radius: 3px;
+    opacity: 0;
+    overflow-y: auto;
+    visibility: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: all 0.2s cubic-bezier(0.55, 0, 0.1, 1);
+}
+.modal .close-modal {
+    position: absolute;
+    cursor: pointer;
+    top: 5px;
+    right: 15px;
+    opacity: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: opacity 0.2s cubic-bezier(0.55, 0, 0.1, 1), -webkit-transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+    transition: opacity 0.2s cubic-bezier(0.55, 0, 0.1, 1), transform 0.2s cubic-bezier(0.55, 0, 0.1, 1);
+    transition: opacity 0.2s cubic-bezier(0.55, 0, 0.1, 1), transform 0.2s cubic-bezier(0.55, 0, 0.1, 1), -webkit-transform 0.2s cubic-bezier(0.55, 0, 0.1, 1);
+    transition-delay: 0.3s;
+}
+.modal .close-modal svg {
+    width: 1.75em;
+    height: 1.75em;
+}
+.modal .modal-content {
+    opacity: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: opacity 0.2s cubic-bezier(0.55, 0, 0.1, 1);
+    transition-delay: 0.2s;
+}
+.modal.active {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.modal.active .modal-content {
+    opacity: 1;
+}
+.modal.active .close-modal {
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    opacity: 1;
+}
+.modal-content {
+    border: none;
+    box-shadow: none;
 }
 
 @-webkit-keyframes fadeInUp {
@@ -325,7 +431,6 @@ span.donate {
         transform: none;
     }
 }
-
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -338,13 +443,11 @@ span.donate {
         transform: none;
     }
 }
-
 .fadeInUp {
     -webkit-animation-name: fadeInUp;
     animation-name: fadeInUp;
 }
 /*blinking*/
-
 @-webkit-keyframes twinkling {
     0% {
         background-color: rgba(238, 9, 22, 0.1);
@@ -359,7 +462,6 @@ span.donate {
         opacity: 1;
     }
 }
-
 .blinking {
     cursor: not-allowed;
     -webkit-animation: twinkling 1.2s infinite ease-in-out;
@@ -376,7 +478,35 @@ span.donate {
 </head>
 
 <body>
-    <button type="button" class="close" title="关闭" style="margin:20px;">×</button>
+    <!-- modal -->
+    <div class="modal-overlay">
+        <div class="modal">
+            <a class="close-modal">
+			<svg viewBox="0 0 20 20">
+			  <path fill="#000000" d="M15.898,4.045c-0.271-0.272-0.713-0.272-0.986,0l-4.71,4.711L5.493,4.045c-0.272-0.272-0.714-0.272-0.986,0s-0.272,0.714,0,0.986l4.709,4.711l-4.71,4.711c-0.272,0.271-0.272,0.713,0,0.986c0.136,0.136,0.314,0.203,0.492,0.203c0.179,0,0.357-0.067,0.493-0.203l4.711-4.711l4.71,4.711c0.137,0.136,0.314,0.203,0.494,0.203c0.178,0,0.355-0.067,0.492-0.203c0.273-0.273,0.273-0.715,0-0.986l-4.711-4.711l4.711-4.711C16.172,4.759,16.172,4.317,15.898,4.045z"></path>
+			</svg>
+		  </a>
+            <!-- close modal -->
+            <div class="modal-content">
+                <div class="col-xs-12 beta">
+                    <p>1. 部分图片无法打开或解析的解决办法: https://github.com/suxiaogang/WeiboPicBed/issues/153</p>             
+                    <div class="code">原先微博图床上的图片链接地址前缀是 wx1-4 形式：
+wx1.sinaimg.cn、wx2.sinaimg.cn、wx3.sinaimg.cn、wx4.sinaimg.cn
+将其替换为 tva1-4 或 tvax1-4 的形式后，https的图片外链恢复可用。
+tva1.sinaimg.com、 tva2.sinaimg.com、 tva3.sinaimg.com、 tva4.sinaimg.com
+tvax1.sinaimg.com、tvax2.sinaimg.com、tvax3.sinaimg.com、tvax4.sinaimg.com
+注：只需将地址前缀中 wx 替换为 tva 或 tvax 即可，至于其中的数字无需对应，图片也能打开，当然保险起见，对应修改是最好的。</div>
+                    <p id="save-to-local">2. 点击这里按照上传时间正向排序</p>
+                </div>
+            </div>
+            <!-- content -->
+        </div>
+    </div>
+    <!-- overlay -->
+    
+    <button type="button" class="close" title="关闭" style="margin:20px;">关闭</button>
+    <button type="button" id="beta" title="关闭" style="margin:14px;">试验功能</button>
+
     <div class="container">
         <div class="row">
             <div id="tips_wrap">

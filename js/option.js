@@ -63,6 +63,28 @@ function removeImgItem(d) {
 
 $(document).ready(function() {
 
+    var elements = $('.modal-overlay, .modal');
+	$('#beta').click(function(){
+		elements.addClass('active');
+	});
+	$('.close-modal').click(function(){
+		elements.removeClass('active');
+	});
+
+    $('#save-to-local').click(function(){
+        webkitRequestFileSystem(PERSISTENT, 1024, function (filesystem) {
+            filesystem.root.getFile("test", { create: true }, function (file) {
+                file.createWriter(function (writer) {
+                    writer.addEventListener("write", function (event) {
+                        location = file.toURL()
+                    })
+                    writer.addEventListener("error", console.error)
+                    writer.write(new Blob(["test"]))
+                }, console.error)
+            }, console.error)
+        }, console.error)
+	});
+
     var version = chrome.runtime.getManifest().version;
     $(".current_version").text(version);
 
