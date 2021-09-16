@@ -7,7 +7,7 @@
 <img width="650px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/screenshot/webstore.jpg">
 
 ## 💰捐助
-<img width="150px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/img/wechat.png"><img width="150px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/img/alipay.jpg">
+<img width="150px" style="margin-right:200px;" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/img/wechat.png"><img width="150px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/img/alipay.jpg">
 
 ## 🚀 features
 - 支持点选/拖拽/本地粘贴3种方式上传图片至新浪微博图床
@@ -32,6 +32,9 @@
 
 ## 📑 更新日志
 ```
+2021-09-16 v2.9
+上传成功后自动复制原图链接至粘贴板
+
 2020-04-23 v2.9
 上传成功后自动复制原图链接至粘贴板
 

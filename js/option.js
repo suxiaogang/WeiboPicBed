@@ -39,7 +39,7 @@ function buildHtml() {
             .replace(/{{d}}/g, timestamp)
             .replace(/{{imgsrc}}/g, src);
     }
-    $('.box').html('<h5>上传历史</h5>' + html);
+    $('.box').html('<h5>上传历史 <span style="color:#aaa">点击右键删除(仅本地)</span></h5>' + html);
     if (localStorage.customIcon == undefined) {
         $('input:checkbox[id="defaultIcon"]').prop("checked", true);
         customIconPreview.attr('src', 'icon_38.png');
@@ -120,22 +120,22 @@ $(document).ready(function() {
         $('input:checkbox[id="customIcon"]').prop("checked", false);
     });
 
-    canvas.width = canvas.height = 38;
-    var dontLoad = true;
-    customIconPreview.on('load', function() {
-        if (dontLoad) {
-            dontLoad = false;
-            return;
-        }
-        if (customIconPreview.attr('src') == 'icon_38.png') {
-            return;
-        }
-        ctx.clearRect(0, 0, 38, 38);
-        ctx.drawImage(document.getElementById("custom-icon-preview"), 0, 0, 38, 38);
-        var imageData = ctx.getImageData(0, 0, 38, 38);
-        chrome.browserAction.setIcon({ imageData: imageData });
-        localStorage.customIcon = JSON.stringify(imageData.data);
-    });
+    // canvas.width = canvas.height = 38;
+    // var dontLoad = true;
+    // customIconPreview.on('load', function() {
+    //     if (dontLoad) {
+    //         dontLoad = false;
+    //         return;
+    //     }
+    //     if (customIconPreview.attr('src') == 'icon_38.png') {
+    //         return;
+    //     }
+    //     ctx.clearRect(0, 0, 38, 38);
+    //     ctx.drawImage(document.getElementById("custom-icon-preview"), 0, 0, 38, 38);
+    //     var imageData = ctx.getImageData(0, 0, 38, 38);
+    //     chrome.browserAction.setIcon({ imageData: imageData });
+    //     localStorage.customIcon = JSON.stringify(imageData.data);
+    // });
 
     var customIconFile = document.getElementById('custom-icon-file');
     customIconFile.addEventListener('change', function() {

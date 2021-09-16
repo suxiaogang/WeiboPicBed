@@ -167,6 +167,10 @@
     }
 }
 
+.progress-bar-info {
+    background-color: #0077ff;
+}
+
 button:focus {
     outline: 0 !important;
 }
@@ -193,7 +197,7 @@ strong {
 
 .res:focus {
     outline: 0;
-    border-color: #31b0d5;
+    border-color: #0077ff;
     box-shadow: none;
 }
 
@@ -266,10 +270,11 @@ a#optionPage {
     transition: all .4s;
     -webkit-transition: all .4s;
     padding: 2px 4px;
-    border-radius: 2px;
     color: #808080;
     font-weight: 600;
     background-color: #f0f0f0;
+    padding: 4px 6px;
+    border-radius: 4px;
 }
 
 a#optionPage:hover {
@@ -328,17 +333,22 @@ a#optionPage:hover {
 }
 
 .https {
-    color: black;
+    margin: 5px 0;
 }
 
 .https input {
     margin: 18px 0;
+    position: relative;
+    top: 2px;
 }
 
 #https-label {
     font-weight: normal;    
 }
 
+.btn-batch-wrap{
+    margin: 5px 0;
+}
 .btn-batch {
     color: #555;
     height: 30px;

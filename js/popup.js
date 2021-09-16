@@ -1,21 +1,21 @@
 var global_pid = "";
 var storageData = localStorage.weiboData ? JSON.parse(localStorage.weiboData) : [];
 var https = localStorage.is_https ? JSON.parse(localStorage.is_https) : $("#https").is(':checked');
+var version_info = localStorage.version_info ? JSON.parse(localStorage.version_info) : false;
 var http_pre  = "http://tva";
-var https_pre = "https://tva";
+var https_pre = "https://wx";
 
 
 var Wbpd = Wbpd || {};
 Wbpd.prototype={
-    options_url:chrome.extension.getURL('option.html'),
     is_batch:$(this).data('batch')|0,//当前是否是批量模式
     xhr_arr:[],//用来记录xhr对象,后面用来做abort操作
     pic_num:0,//用来记录上传文件的总个数,后面递减来判断是否上传完成
     init:function(){
         $('input').prop('spellcheck', false);
-        $("#optionPage").click(function() {
+        $("#optionPage").click(function(event) {
             event.preventDefault();
-            chrome.tabs.create({url:Wbpd.prototype.options_url});
+            chrome.tabs.create({url:'option.html'});
             window.close();
         });
         //批量模式按钮
@@ -27,6 +27,9 @@ Wbpd.prototype={
         $("#https").on("click",function () {
             localStorage.is_https=$("#https").is(':checked');
         });
+
+        //version_info
+        $("#versionDIV").css("display", !version_info ? "block" : "none");
 
         //给所有图片,带有clicker的全部加上鼠标滑动事件和点击事件
         $('body').on('mouseenter', '.clicker', function() {
@@ -51,6 +54,7 @@ Wbpd.prototype={
 
         $("#closeSVG").on("click", function() {
             $("#versionDIV").toggle();
+            localStorage.version_info = true;
         });
         //单图模式下的"复制"按钮,添加点击事件
         $(".btn-copy").on("click", function() {

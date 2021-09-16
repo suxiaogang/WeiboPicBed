@@ -31,6 +31,7 @@ a:active {
     outline-style: none;
     box-shadow: none;
     border-color: transparent;
+    color: #555;
 }
 
 *:focus {
@@ -200,21 +201,38 @@ h5 {
     background: #fff;
     font-size: 11px;
     line-height: 22px;
+    height: 235px;
 }
 
 .tips a {
-    color: #969696;
+    color: #515151;
     padding: 2px 4px;
     -webkit-transition: 0.3s;
     border-radius: 3px;
-    background-color: rgba(180, 208, 236, 0.2);
-}
-
-.tips a:hover {
-    color: #000;
     background-color: rgba(180, 208, 236, 0.5);
 }
 
+.tips a:hover {
+    color: #fff;
+    background-color: #0077ff;
+}
+.sweet-alert button {
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    background-color: #0077ff !important;
+    color: #fff;
+}
+.sweet-alert button.cancel {
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    background-color: #D0D0D0 !important;
+}
+.sweet-alert button:hover{
+    background-color: rgba(0,119,255,0.7) !important;
+}
+.sweet-alert button:hover{
+    background-color: rgba(0,119,255,0.7) !important;
+}
 label.defaultIcon,
 label.customIcon {
     padding-left: 5px;
@@ -233,7 +251,7 @@ span.donate {
     padding: 2px 4px;
     -webkit-transition: 0.3s;
     border-radius: 3px;
-    background-color: rgba(238, 9, 22, 0.1);
+    background-color: rgba(238, 9, 22, 0.35);
 }
 
 .donate:hover {
@@ -364,22 +382,23 @@ span.donate {
             <div id="tips_wrap">
                 <div class="col-xs-12 tips">
                     <ul>
+                        <li>当前版本:<span class="current_version">${current_version})</span>, <a href="https://github.com/Suxiaogang/WeiboPicBed#-%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97" target="_blank">查看更新记录</a></li>
                         <li>喜欢这个扩展程序?
                             <a href="https://chrome.google.com/webstore/detail/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E5%9B%BE%E5%BA%8A/fdfdnfpdplfbbnemmmoklbfjbhecpnhf/reviews" target="_blank">欢迎去 Chrome 应用商店来一发五星好评！</a></li>
-                        <li>使用中碰到任何问题，<a href="https://github.com/Suxiaogang/WeiboPicBed/issues/new" target="_blank">请在这里提交反馈</a><span style="color:#7d7d7d;">(当前版本:<span class="current_version">${current_version})</span><span>)</li>
+                        <li>使用中碰到任何问题，<a href="https://github.com/Suxiaogang/WeiboPicBed/issues/new" target="_blank">请在这里提交反馈</a><span style="color:#7d7d7d;"><span></li>
                         <li>本扩展程序是托管于Github的开源项目，欢迎开发者<a href="https://github.com/Suxiaogang/WeiboPicBed" target="_blank">贡献想法和代码</a></li>
                         <li><span class="donate">捐助开发者</span>以便我做的更好</li>
                     </ul>
                     <hr>
                     <div class="checkbox css3Label" style="padding-left:15px;">
-                        <div class="col-xs-8">
+                        <div class="col-xs-8" style="display:none;">
                             <input type="checkbox" id="defaultIcon">
                             <label for="defaultIcon" class="defaultIcon">使用默认图标</label>
                             <input type="checkbox" id="customIcon">
                             <label for="customIcon" class="customIcon">使用自定义图标</label>
                             <input type="file" id="custom-icon-file" style="display:none;">
                         </div>
-                        <div class="col-xs-4">
+                        <div class="col-xs-4" style="display:none;">
                             <img id="custom-icon-preview">
                         </div>
                     </div>
