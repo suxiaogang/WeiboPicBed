@@ -71,18 +71,14 @@ $(document).ready(function() {
 		elements.removeClass('active');
 	});
 
-    $('#save-to-local').click(function(){
-        webkitRequestFileSystem(PERSISTENT, 1024, function (filesystem) {
-            filesystem.root.getFile("test", { create: true }, function (file) {
-                file.createWriter(function (writer) {
-                    writer.addEventListener("write", function (event) {
-                        location = file.toURL()
-                    })
-                    writer.addEventListener("error", console.error)
-                    writer.write(new Blob(["test"]))
-                }, console.error)
-            }, console.error)
-        }, console.error)
+    $('#sort-reverse').click(function(){
+        storageData = storageData.reverse();
+        localStorage.weiboData = JSON.stringify(storageData);
+        buildHtml();
+	});
+
+    $('#chrome-sync').click(function(){
+        // TODO: Chrome sync V3
 	});
 
     var version = chrome.runtime.getManifest().version;

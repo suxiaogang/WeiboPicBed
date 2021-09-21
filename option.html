@@ -110,18 +110,26 @@ h5 {
     min-height: 135px;
     text-align: center;
     display: inline-block;
-    background-size: contain;
+    border-radius: 2px;
+    background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    -webkit-transition: 0.3s;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
     box-shadow: 0 14px 20px -20px #000;
 }
 .page-content:hover {
     cursor: pointer;
     background-color: #000;
-    opacity: 0.6;
+    opacity: 0.95;
     box-shadow: 0 20px 20px -20px #000;
-    -webkit-transform: scale(1.05);
+    -webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+    cursor: pointer;
+    transform:scale(1.05);
+}
+.beta{
+    margin-top: 40px;
 }
 #beta{
     float: right;
@@ -132,6 +140,14 @@ h5 {
     filter: alpha(opacity=20);
     opacity: .2;
     /* box-shadow: 1px 1px 3px rgb(100 100 100 / 15%); */
+}
+#beta, #btn-close{
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s
+}
+#beta:hover, #btn-close:hover{
+    color: #333 !important;
+    opacity: 1 !important;
 }
 .beta p{
     margin-top: 10px;
@@ -191,14 +207,14 @@ h5 {
     border-radius: 5px;
     color: #555;
     text-shadow: none;
-    margin: 30px 0 50px 0;
+    margin: 50px 0 50px 0;
     min-height: 245px;
 }
 .tips {
     color: #999;
     padding: 20px 50px;
     background: #fff;
-    font-size: 11px;
+    font-size: 12px;
     line-height: 22px;
     height: 235px;
 }
@@ -298,6 +314,7 @@ span.donate {
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
+    overflow: hidden;
 }
 
 
@@ -316,7 +333,7 @@ span.donate {
         width: 100%;
         height: 100%;
         z-index: 5;
-        background-color: rgba(0, 0, 0, 0.75);
+        background-color: rgba(0, 0, 0, 0.85);
         opacity: 0;
         visibility: hidden;
         -webkit-backface-visibility: hidden;
@@ -348,16 +365,32 @@ img.zoom-img:hover {
     overflow: hidden;
 }
 
-#save-to-local {
-    display: inline-block;
+#sort-reverse {
+    display: block;
+    width: 160px;
     padding: 10px;
     cursor: pointer;
-    background-color: #f8f8f8;
+    background-color: #eeeeee;
+    border-radius: 6px;
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+}
+#sort-reverse:hover{
+    background-color: #ccc;
+}
+#chrome-sync{
+    display: block;
+    width: 160px;
+    padding: 10px;
+    background-color: #eeeeee;
+    color: #c5c5c5;
+    border-radius: 6px;
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
 }
 /** Modal* */
 .modal {
     display: flex;
-    align-items: center;
     justify-content: center;
     position: relative;
     margin: 0 auto;
@@ -382,6 +415,7 @@ img.zoom-img:hover {
     top: 5px;
     right: 15px;
     opacity: 0;
+    z-index: 9999;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     transition: opacity 0.2s cubic-bezier(0.55, 0, 0.1, 1), -webkit-transform 0.6s cubic-bezier(0.55, 0, 0.1, 1);
@@ -496,15 +530,17 @@ wx1.sinaimg.cn、wx2.sinaimg.cn、wx3.sinaimg.cn、wx4.sinaimg.cn
 tva1.sinaimg.com、 tva2.sinaimg.com、 tva3.sinaimg.com、 tva4.sinaimg.com
 tvax1.sinaimg.com、tvax2.sinaimg.com、tvax3.sinaimg.com、tvax4.sinaimg.com
 注：只需将地址前缀中 wx 替换为 tva 或 tvax 即可，至于其中的数字无需对应，图片也能打开，当然保险起见，对应修改是最好的。</div>
-                    <p id="save-to-local">2. 点击这里按照上传时间正向排序</p>
+                    <p id="sort-reverse">2. 点击切换图片排序</p>
+                    <p id="chrome-sync">3. 数据同步[开发中]</p>
                 </div>
+                <p style="position:absolute;bottom:0px;color:#c5c5c5;right:20px;font-size:12px;">https://developer.chrome.com/docs/extensions</p>
             </div>
             <!-- content -->
         </div>
     </div>
     <!-- overlay -->
     
-    <button type="button" class="close" title="关闭" style="margin:20px;">关闭</button>
+    <button type="button" id="btn-close" class="close" title="关闭" style="margin:20px;">关闭</button>
     <button type="button" id="beta" title="关闭" style="margin:14px;">试验功能</button>
 
     <div class="container">
@@ -512,11 +548,11 @@ tvax1.sinaimg.com、tvax2.sinaimg.com、tvax3.sinaimg.com、tvax4.sinaimg.com
             <div id="tips_wrap">
                 <div class="col-xs-12 tips">
                     <ul>
-                        <li>当前版本:<span class="current_version">${current_version})</span>, <a href="https://github.com/Suxiaogang/WeiboPicBed#-%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97" target="_blank">查看更新记录</a></li>
+                        <li>当前版本:<span class="current_version">${current_version})</span>, <a href="https://github.com/suxiaogang/WeiboPicBed#-%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97" target="_blank">查看更新记录</a></li>
                         <li>喜欢这个扩展程序?
                             <a href="https://chrome.google.com/webstore/detail/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E5%9B%BE%E5%BA%8A/fdfdnfpdplfbbnemmmoklbfjbhecpnhf/reviews" target="_blank">欢迎去 Chrome 应用商店来一发五星好评！</a></li>
-                        <li>使用中碰到任何问题，<a href="https://github.com/Suxiaogang/WeiboPicBed/issues/new" target="_blank">请在这里提交反馈</a><span style="color:#7d7d7d;"><span></li>
-                        <li>本扩展程序是托管于Github的开源项目，欢迎开发者<a href="https://github.com/Suxiaogang/WeiboPicBed" target="_blank">贡献想法和代码</a></li>
+                        <li>使用中碰到任何问题，<a href="https://github.com/suxiaogang/WeiboPicBed/issues/new?template=bug_report.md" target="_blank">请在这里提交反馈</a><span style="color:#7d7d7d;"><span></li>
+                        <li>本扩展程序是托管于Github的开源项目，欢迎<a href="https://github.com/suxiaogang/WeiboPicBed" target="_blank">贡献想法和代码</a></li>
                         <li><span class="donate">捐助开发者</span>以便我做的更好</li>
                     </ul>
                     <hr>
@@ -540,7 +576,7 @@ tvax1.sinaimg.com、tvax2.sinaimg.com、tvax3.sinaimg.com、tvax4.sinaimg.com
     <script id="image-item-template" type="template">
         <div class="col-md-2 animated fadeInUp">
             <div class="page-header">{{date}}</div>
-            <div class="page-content fancybox" d="{{d}}" data-fancybox-group="gallery" rel="gallery" href="{{imgsrc}}" title="<input type='text' class='form-control imgsrc' value='{{imgsrc}}'>" style="background-image:url('{{imgsrcthumb}}')"></div>
+            <div style="overflow:hidden"><div class="page-content fancybox" d="{{d}}" data-fancybox-group="gallery" rel="gallery" href="{{imgsrc}}" title="<input type='text' class='form-control imgsrc' value='{{imgsrc}}'>" style="background-image:url('{{imgsrcthumb}}')"></div></div>
         </div>
     </script>
     <script src="js/jquery.min.js"></script>
