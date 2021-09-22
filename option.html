@@ -367,16 +367,22 @@ img.zoom-img:hover {
 
 #sort-reverse {
     display: block;
-    width: 160px;
+    width: 240px;
     padding: 10px;
     cursor: pointer;
     background-color: #eeeeee;
     border-radius: 6px;
     transition: all 0.1s;
     -webkit-transition: all 0.1s;
+    -moz-user-select: none;
+    user-select: none;
 }
 #sort-reverse:hover{
     background-color: #ccc;
+}
+#sort{
+    margin-left: 20px;
+    color: #333;
 }
 #chrome-sync{
     display: block;
@@ -530,7 +536,7 @@ wx1.sinaimg.cn、wx2.sinaimg.cn、wx3.sinaimg.cn、wx4.sinaimg.cn
 tva1.sinaimg.com、 tva2.sinaimg.com、 tva3.sinaimg.com、 tva4.sinaimg.com
 tvax1.sinaimg.com、tvax2.sinaimg.com、tvax3.sinaimg.com、tvax4.sinaimg.com
 注：只需将地址前缀中 wx 替换为 tva 或 tvax 即可，至于其中的数字无需对应，图片也能打开，当然保险起见，对应修改是最好的。</div>
-                    <p id="sort-reverse">2. 点击切换图片排序</p>
+                    <p id="sort-reverse">2. 点击切换图片排序<span id='sort'></span></p>
                     <p id="chrome-sync">3. 数据同步[开发中]</p>
                 </div>
                 <p style="position:absolute;bottom:0px;color:#c5c5c5;right:20px;font-size:12px;">https://developer.chrome.com/docs/extensions</p>

@@ -16,9 +16,9 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 1px;
+    height: 3px;
     z-index: 800;
-    background: #60d778;
+    background: #0077ff;
     -webkit-transform: translateX(100%);
     -moz-transform: translateX(100%);
     -o-transform: translateX(100%);

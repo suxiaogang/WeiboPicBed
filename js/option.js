@@ -1,4 +1,5 @@
 var storageData = localStorage.weiboData ? JSON.parse(localStorage.weiboData) : [];
+var storageSort = localStorage.sort ? localStorage.sort : 'AESC';
 var customIconPreview = $('#custom-icon-preview');
 var canvas = document.createElement('canvas');
 var ctx = canvas.getContext('2d');
@@ -47,6 +48,10 @@ function buildHtml() {
         $('input:checkbox[id="customIcon"]').prop("checked", true);
         customIconPreview.attr('src', localStorage.customIconBase64);
     }
+    if (localStorage.sort == null) {
+        localStorage.sort = storageSort;
+    }
+    $("#sort").text(localStorage.sort == 'AESC' ? '升序排列' : '降序排列');
 }
 
 function removeImgItem(d) {
@@ -63,6 +68,9 @@ function removeImgItem(d) {
 
 $(document).ready(function() {
 
+    // Build HTML on load
+    buildHtml();
+
     var elements = $('.modal-overlay, .modal');
 	$('#beta').click(function(){
 		elements.addClass('active');
@@ -74,6 +82,7 @@ $(document).ready(function() {
     $('#sort-reverse').click(function(){
         storageData = storageData.reverse();
         localStorage.weiboData = JSON.stringify(storageData);
+        localStorage.sort = (localStorage.sort == 'AESC' ? 'DESC' : 'AESC');
         buildHtml();
 	});
 
@@ -111,9 +120,6 @@ $(document).ready(function() {
             $(this).removeClass('blinking');
         }
     );
-
-    // Build HTML on load
-    buildHtml();
 
     $(".fancybox").fancybox({
         maxWidth: 1000,

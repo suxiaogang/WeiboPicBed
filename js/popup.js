@@ -233,10 +233,12 @@ Wbpd.prototype={
     checkWeiboStatus: function() {
         $("body").addClass("app-loading");
         $.ajax({
-            url: "http://weibo.com/aj/onoff/getstatus",
+            url: "https://weibo.com/aj/onoff/getstatus",
             cache: false,
             success: function(result){
-                $("div.loading-bar").remove();
+                setTimeout(function() { 
+                    $("div.loading-bar").remove();
+                }, 2000);
                 if (result && result.code == '100000') {
                     $('#statusBadge').addClass('badge-success');
                 } else {
@@ -360,10 +362,17 @@ Wbpd.prototype={
         }
 
         //store upload image to localStorage
-        storageData.push({
-            date: (new Date()).getTime(),
-            imgsrc: image
-        });
+        if (localStorage.sort == 'DESC') {
+            storageData.unshift({
+                date: (new Date()).getTime(),
+                imgsrc: image
+            });
+        } else {
+            storageData.push({
+                date: (new Date()).getTime(),
+                imgsrc: image
+            });
+        }
         localStorage.weiboData = JSON.stringify(storageData);
     },
     //批量上传图片时,绘制结果区
@@ -599,7 +608,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 $(function() {
     my = Wbpd.prototype;
     my.init();
-    my.checkWeiboStatus();
+    setTimeout(function() { 
+        my.checkWeiboStatus();
+    }, 800);
     setTimeout(function() { 
         $("#versionDIV").slideUp();
     }, 6000);
