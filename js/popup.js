@@ -2,8 +2,10 @@ var global_pid = "";
 var storageData = localStorage.weiboData ? JSON.parse(localStorage.weiboData) : [];
 var https = localStorage.is_https ? JSON.parse(localStorage.is_https) : $("#https").is(':checked');
 var version_info = localStorage.version_info ? JSON.parse(localStorage.version_info) : false;
-var http_pre  = "http://tva";
-var https_pre = "https://wx";
+var default_domain_prefix = "tva";
+var default_domain_prefixs = "wx";
+var http_pre  = "http://";
+var https_pre = "https://";
 
 
 var Wbpd = Wbpd || {};
@@ -303,6 +305,13 @@ Wbpd.prototype={
         }
 
         var url, zone, ext;
+        if (localStorage.domain) {
+            http_pre = http_pre + localStorage.domain;
+            https_pre = https_pre + localStorage.domain;
+        } else {
+            http_pre = http_pre + default_domain_prefix;
+            https_pre = https_pre + default_domain_prefixs;
+        }
         var url_pre = $("#https").is(':checked') ? https_pre : http_pre;
         if (typeof(type) == 'undefined') type = 'bmiddle';
         if (params.pid[9] == 'w') {

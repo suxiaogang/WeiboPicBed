@@ -384,6 +384,9 @@ img.zoom-img:hover {
     margin-left: 20px;
     color: #333;
 }
+#domain-setting{
+    padding: 10px;
+}
 #chrome-sync{
     display: block;
     width: 160px;
@@ -537,7 +540,12 @@ tva1.sinaimg.com、 tva2.sinaimg.com、 tva3.sinaimg.com、 tva4.sinaimg.com
 tvax1.sinaimg.com、tvax2.sinaimg.com、tvax3.sinaimg.com、tvax4.sinaimg.com
 注：只需将地址前缀中 wx 替换为 tva 或 tvax 即可，至于其中的数字无需对应，图片也能打开，当然保险起见，对应修改是最好的。</div>
                     <p id="sort-reverse">2. 点击切换图片排序<span id='sort'></span></p>
-                    <p id="chrome-sync">3. 数据同步[开发中]</p>
+                    <p id="domain-setting">3. 设置上传域名前缀
+                        <select class="form-control" id="domain-prefix" style="display:inline;width:80px;height:32px;margin-left:10px;">
+                            <option value="wx">wx</option><option value="tva">tva</option><option value="tvax">tvax</option>
+                        </select>
+                    </p>
+                    <p id="chrome-sync">4. 数据同步[开发中]</p>
                 </div>
                 <p style="position:absolute;bottom:0px;color:#c5c5c5;right:20px;font-size:12px;">https://developer.chrome.com/docs/extensions</p>
             </div>

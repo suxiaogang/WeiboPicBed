@@ -99,6 +99,11 @@ $(document).ready(function() {
         event.preventDefault();
         window.close();
     });
+    $('#domain-prefix').on('change', function() {
+        var index = $(this)[0].selectedIndex;
+	    var selectOption = $(this)[0].options[index];
+        localStorage.domain = selectOption.value;
+    });
 
     $('.donate').on('click', function() {
         swal({
