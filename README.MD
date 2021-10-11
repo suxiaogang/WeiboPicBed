@@ -2,12 +2,11 @@
 	<img width="300px" src="https://wx1.sinaimg.cn/large/5fd37818jw1eq7bx4bc4ej20c0038mx9.jpg">
 </a>
 
+<img width="650px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/screenshot/webstore.jpg">
+
 #### 微信小程序版
 <img width="200px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/screenshot/wechatmini.png">
-[使用方法](https://github.com/suxiaogang/WeiboPicBed/blob/master/README-COOKIE.MD)
-
-
-<img width="650px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/screenshot/webstore.jpg">
+<a href="https://github.com/suxiaogang/WeiboPicBed/blob/master/README-COOKIE.MD">使用方法</a>
 
 ## 💰捐助
 <img width="150px" style="margin-right:200px;" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/img/wechat.png"><img width="150px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/img/alipay.jpg">
