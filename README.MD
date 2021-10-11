@@ -3,8 +3,9 @@
 </a>
 
 #### 微信小程序版
-<img width="400px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/screenshot/wechatmini.png">
----
+<img width="200px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/screenshot/wechatmini.png">
+[使用方法](https://github.com/suxiaogang/WeiboPicBed/blob/master/README-COOKIE.MD)
+
 
 <img width="650px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/screenshot/webstore.jpg">
 
