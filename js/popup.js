@@ -304,15 +304,13 @@ Wbpd.prototype={
             return crc ^ (-1);
         }
 
-        var url, zone, ext;
-        if (localStorage.domain) {
-            http_pre = http_pre + localStorage.domain;
-            https_pre = https_pre + localStorage.domain;
-        } else {
-            http_pre = http_pre + default_domain_prefix;
-            https_pre = https_pre + default_domain_prefixs;
-        }
+        var url, zone;
         var url_pre = $("#https").is(':checked') ? https_pre : http_pre;
+        if (localStorage.domain) {
+            url_pre = url_pre + localStorage.domain;
+        } else {
+            url_pre = url_pre + default_domain_prefix;
+        }
         if (typeof(type) == 'undefined') type = 'bmiddle';
         if (params.pid[9] == 'w') {
             zone = (crc32(params.pid) & 3) + 1;
