@@ -561,7 +561,7 @@ span[data-tooltip] {
 
 .fancybox-close {
     position: absolute;
-    top: 0px;
+    top: -15px;
     right: 0px;
     width: 36px;
     height: 36px;
@@ -574,7 +574,7 @@ span[data-tooltip] {
 only screen and (min--moz-device-pixel-ratio: 1.5),
 only screen and (min-device-pixel-ratio: 1.5) {
     .fancybox-close {
-        background-image: url('source/fancybox_sprite@2x.png');
+        background-image: url('../source/fancybox_sprite@2x.png');
         background-size: 44px 152px;
         /*The size of the normal image, half the size of the hi-res image*/
     }

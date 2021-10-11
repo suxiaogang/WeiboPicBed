@@ -11,6 +11,8 @@ assignees: ''
 A clear and concise description of what the bug is.
 
 **版本信息:**
- - OS: [如: macOS 11.5 / Win10 20H1]
+ - OS: [如: macOS 11.6 / Win10 20H1]
  - Browser: [如: Chrome 93.0.4577.82 正式版]
- - Extension: [如: 2.9.1 Chrome商店版]
+ - Extension: [如: 2.9.3 Chrome商店版]
+
+**截图:**

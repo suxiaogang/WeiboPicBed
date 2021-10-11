@@ -2,6 +2,8 @@
 	<img width="300px" src="https://wx1.sinaimg.cn/large/5fd37818jw1eq7bx4bc4ej20c0038mx9.jpg">
 </a>
 
+#### 微信小程序版
+<img width="400px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/screenshot/wechatmini.png">
 ---
 
 <img width="650px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/screenshot/webstore.jpg">
@@ -32,6 +34,9 @@
 
 ## 📑 更新日志
 ```
+2021-10-11 v2.9.4 
+修复切换图片尺寸和批量模式时多次添加域名前缀的bug
+
 2021-09-25 v2.9.3
 尝试更为稳定的微博登录检测
 自定义上传域名前缀
