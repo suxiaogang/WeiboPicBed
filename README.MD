@@ -9,7 +9,7 @@
 <a href="https://github.com/suxiaogang/WeiboPicBed/blob/master/README-COOKIE.MD">小程序版使用方法</a>
 
 ## 💰捐助
-<img width="150px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/img/wechat.png"><img width="150px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/1x1.png"><img width="150px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/img/alipay.jpg">
+<img width="240px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/img/wechat.png"><img width="80px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/1x1.png"><img width="240px" src="https://raw.githubusercontent.com/suxiaogang/WeiboPicBed/master/img/alipay.jpg">
 
 ## 🚀 features
 - 支持点选/拖拽/本地粘贴3种方式上传图片至新浪微博图床
