@@ -193,7 +193,8 @@ $(document).ready(function() {
     $('.page-content').bind('contextmenu', function(e) {
         e.preventDefault();
         var d = $(this).attr("d");
-        var div = $(this).parent();
+        var div = $(this).parent().parent();
+        console.log(div);
         swal({
             title: "确定要删除吗?",
             text: "",

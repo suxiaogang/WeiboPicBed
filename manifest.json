@@ -3,7 +3,7 @@
   "name": "新浪微博图床",
   "short_name": "新浪微博图床",
   "description": "简单好用的新浪微博图床,支持选择/拖拽/粘贴上传图片,并生成图片地址,HTML,UBB和Markdown等格式,支持浏览和删除历史记录",
-  "version": "2.9.4",
+  "version": "2.9.5",
   "icons": {
     "16": "icon.png",
     "48": "icon.png",
@@ -17,7 +17,7 @@
   },
   "options_page": "option.html",
   "permissions": [
-    "storage","notifications","webRequest","tabs","contextMenus","webNavigation","clipboardWrite","clipboardRead"
+    "notifications","tabs","webNavigation","clipboardWrite","clipboardRead"
   ],
   "host_permissions": [
     "*://*.weibo.cn/*", "*://*.weibo.com/*", "*://*.sina.com/*", "*://*.sina.com.cn/*", "*://*.sina.cn/*"
